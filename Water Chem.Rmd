@@ -10,6 +10,13 @@ waterchem2 <- read.csv("Water Chem.csv")
 
 library(ggplot2)
 
+WeCr <- subset(waterchem2, Site=="WeCr01"|Site== "WeCr03"|Site=="WeCr04"|Site== "WeCr05"|Site=="WeCr07"|Site== "WeCr09"|Site=="WeCr10"|Site== "WeCr11"|Site=="LrCr"|Site== "WdCr"|Site=="PrCr"|Site== "FdCr"|Site=="OhRv01"|Site== "OhRv02")
+
+NfSh <- subset(waterchem2, Site== "NoFr03"|Site=="NoFr02"|Site== "NoFr01"|Site=="WrCr"|Site== "ShCr03"|Site=="ShCr02"|Site== "ShCr05"|Site=="ShCr06")
+
+BfCr <- subset(waterchem2, Site== "BfCr01"|Site=="BfCr02"|Site== "CmCr")
+
+AMDs <- subset(waterchem2, Site== "ChCr01"|Site=="NrCr"|Site== "CsCr"|Site=="ChCr02")
 ```
 
 ## time series using date
@@ -63,8 +70,6 @@ ggplot(waterchem2,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)
 
 ## Wheeling Creek and Tribs
 ```{r}
-WeCr <- read.csv("WeCr.csv")
-
 ggplot(WeCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
@@ -85,8 +90,6 @@ ggplot(WeCr,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
 
 ## North Fork and Short Creek
 ```{r}
-NfSh <- read.csv("NfSh.csv")
-
 ggplot(NfSh,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
@@ -107,8 +110,6 @@ ggplot(NfSh,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
 
 ## Buffalo Creek
 ```{r}
-BfCr <- read.csv("BfCr.csv")
-
 ggplot(BfCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
@@ -129,8 +130,6 @@ ggplot(BfCr,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
 
 ## Acid Mine sites
 ```{r}
-AMDs <- read.csv("AMDs.csv")
-
 ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
@@ -180,6 +179,119 @@ CL20 <-c(26.83363636 ,34.674 ,124.0061538 ,26.783 ,118.5830769
 
 t.test(CL19, CL20, alternative = "two.sided", var.equal = TRUE)
 ```
+
+
+
+#t-tests of only Wheeling creek alone, no tribs or the river included
+```{r}
+
+WeCr19 <-c(462.5578947 ,437.9692308 ,482.24 ,388.5 ,463.68)
+
+WeCr20 <-c(544 ,460.14 ,562.06 ,472.30625 ,572.6928571)
+
+t.test(WeCr19, WeCr20, alternative = "two.sided", var.equal = TRUE)
+
+```
+
+#T-test Tributaries to Wheeling Creek
+```{r}
+Tribs19 <-c(631.725 ,600.8315789, 502.0769231, 664.6111111)
+
+Tribs20 <-c(685.3625, 631.20625, 565.54375, 725.375)
+
+t.test(Tribs19, Tribs20, alternative = "two.sided", var.equal = TRUE)
+```
+
+#T-test the river
+```{r}
+ohio19 <-c(282.3666667, 293.0736842)
+
+ohio20 <-c(388.2833333, 381.85)
+
+t.test(ohio19, ohio20, alternative = "two.sided", var.equal = TRUE)
+```
+
+#T-test buffalo creek only
+```{r}
+Bf19 <-c(399.7363636, 421.6, 378.7833333)
+
+Bf20 <-c(421.6571429, 506.1384615, 473.625)
+
+t.test(Bf19, Bf20, alternative = "two.sided", var.equal = TRUE)
+```
+
+
+#t-test North Fork only
+```{r}
+Nf19 <-c(628.2538462, 531.34, 423.4416667, 396.725)
+
+Nf20 <-c(702.21875, 559.125, 464.3125, 448.54)
+
+t.test(Nf19, Nf20, alternative = "two.sided", var.equal = TRUE)
+```
+
+#t-test Short Creek only
+```{r}
+Sh19 <-c(1128.615385, 605.42, 504.4857143, 1193.111111)
+
+Sh20 <-c(1412.5625, 670.95, 550.3533333, 1496.0625)
+
+t.test(Sh19, Sh20, alternative = "two.sided", var.equal = TRUE)
+```
+
+#t-test AMD sites only
+```{r}
+AMD19 <-c(1358.454545, 958.8181818, 2706.181818)
+
+AMD20 <-c(2860.75, 1124.3125, 3356.692308)
+
+t.test(AMD19, AMD20, alternative = "two.sided", var.equal = TRUE)
+```
+
+
+
+#Kruskal Wallace tests
+```{r}
+kruskal.test(WeCr19, WeCr20)
+
+kruskal.test(Tribs19, Tribs20)
+
+kruskal.test(ohio19, ohio20)
+
+kruskal.test(Bf19, Bf20)
+
+kruskal.test(Nf19, Nf20)
+
+kruskal.test(Sh19, Sh20)
+
+kruskal.test(AMD19, AMD20)
+```
+
+
+#Mann-Whitney U test
+```{r}
+wilcox.test(WeCr19, WeCr20)
+
+wilcox.test(Tribs19, Tribs20)
+
+wilcox.test(ohio19, ohio20)
+
+wilcox.test(Bf19, Bf20)
+
+wilcox.test(Nf19, Nf20)
+
+wilcox.test(Sh19, Sh20)
+
+wilcox.test(AMD19, AMD20)
+```
+
+
+
+
+
+
+
+
 
 
 
