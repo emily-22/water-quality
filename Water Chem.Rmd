@@ -5,10 +5,20 @@ date: "12/9/2020"
 output: html_document
 ---
 
+# Emily, go thought the document and update the indexing header for all the "Chunks" so that it is easy to figure out where we are in the document. 
+A "#" put into the document index on the top right (look at the indexing feature on the right)
+## makes and indentation. We can use this format to help make sure this is all clearly organized. Each test or analysis or data managment step needs a nice clear "header". I hope that makes sense. 
+
+# loading libraries
+```{r}
+library(ggplot2)
+```
+# Importing CSV
 ```{r}
 waterchem2 <- read.csv("Water Chem.csv")
-
-library(ggplot2)
+```
+#
+```{r}
 
 WeCr <- subset(waterchem2, Site=="WeCr01"|Site== "WeCr03"|Site=="WeCr04"|Site== "WeCr05"|Site=="WeCr07"|Site== "WeCr09"|Site=="WeCr10"|Site== "WeCr11"|Site=="LrCr"|Site== "WdCr"|Site=="PrCr"|Site== "FdCr"|Site=="OhRv01"|Site== "OhRv02")
 
@@ -288,6 +298,32 @@ wilcox.test(AMD19, AMD20)
 
 
 
+# Template for setting up comparison tests at each site. 
+
+
+# ChCr01  - Subsetting data so that it is only relevant to this specific site.
+
+```{r}
+ChCr01 <- subset(waterchem2, Site=="ChCr01")
+ChCr01_2019<- ChCr01[1:11,] # from the ChCr01 data matrix, I selected only summer 19 (June-Sept) data, I just counted the number of rows, then check to make sure it was the right date range
+ChCr01_2020<- ChCr01[35:50,]# from the ChCr01 data matrix, I selected only summer 20 (June-Sept) data
+```
+##Wilcox non-parametric test of difference 
+```{r}
+wilcox.test(ChCr01_2019$Conductivity, ChCr01_2020$Conductivity)
+```
+## Result - At the ChCr01 site, there was a sig. different conductivy between summer 2019 and 2020, with conductivity significantly higher in 2020 compared to 2019. 
+
+Wilcoxon rank sum exact test
+
+data:  ChCr01_2019$Conductivity and ChCr01_2020$Conductivity
+W = 28, p-value = 0.002223
+alternative hypothesis: true location shift is not equal to 0
+
+## ploting ChCr01 differences
+```{r}
+boxplot(ChCr01_2019$Conductivity,ChCr01_2020$Conductivity) # ggPlot probable makes better graphs
+```
 
 
 
