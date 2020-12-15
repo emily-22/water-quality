@@ -289,8 +289,285 @@ wilcox.test(AMD19, AMD20)
 
 
 
+#Individual Stream Sites
+```{r}
+
+BfCr0119 <-c(427.7,414.7,381.3,371.8,380.7,359.1,423,398.3,416,430.5,394)
+
+BfCr0120 <-c(424.1,438.3,429.2,426.6,303,379.6,443.7,482.8,474.8,466.7,394.9,410.3,449.4)
 
 
+BfCr0219 <-c(445.5,428.6,414,398.1,398,378,449.5,441.5,431.9,457.5,395)
+
+BfCr0220 <-c(465.6,476.2,485.5,466.8,500,462.2,539,623,480.8,430.9,518.6,543.2,588)
+
+
+ChCr0119 <-c(631,788,988,894,1089,1324,1555,1757,2244,2457,1216)
+
+ChCr0120 <-c(1126,1295,1502,1743,1471,1754,2534,3186,4460,5120,4916,1734,3231,4030,4436,3234)
+
+
+CmCr19 <-c(291.5,416.3,414.7,296.4,423.9,429.9)
+
+CmCr20 <-c(426.6,457.7,473.7,461,474.7,507.4,496.2,507.9,463.2,399.6,516.4,499.1)
+
+
+CsCr19 <-c(665,835,875,892,896,884,1057,1138,1261,1211,833)
+
+CsCr20 <-c(767,909,983,1037,996,1161,1242,1370,848,1783,1357,807,1078,1054,1325,1272)
+
+
+FdCr19 <-c(481.8,680,635,565,567,678,712,735)
+
+FdCr20 <-c(621,671,685,704,655,706,544,730,784,924,750,551,687,708,781,464.8)
+
+
+LrCr19 <-c(632,563.8,601,522.7,556.9,552.8,545,562,577,552,667,623,616,657,587,704,664,481.6,751)
+
+LrCr20 <-c(576,642,566,675,627,674,518.7,676,528.1,777,634,501.5,636,700,710,658)
+
+
+NoFr0119 <-c(648,634,545.4,542,572,496.9,622,644,629,643,697,680,814)
+
+NoFr0120 <-c(585,648,684,681,640,648,609,775,823,826,835,567,747,855,484.5,828)
+
+
+NoFr0219 <-c(529.4,517.2,483.4,477.6,498.2,541.9,546.6,481.1,575,663)
+
+NoFr0220 <-c(479.6,522.2,550.7,555.6,507.8,493.1,483.8,593,520.8,617,571,495.4,608,647,650,651)
+
+
+NoFr0319 <-c(413.2,378.9,388.6,387.8,360.8,420.2,441,444.7,447.1,458.4,445.4,495.2)
+
+NoFr0320 <-c(418.6,430.8,445.9,441.8,401.5,384.4,384.2,454,474.2,469.5,463.8,409.6,461.8,476.2,847,465.7)
+
+
+NrCr19 <-c(2049,2112,2478,2263,2521,2247,2932,3096,3835,3750,2485)
+
+NrCr20 <-c(2742,3345,3638,3951,2878,3710,3392,4140,922,4434,3025,3637,3823)
+
+
+OhRv0119 <-c(231.6,221.1,220.4,190.2,215.2,228.3,245.5,254.1,256.4,296.9,266.4,273.5,308.1,313.6,384,398.6,409.9,368.8)
+
+OhRv0120 <-c(341.4,325,371,405.7,434.8,330,402.2,407.2,443,411.3,399.2,388.6)
+
+
+OhRv0219 <-c(233.4,219.1,221.4,194,214.1,245.2,241.6,251.5,296.5,281.4,275.1,283.8,308.3,337.3,396,389.9,403.8,404.4,371.6)
+
+OhRv0220 <-c(341,324.4,346,367.7,355,433.7,326.8,402.1,416.2,443.2,409.4,374.8,400.9,407.9,370.7,389.8)
+
+
+PrCr19 <-c(546.8,513.3,513.2,477,483.5,477.9,467.2,454,479.3,525,561,580,448.8)
+
+PrCr20 <-c(506.9,556,577.2,558,548.7,574,464.6,567,559,575,579,466.3,604,640,658,615)
+
+
+ShCr0219 <-c(1445,1134,894,730,653,685,921,687,1200,1543,1162,1438,2180)
+
+ShCr0220 <-c(834,717,842,1291,1472,880,2464,1451,1020,3369,1933,1047,1553,1219,1143,1366)
+
+
+ShCr0319 <-c(624.5,607,534.6,521.9,563,604,612,509.2,674,804)
+
+ShCr0320 <-c(557.5,615,657,662,584,643,592,742,817,840)
+
+
+ShCr0519 <-c(448.8,451.9,499.1,513.6,450,538,630)
+
+ShCr0520 <-c(480.1,507,537.6,493,542,457.6,569,645,645,592,406.4,573,599,627.5,581.1)
+
+
+ShCr0619 <-c(583,942,1119,1219,932,1628,1140,1448,1727)
+
+ShCr0620 <-c(820,846,1083,1527,1508,1014,1845,1205,1508,1492,2749,886,1267,2204,1584,2399)
+
+
+WdCr19 <-c(700,669,703,614,612,614,595,618,592,654,710,664,656,710,708,760,745,639)
+
+WdCr20 <-c(680,741,786,808,725,778,650,635)
+
+
+WeCr0319 <-c(446.1,462.5,434,396.8,418.1,440.2,327.8,373.3,393.1,449.5,483.7,491.3,499.7,538,544,557,566,438.5,529)
+
+WeCr0320 <-c(458.7,524,464.5,552,439.1,545,487.5,558,615,637,545,480.2,530,582,640,646)
+
+
+WeCr0719 <-c(493.6,468.3,461.7,441.6,477.6,465.5,378.1,427,478.1,396.2,525.7,573,619,434.2,594)
+
+WeCr0720 <-c(434.2,508.8,454.4,561,496.7,587,552,571,560,598,474.8,607,656,705,665)
+
+
+WeCr0919 <-c(383.9,432.3,389.7,373.1,401.1,380,314.7,406,380.4,431,431.2,476.4,250.7)
+
+WeCr0920 <-c(417.5,462.9,496.2,509,397.1,500,429.7,558,505,358.1,519,510,326,498.8,529.4,540.2)
+
+
+WeCr1119 <-c(304.3,485.1,479.4,388.1,357.6,484.2,509.4,563,622,443.7)
+
+WeCr1120 <-c(436,510,539,557,507.5,587,509.7,553,648,701,477.5,641,696,655)
+
+
+WrCr19 <-c(277.6,384,397.1,326.4,447.5,407.3,447.1,486.8)
+
+WrCr20 <-c(414.4,433.1,444.7,438.4,433.7,420.7,470.1,484.8,476.7,475.7,390.7,453.1,481.2,465.5,445.3)
+```
+
+
+#t-tests
+```{r}
+t.test(BfCr0119, BfCr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(BfCr0219, BfCr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CmCr19, CmCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ChCr0119, ChCr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CsCr19, CsCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0119, NoFr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0219, NoFr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0319, NoFr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0219, ShCr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0319, ShCr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0519, ShCr0520, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0619, ShCr0620, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WrCr19, WrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WdCr19, WdCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(FdCr19, FdCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(PrCr19, PrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(LrCr19, LrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NrCr19, NrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0319, WeCr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0719, WeCr0720, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0919, WeCr0920, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr1119, WeCr1120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv0119, OhRv0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv0219, OhRv0220, alternative = "two.sided", var.equal = TRUE)
+```
+
+
+#Kruskal Wallace tests
+was giving an error but the mann whitney below ran fine
+```{r}
+kruskal.test(BfCr0119, BfCr0120)
+
+kruskal.test(BfCr0219, BfCr0220)
+
+kruskal.test(CmCr19, CmCr20)
+
+kruskal.test(ChCr0119, ChCr0120)
+
+kruskal.test(CsCr19, CsCr20)
+
+kruskal.test(NoFr0119, NoFr0120)
+
+kruskal.test(NoFr0219, NoFr0220)
+
+kruskal.test(NoFr0319, NoFr0320)
+
+kruskal.test(ShCr0219, ShCr0220)
+
+kruskal.test(ShCr0319, ShCr0320)
+
+kruskal.test(ShCr0519, ShCr0520)
+
+kruskal.test(ShCr0619, ShCr0620)
+
+kruskal.test(WrCr19, WrCr20)
+
+kruskal.test(WdCr19, WdCr20)
+
+kruskal.test(FdCr19, FdCr20)
+
+kruskal.test(PrCr19, PrCr20)
+
+kruskal.test(LrCr19, LrCr20)
+
+kruskal.test(NrCr19, NrCr20)
+
+kruskal.test(WeCr0319, WeCr0320)
+
+kruskal.test(WeCr0719, WeCr0720)
+
+kruskal.test(WeCr0919, WeCr0920)
+
+kruskal.test(WeCr1119, WeCr1120)
+
+kruskal.test(OhRv0119, OhRv0120)
+
+kruskal.test(OhRv0219, OhRv0220)
+```
+
+
+#Mann-Whitney U
+```{r}
+wilcox.test(BfCr0119, BfCr0120)
+
+wilcox.test(BfCr0219, BfCr0220)
+
+wilcox.test(CmCr19, CmCr20)
+
+wilcox.test(ChCr0119, ChCr0120)
+
+wilcox.test(CsCr19, CsCr20)
+
+wilcox.test(NoFr0119, NoFr0120)
+
+wilcox.test(NoFr0219, NoFr0220)
+
+wilcox.test(NoFr0319, NoFr0320)
+
+wilcox.test(ShCr0219, ShCr0220)
+
+wilcox.test(ShCr0319, ShCr0320)
+
+wilcox.test(ShCr0519, ShCr0520)
+
+wilcox.test(ShCr0619, ShCr0620)
+
+wilcox.test(WrCr19, WrCr20)
+
+wilcox.test(WdCr19, WdCr20)
+
+wilcox.test(FdCr19, FdCr20)
+
+wilcox.test(PrCr19, PrCr20)
+
+wilcox.test(LrCr19, LrCr20)
+
+wilcox.test(NrCr19, NrCr20)
+
+wilcox.test(WeCr0319, WeCr0320)
+
+wilcox.test(WeCr0719, WeCr0720)
+
+wilcox.test(WeCr0919, WeCr0920)
+
+wilcox.test(WeCr1119, WeCr1120)
+
+wilcox.test(OhRv0119, OhRv0120)
+
+wilcox.test(OhRv0219, OhRv0220)
+```
 
 
 
