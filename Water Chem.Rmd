@@ -12,6 +12,7 @@ A "#" put into the document index on the top right (look at the indexing feature
 # loading libraries
 ```{r}
 library(ggplot2)
+
 ```
 # Importing CSV
 ```{r}
