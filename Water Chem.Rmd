@@ -560,6 +560,7 @@ ggplot(wqsummer,aes(x = Site ,y = Conductivity, colour = Year)) +
   theme(axis.text.x = element_text(angle = 90)) +
   theme(axis.text.x = element_text(size=10)) +
   theme(legend.position = "none") +
+  theme(axis.title.x = element_text(vjust=-1)) +
   labs(y = "Conductivity ms/cm", x = "Site")
 
 ggplot(wqsummer,aes(x = Site ,y = Water.Temp, colour = Year)) + 
@@ -568,6 +569,7 @@ ggplot(wqsummer,aes(x = Site ,y = Water.Temp, colour = Year)) +
   theme(axis.text.x = element_text(angle = 90)) +
   theme(axis.text.x = element_text(size=10)) +
   theme(legend.position = "none") +
+  theme(axis.title.x = element_text(vjust=-1)) +
   labs(y = "Water Temperature C", x = "Site")
 
 
@@ -800,6 +802,49 @@ wilcox.test(WTOhRv0219, WTOhRv0220)
 ```
 
 
+```{r}
+
+wqgraph <- subset(waterchem2, Site=="ChCr01"|Site=="NrCr"|Site=="OhRv01"|Site=="WeCr07")
+
+ChCr <- subset(waterchem2, Site=="ChCr01")
+NrCr <- subset(waterchem2, Site=="NrCr")
+OhRv01 <- subset(waterchem2, Site=="OhRv01")
+WeCr07 <- subset(waterchem2, Site=="WeCr07")
+
+ggplot(wqgraph,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(wqgraph,aes(x = Julian.Day ,y = Water.Temp,  colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day")
+
+ggplot(ChCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(510,1010) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(NrCr,aes(x = Julian.Day ,y = Conductivity, colour = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(510,1010) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(OhRv01,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(510,1010) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(510,1010) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
 
 
 
