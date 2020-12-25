@@ -859,6 +859,9 @@ ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)
 ```
 
 
+
+
+
 ```{r}
 ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
