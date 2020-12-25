@@ -821,32 +821,97 @@ ggplot(wqgraph,aes(x = Julian.Day ,y = Water.Temp,  colour = Site, group = Site)
   theme_classic() +
   labs(y = "Water Temperature C", x = "Julian Day")
 
-ggplot(ChCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
-  geom_line() +
+ggplot(ChCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line(color = "black") +
   theme_classic() +
   xlim(510,1010) +
+  geom_segment(aes(x = 520, y = 1358.45, xend = 638, yend = 1358.45, color = "blue"))+
+  geom_segment(aes(x = 887, y = 2860.75, xend = 1004, yend = 2860.75, color = "black"))+
+  theme(legend.position = "none") +
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 
 ggplot(NrCr,aes(x = Julian.Day ,y = Conductivity, colour = Site)) + 
-  geom_line() +
+  geom_line(color = "black") +
   theme_classic() +
   xlim(510,1010) +
+  geom_segment(aes(x = 520, y = 2706.18, xend = 638, yend = 2706.18, color = "blue"))+
+  geom_segment(aes(x = 887, y = 3356.69, xend = 1004, yend = 3356.69, color = "black"))+
+  theme(legend.position = "none") +
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 
 ggplot(OhRv01,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
-  geom_line() +
+  geom_line(color = "black") +
   theme_classic() +
   xlim(510,1010) +
+   geom_segment(aes(x = 520, y = 282.37, xend = 638, yend = 282.37, color = "blue"))+
+  geom_segment(aes(x = 887, y = 388.28, xend = 1004, yend = 388.28, color = "black"))+
+  theme(legend.position = "none") +
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 
 ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
-  geom_line() +
+  geom_line(color = "black") +
   theme_classic() +
   xlim(510,1010) +
+   geom_segment(aes(x = 520, y = 482.24, xend = 638, yend = 482.24, color = "blue"))+
+  geom_segment(aes(x = 887, y = 562.06, xend = 1004, yend = 562.06, color = "black"))+
+  theme(legend.position = "none") +
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 ```
 
 
+```{r}
+ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+    xlim(510,1010) +
+  geom_segment(aes(x = 520, y = 2706.18, xend = 638, yend = 2706.18, color = "blue"))+
+  geom_segment(aes(x = 887, y = 3356.69, xend = 1004, yend = 3356.69, color = "blue"))+
+  geom_segment(aes(x = 520, y = 2706.18, xend = 638, yend = 2706.18, color = "red"))+
+  geom_segment(aes(x = 887, y = 3356.69, xend = 1004, yend = 3356.69, color = "red"))+
+  geom_segment(aes(x = 520, y = 282.37, xend = 638, yend = 282.37, color = "black"))+
+  geom_segment(aes(x = 887, y = 388.28, xend = 1004, yend = 388.28, color = "black"))+
+  geom_segment(aes(x = 520, y = 482.24, xend = 638, yend = 482.24, color = "green"))+
+  geom_segment(aes(x = 887, y = 562.06, xend = 1004, yend = 562.06, color = "green"))+
+  geom_segment(aes(x = 520, y = 399.73, xend = 638, yend = 399.73, color = "purple"))+
+  geom_segment(aes(x = 887, y = 421.67, xend = 1004, yend = 421.67, color = "purple"))+
+  geom_segment(aes(x = 520, y = 421.6, xend = 638, yend = 421.6, color = "orange"))+
+  geom_segment(aes(x = 887, y = 506.14, xend = 1004, yend = 506.14, color = "orange"))+
+  geom_segment(aes(x = 520, y = 378.78, xend = 638, yend = 378.78, color = "yellow"))+
+  geom_segment(aes(x = 887, y = 473.62, xend = 1004, yend = 473.62, color = "yellow"))+
+  geom_segment(aes(x = 520, y = 958.82, xend = 638, yend = 958.82, color = "green"))+
+  geom_segment(aes(x = 887, y = 1124.31, xend = 1004, yend = 1124.31, color = "green"))+
+  geom_segment(aes(x = 520, y = 631.7, xend = 638, yend = 631.7, color = "pink"))+
+  geom_segment(aes(x = 887, y = 685.4, xend = 1004, yend = 685.4, color = "pink"))+
+  geom_segment(aes(x = 520, y = 600.8, xend = 638, yend = 600.8, color = "blue"))+
+  geom_segment(aes(x = 887, y = 631, xend = 1004, yend = 631, color = "blue"))+
+  geom_segment(aes(x = 520, y = 628, xend = 638, yend = 628, color = "purple"))+
+  geom_segment(aes(x = 887, y = 702, xend = 1004, yend = 702, color = "purple"))+
+  geom_segment(aes(x = 520, y = 531, xend = 638, yend = 531, color = "orange"))+
+  geom_segment(aes(x = 887, y = 559, xend = 1004, yend = 559, color = "orange"))+
+  geom_segment(aes(x = 520, y = 423, xend = 638, yend = 423, color = "yellow"))+
+  geom_segment(aes(x = 887, y = 464, xend = 1004, yend = 464, color = "yellow"))+
+  geom_segment(aes(x = 520, y = 293, xend = 638, yend = 293, color = "pink"))+
+  geom_segment(aes(x = 887, y = 381, xend = 1004, yend = 381, color = "pink"))+
+  geom_segment(aes(x = 520, y = 1128, xend = 638, yend = 1128, color = "blue"))+
+  geom_segment(aes(x = 887, y = 1412, xend = 1004, yend = 1412, color = "blue"))+
+  geom_segment(aes(x = 520, y = 605, xend = 638, yend = 605, color = "green"))+
+  geom_segment(aes(x = 887, y = 670, xend = 1004, yend = 670, color = "green"))+
+  geom_segment(aes(x = 520, y = 504, xend = 638, yend = 504, color = "orange"))+
+  geom_segment(aes(x = 887, y = 550, xend = 1004, yend = 550, color = "orange"))+
+  geom_segment(aes(x = 520, y = 1193, xend = 638, yend = 1193, color = "yellow"))+
+  geom_segment(aes(x = 887, y = 1496, xend = 1004, yend = 1496, color = "yellow"))+
+  geom_segment(aes(x = 520, y = 664, xend = 638, yend = 664, color = "green"))+
+  geom_segment(aes(x = 887, y = 725, xend = 1004, yend = 725, color = "green"))+
+  geom_segment(aes(x = 520, y = 462, xend = 638, yend = 462), color = "pink")+
+  geom_segment(aes(x = 887, y = 544, xend = 1004, yend = 544), color = "pink")+
+  geom_segment(aes(x = 520, y = 388, xend = 638, yend = 388, color = "blue"))+
+  geom_segment(aes(x = 887, y = 472, xend = 1004, yend = 472, color = "blue"))+
+  geom_segment(aes(x = 520, y = 463, xend = 638, yend = 463, color = "black"))+
+  geom_segment(aes(x = 887, y = 572, xend = 1004, yend = 572, color = "black"))+
+  geom_segment(aes(x = 520, y = 396, xend = 638, yend = 396, color = "green"))+
+  geom_segment(aes(x = 887, y = 448, xend = 1004, yend = 448, color = "green"))+
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
 
 
 
