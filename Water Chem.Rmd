@@ -910,7 +910,7 @@ all.24.sites
 # cowplots of summer 2019 - 2020 with means
 ```{r, fig.height=8, fig.width=8}
 
-plot_grid(ChCr_plot,NrCr, OhRv01,WeCr07, labels=c("a*", "b*", "c*", "d"), ncol=2, align="h")
+plot_grid(ChCr_plot,NrCr, OhRv01,WeCr07, labels=c("a*", "b*", "c", "d"), ncol=2, align="h")
 ```
 
 # Plot with all sites and each site has its own mean - summer bar
