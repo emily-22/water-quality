@@ -5,21 +5,10 @@ date: "12/9/2020"
 output: html_document
 ---
 
-# Emily, go thought the document and update the indexing header for all the "Chunks" so that it is easy to figure out where we are in the document. 
-A "#" put into the document index on the top right (look at the indexing feature on the right)
-## makes and indentation. We can use this format to help make sure this is all clearly organized. Each test or analysis or data managment step needs a nice clear "header". I hope that makes sense. 
-
-# loading libraries
-```{r}
-library(ggplot2)
-library(cowplot)
-```
-# Importing CSV
 ```{r}
 waterchem2 <- read.csv("Water Chem.csv")
-```
-#
-```{r}
+
+library(ggplot2)
 
 WeCr <- subset(waterchem2, Site=="WeCr01"|Site== "WeCr03"|Site=="WeCr04"|Site== "WeCr05"|Site=="WeCr07"|Site== "WeCr09"|Site=="WeCr10"|Site== "WeCr11"|Site=="LrCr"|Site== "WdCr"|Site=="PrCr"|Site== "FdCr"|Site=="OhRv01"|Site== "OhRv02")
 
@@ -35,7 +24,10 @@ AMDs <- subset(waterchem2, Site== "ChCr01"|Site=="NrCr"|Site== "CsCr"|Site=="ChC
 levels(waterchem2$Date)
 waterchem2$Date <- factor(waterchem2$Date, levels = c("2/7/18", "2/10/18", "2/20/18", "3/9/18","3/24/18","3/25/18", "4/2/18", "4/9/18", "4/12/18","4/13/18","4/16/18", "4/20/18", "5/21/2018", "6/6/2018", "6/28/2018", "7/3/2018", "7/9/2018", "7/11/2018", "7/17/2018",  "7/24/2018",  "7/26/2018", "8/7/2018", "9/3/2018", "10/3/2018", "10/4/2018", "10/10/2018", "10/11/2018", "10/17/2018", "10/18/2018", "10/24/2018",
 "10/30/2018", "10/31/2018", "11/01/2018", "11/05/2018", "11/07/2018", "11/08/2018", "11/13/2018", "11/14/2018", "11/20/2018", "11/29/2018",  "12/5/2018", "12/10/2018", "12/13/2018", "12/17/2018", "12/27/2018",  "1/3/2019", "1/16/2019", "1/29/2019", "2/15/2019",  "2/19/2019", "2/27/2019", "3/3/2019", "3/6/2019", "3/12/2019", "3/26/2019", "3/29/2019", "4/9/2019",  "4/12/2019", "4/16/2019", "5/2/2019", "5/16/2019", "5/22/2019", "5/29/2019",  "5/31/2019", "6/3/2019", "6/4/2019", "6/11/2019",  "6/12/2019",  "6/19/2019","6/21/2019",  "6/26/2019", "6/27/2019",  "6/28/2019", "7/1/2019",  "7/2/2019", "7/3/2019",  "7/4/2019", "7/8/2019", "7/9/2019", "7/10/2019", "7/11/2019",  "7/12/2019",  "7/16/2019", "7/17/2019",  "7/18/2019",  "7/19/2019",   "7/23/2019",  "7/24/2019",  "7/25/2019",  "7/26/2019",  "7/29/2019",  "7/30/2019",  "7/31/2019", "8/1/2019",   "8/2/2019", "8/5/2019",   "8/6/2019", "8/7/2019",   "8/8/2019", "8/20/2019",  "8/21/2019", "8/22/2019",  "8/28/2019",  "8/30/2019", "9/8/2019", "9/18/2019", "9/30/2019", "10/2/2019", "10/3/2019", "10/21/2019", "10/23/2019", "10/28/2019", "11/1/2019", "11/4/2019", "11/11/2019",  "11/13/2019","11/14/2019", "11/16/2019", "11/19/2019","11/20/2019", "11/21/2019",  "11/25/2019", "12/5/2019","12/11/2019", "12/18/2019", "12/19/2019", "12/26/2019",   
- "1/8/2020", "1/10/2020", "1/20/2020","1/28/2020", "2/5/2020", "2/10/2020", "2/18/2020", "2/20/2020",  "2/25/2020", "2/28/2020", "3/4/2020", "3/9/2020", "3/26/2020", "4/10/2020", "5/1/2020", "5/8/2020", "5/13/2020", "5/20/2020", "5/28/2020", "6/5/2020", "6/9/2020", "6/10/2020", "6/17/2020", "6/22/2020", "6/23/2020", "6/29/2020", "7/1/2020", "7/8/2020", "7/9/2020", "7/29/2020", "8/3/2020", "8/4/2020", "8/11/2020", "8/12/2020", "8/19/2020", "8/26/2020", "9/2/2020", "9/9/2020", "9/16/2020", "9/23/2020", "9/30/2020", "10/2/2020", "10/7/2020", "10/14/2020", "10/20/2020", "11/18/2020", "11/24/2020", "12/3/2020"))
+ "1/8/2020", "1/10/2020", "1/20/2020","1/28/2020", "2/5/2020", "2/10/2020", "2/18/2020", "2/20/2020",  "2/25/2020", "2/28/2020", "3/4/2020", "3/9/2020", "3/26/2020", "4/10/2020", "5/1/2020", "5/8/2020", "5/13/2020", "5/20/2020", "5/28/2020", "6/5/2020", "6/9/2020", "6/10/2020", "6/17/2020", "6/22/2020", "6/23/2020", "6/29/2020", "7/1/2020", "7/8/2020", "7/9/2020", "7/29/2020", "8/3/2020", "8/4/2020", "8/11/2020", "8/12/2020", "8/19/2020", "8/26/2020", "9/2/2020", "9/9/2020", "9/16/2020", "9/23/2020", "9/30/2020", "10/2/2020", "10/7/2020", "10/14/2020", "10/20/2020", "11/18/2020", "11/24/2020", "12/3/2020", "12/9/2020", "12/16/2020", "12/21/2020", "1/6/2021", "1/13/2021", "1/20/2021", "1/27/2021", "2/8/2021",
+"2/24/2021", "3/3/2021", "3/4/2021", "3/11/2021", "3/17/2021", "3/23/2021", "4/2/2021",
+"4/7/2021", "4/8/2021", "4/14/2021", "4/21/2021", "4/27/2021", "5/6/2021", "5/10/2021",
+"5/18/2021"))
 
 ggplot(waterchem2,aes(x = Date ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
@@ -299,32 +291,6 @@ wilcox.test(AMD19, AMD20)
 
 
 
-# Template for setting up comparison tests at each site. 
-
-
-# ChCr01  - Subsetting data so that it is only relevant to this specific site.
-
-```{r}
-ChCr01 <- subset(waterchem2, Site=="ChCr01")
-ChCr01_2019<- ChCr01[1:11,] # from the ChCr01 data matrix, I selected only summer 19 (June-Sept) data, I just counted the number of rows, then check to make sure it was the right date range
-ChCr01_2020<- ChCr01[35:50,]# from the ChCr01 data matrix, I selected only summer 20 (June-Sept) data
-```
-##Wilcox non-parametric test of difference 
-```{r}
-wilcox.test(ChCr01_2019$Conductivity, ChCr01_2020$Conductivity)
-```
-## Result - At the ChCr01 site, there was a sig. different conductivy between summer 2019 and 2020, with conductivity significantly higher in 2020 compared to 2019. 
-
-Wilcoxon rank sum exact test
-
-data:  ChCr01_2019$Conductivity and ChCr01_2020$Conductivity
-W = 28, p-value = 0.002223
-alternative hypothesis: true location shift is not equal to 0
-
-## ploting ChCr01 differences
-```{r}
-boxplot(ChCr01_2019$Conductivity,ChCr01_2020$Conductivity) # ggPlot probable makes better graphs
-```
 
 #Individual Stream Sites Conductivity
 ```{r}
@@ -894,91 +860,87 @@ WeCr07<-ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity, colour = Site, group
   theme(legend.position = "none") +
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 ```
-# all sites with Summer 2019 and 2020 bars
+
+
+
 ```{r}
 all.24.sites<-ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
     xlim(510,1010) +
-   geom_segment(aes(x = 520, y = 5100, xend = 638, yend = 5100, color = "black"))+
-  geom_segment(aes(x = 887, y = 5100, xend = 1004, yend = 5100, color = "black"))
-theme(legend.position = "none") +
+  geom_segment(aes(x = 520, y = 5500, xend = 638, yend = 5500))+
+  geom_segment(aes(x = 887, y = 5500, xend = 1004, yend = 5500))+
   labs(y = "Conductivity ms/cm", x = "Julian Day")
-all.24.sites
 ```
+
 
 # cowplots of summer 2019 - 2020 with means
 ```{r, fig.height=8, fig.width=8}
+library(cowplot)
 
 plot_grid(ChCr_plot,NrCr, OhRv01,WeCr07, labels=c("a*", "b*", "c", "d"), ncol=2, align="h")
 ```
 
-# Plot with all sites and each site has its own mean - summer bar
+
+#adding the fall
 ```{r}
+
 ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
   geom_line() +
   theme_classic() +
-    xlim(510,1010) +
-  geom_segment(aes(x = 520, y = 2706.18, xend = 638, yend = 2706.18, color = "blue"))+
-  geom_segment(aes(x = 887, y = 3356.69, xend = 1004, yend = 3356.69, color = "blue"))+
-  geom_segment(aes(x = 520, y = 2706.18, xend = 638, yend = 2706.18, color = "red"))+
-  geom_segment(aes(x = 887, y = 3356.69, xend = 1004, yend = 3356.69, color = "red"))+
-  geom_segment(aes(x = 520, y = 282.37, xend = 638, yend = 282.37, color = "black"))+
-  geom_segment(aes(x = 887, y = 388.28, xend = 1004, yend = 388.28, color = "black"))+
-  geom_segment(aes(x = 520, y = 482.24, xend = 638, yend = 482.24, color = "green"))+
-  geom_segment(aes(x = 887, y = 562.06, xend = 1004, yend = 562.06, color = "green"))+
-  geom_segment(aes(x = 520, y = 399.73, xend = 638, yend = 399.73, color = "purple"))+
-  geom_segment(aes(x = 887, y = 421.67, xend = 1004, yend = 421.67, color = "purple"))+
-  geom_segment(aes(x = 520, y = 421.6, xend = 638, yend = 421.6, color = "orange"))+
-  geom_segment(aes(x = 887, y = 506.14, xend = 1004, yend = 506.14, color = "orange"))+
-  geom_segment(aes(x = 520, y = 378.78, xend = 638, yend = 378.78, color = "yellow"))+
-  geom_segment(aes(x = 887, y = 473.62, xend = 1004, yend = 473.62, color = "yellow"))+
-  geom_segment(aes(x = 520, y = 958.82, xend = 638, yend = 958.82, color = "green"))+
-  geom_segment(aes(x = 887, y = 1124.31, xend = 1004, yend = 1124.31, color = "green"))+
-  geom_segment(aes(x = 520, y = 631.7, xend = 638, yend = 631.7, color = "pink"))+
-  geom_segment(aes(x = 887, y = 685.4, xend = 1004, yend = 685.4, color = "pink"))+
-  geom_segment(aes(x = 520, y = 600.8, xend = 638, yend = 600.8, color = "blue"))+
-  geom_segment(aes(x = 887, y = 631, xend = 1004, yend = 631, color = "blue"))+
-  geom_segment(aes(x = 520, y = 628, xend = 638, yend = 628, color = "purple"))+
-  geom_segment(aes(x = 887, y = 702, xend = 1004, yend = 702, color = "purple"))+
-  geom_segment(aes(x = 520, y = 531, xend = 638, yend = 531, color = "orange"))+
-  geom_segment(aes(x = 887, y = 559, xend = 1004, yend = 559, color = "orange"))+
-  geom_segment(aes(x = 520, y = 423, xend = 638, yend = 423, color = "yellow"))+
-  geom_segment(aes(x = 887, y = 464, xend = 1004, yend = 464, color = "yellow"))+
-  geom_segment(aes(x = 520, y = 293, xend = 638, yend = 293, color = "pink"))+
-  geom_segment(aes(x = 887, y = 381, xend = 1004, yend = 381, color = "pink"))+
-  geom_segment(aes(x = 520, y = 1128, xend = 638, yend = 1128, color = "blue"))+
-  geom_segment(aes(x = 887, y = 1412, xend = 1004, yend = 1412, color = "blue"))+
-  geom_segment(aes(x = 520, y = 605, xend = 638, yend = 605, color = "green"))+
-  geom_segment(aes(x = 887, y = 670, xend = 1004, yend = 670, color = "green"))+
-  geom_segment(aes(x = 520, y = 504, xend = 638, yend = 504, color = "orange"))+
-  geom_segment(aes(x = 887, y = 550, xend = 1004, yend = 550, color = "orange"))+
-  geom_segment(aes(x = 520, y = 1193, xend = 638, yend = 1193, color = "yellow"))+
-  geom_segment(aes(x = 887, y = 1496, xend = 1004, yend = 1496, color = "yellow"))+
-  geom_segment(aes(x = 520, y = 664, xend = 638, yend = 664, color = "green"))+
-  geom_segment(aes(x = 887, y = 725, xend = 1004, yend = 725, color = "green"))+
-  geom_segment(aes(x = 520, y = 462, xend = 638, yend = 462), color = "pink")+
-  geom_segment(aes(x = 887, y = 544, xend = 1004, yend = 544), color = "pink")+
-  geom_segment(aes(x = 520, y = 388, xend = 638, yend = 388, color = "blue"))+
-  geom_segment(aes(x = 887, y = 472, xend = 1004, yend = 472, color = "blue"))+
-  geom_segment(aes(x = 520, y = 463, xend = 638, yend = 463, color = "black"))+
-  geom_segment(aes(x = 887, y = 572, xend = 1004, yend = 572, color = "black"))+
-  geom_segment(aes(x = 520, y = 396, xend = 638, yend = 396, color = "green"))+
-  geom_segment(aes(x = 887, y = 448, xend = 1004, yend = 448, color = "green"))+
+    xlim(510,1068) +
+    geom_segment(aes(x = 520, y = 5500, xend = 638, yend = 5500))+
+  geom_segment(aes(x = 887, y = 5500, xend = 1004, yend = 5500))+
   labs(y = "Conductivity ms/cm", x = "Julian Day")
-```
 
+```
 
 
 ```{r}
-ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
-  geom_line() +
-  theme_classic() +
-    xlim(510,1010) +
-   geom_segment(aes(x = 520, y = 5100, xend = 638, yend = 5100, color = "blue"))+
-  geom_segment(aes(x = 887, y = 5100, xend = 1004, yend = 5100, color = "blue"))
-
+library(ggplot2)
+library(dplyr)
+library(patchwork) # To display 2 charts together
+library(hrbrthemes)
 ```
+
+#spc v cl
+```{r}
+
+wqspccl <- read.csv("wqsummer.csv")
+
+
+ggplot(wqspccl, aes(x = Chloride ,y = Conductivity, colour = Year)) + 
+  geom_point() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Chloride")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
