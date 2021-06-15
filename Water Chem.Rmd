@@ -520,38 +520,6 @@ wilcox.test(OhRv0219, OhRv0220)
 ```
 
 
-
-###Stuff dr wood did don't know if my csv file is set up the same as when he did the rows stuff 
-
-# Template for setting up comparison tests at each site. 
-
-
-# ChCr01  - Subsetting data so that it is only relevant to this specific site.
-
-```{r}
-ChCr01 <- subset(waterchem2, Site=="ChCr01")
-ChCr01_2019<- ChCr01[1:11,] # from the ChCr01 data matrix, I selected only summer 19 (June-Sept) data, I just counted the number of rows, then check to make sure it was the right date range
-ChCr01_2020<- ChCr01[35:50,]# from the ChCr01 data matrix, I selected only summer 20 (June-Sept) data
-```
-##Wilcox non-parametric test of difference 
-```{r}
-wilcox.test(ChCr01_2019$Conductivity, ChCr01_2020$Conductivity)
-```
-## Result - At the ChCr01 site, there was a sig. different conductivy between summer 2019 and 2020, with conductivity significantly higher in 2020 compared to 2019. 
-
-Wilcoxon rank sum exact test
-
-data:  ChCr01_2019$Conductivity and ChCr01_2020$Conductivity
-W = 28, p-value = 0.002223
-alternative hypothesis: true location shift is not equal to 0
-
-## ploting ChCr01 differences
-```{r}
-boxplot(ChCr01_2019$Conductivity,ChCr01_2020$Conductivity) # ggPlot probable makes better graphs
-```
-
-
-
 ```{r}
 wqsummer <- read.csv("Water Chem Summer Avgs.csv")
 
@@ -874,7 +842,7 @@ all.24.sites<-ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = S
 ```
 
 
-# cowplots of summer 2019 - 2020 with means
+# cowplots of summer 2019 - 2020 with means/ quadgraph
 ```{r, fig.height=8, fig.width=8}
 library(cowplot)
 
@@ -918,19 +886,530 @@ ggplot(wqspccl, aes(x = Chloride ,y = Conductivity, colour = Year)) +
 
 
 
+#Map
+
+```{r}
+
+watersummap <- read.csv("water chem summer sum lats.csv")
+
+library(maps)
+library(mapdata)
+library(tmap)
+library(tmaptools)
+library(sf)
+library(leaflet)
+library(tidyverse) 
+library(ggplot2)
+library(mapview)
+
+
+
+wcsum <- st_as_sf(watersummap, coords = c("Lon", "Lat"),  crs = 4326)
+mapview(wcsum, map.types = "Stamen.Toner")
+
+
+
+
+```
+
+
+#Time Series Stuff through May 18 2021
+```{r}
+
+waterchem2 <- read.csv("Water Chem.csv")
+
+library(ggplot2)
+
+WeCr03 <- subset(waterchem2, Site=="WeCr03")
+WeCr07 <- subset(waterchem2, Site=="WeCr07")
+WeCr09 <- subset(waterchem2, Site=="WeCr09")
+WeCr11 <- subset(waterchem2, Site=="WeCr11")
+LrCr <- subset(waterchem2, Site=="LrCr")
+WdCr <- subset(waterchem2, Site=="WdCr")
+FdCr <- subset(waterchem2, Site=="FdCr")
+PrCr <- subset(waterchem2, Site=="PrCr")
+WrCr <- subset(waterchem2, Site=="WrCr")
+NoFr03 <- subset(waterchem2, Site=="NoFr03")
+NoFr02 <- subset(waterchem2, Site=="NoFr02")
+NoFr01 <- subset(waterchem2, Site=="NoFr01")
+ShCr02 <- subset(waterchem2, Site=="ShCr02")
+ShCr05 <- subset(waterchem2, Site=="ShCr05")
+ShCr06 <- subset(waterchem2, Site=="ShCr06")
+BfCr02 <- subset(waterchem2, Site=="BfCr02")
+CmCr <- subset(waterchem2, Site=="CmCr")
+OhRv01 <- subset(waterchem2, Site=="OhRv01")
+OhRv02 <- subset(waterchem2, Site=="OhRv02")
+ChCr01 <- subset(waterchem2, Site=="ChCr01")
+NrCr <- subset(waterchem2, Site=="NrCr")
+CsCr <- subset(waterchem2, Site=="CsCr")
+
+
+```
+
+
+### Wheeling Creek & River
+```{r}
+
+ggplot(WeCr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr03")
+
+ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr07")
+
+ggplot(WeCr09,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr09")
+
+ggplot(WeCr11,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr011")
+
+ggplot(OhRv01,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("OhRv01")
+
+ggplot(OhRv02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("OhRv02")
+
+
+
+
+ggplot(WeCr03,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr03")
+
+ggplot(WeCr07,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr07")
+
+ggplot(WeCr09,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr09")
+
+ggplot(WeCr11,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr011")
+
+ggplot(OhRv01,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("OhRv01")
+
+ggplot(OhRv02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("OhRv02")
+
+
+
+
+
+ggplot(WeCr03,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr03")
+
+ggplot(WeCr07,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr07")
+
+ggplot(WeCr09,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr09")
+
+ggplot(WeCr11,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr011")
+
+ggplot(OhRv01,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("OhRv01")
+
+ggplot(OhRv02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("OhRv02")
+
+```
+
+
+### Tribs and AMD
+```{r}
+
+ggplot(LrCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("LrCr")
+
+ggplot(WdCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WdCr")
+
+ggplot(FdCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("FdCr")
+
+ggplot(PrCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("PrCr")
+
+ggplot(CsCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("CsCr")
+
+ggplot(NrCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("NrCr")
+
+ggplot(ChCr01,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("ChCr01")
 
 
 
 
 
 
+ggplot(LrCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("LrCr")
+
+ggplot(WdCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("WdCr")
+
+ggplot(FdCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("FdCr")
+
+ggplot(PrCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("PrCr")
+
+ggplot(CsCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("CsCr")
+
+ggplot(NrCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("NrCr")
+
+ggplot(ChCr01,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+   xlim(450,1250) +
+  ggtitle ("ChCr01")
+
+
+
+
+
+ggplot(LrCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("LrCr")
+
+ggplot(WdCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WdCr")
+
+ggplot(FdCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("FdCr")
+
+ggplot(PrCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("PrCr")
+
+ggplot(CsCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("CsCr")
+
+ggplot(NrCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("NrCr")
+
+ggplot(ChCr01,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("ChCr01")
+
+
+```
+
+
+
+
+### North Short and Buffalo Creek
+```{r}
+
+ggplot(NoFr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("NoFr03")
+
+ggplot(NoFr02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("NoFr02")
+
+ggplot(NoFr01,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("NoFr01")
+
+ggplot(WrCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WrCr")
+
+ggplot(ShCr02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("ShCr02")
+
+ggplot(ShCr05,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("ShCr05")
+
+ggplot(ShCr06,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("ShCr06")
+
+ggplot(BfCr02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("BfCr02")
+
+ggplot(CmCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("CmCr")
+
+
+
+
+
+ggplot(NoFr03,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("NoFr03")
+
+ggplot(NoFr02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("NoFr02")
+
+ggplot(NoFr01,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("NoFr01")
+
+ggplot(WrCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WrCr")
+
+ggplot(ShCr02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("ShCr02")
+
+ggplot(ShCr05,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("ShCr05")
+
+ggplot(ShCr06,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("ShCr06")
+
+ggplot(BfCr02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("BfCr02")
+
+ggplot(CmCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("CmCr")
 
 
 
 
 
 
+ggplot(NoFr03,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("NoFr03")
 
+ggplot(NoFr02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("NoFr02")
+
+ggplot(NoFr01,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("NoFr01")
+
+ggplot(WrCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WrCr")
+
+ggplot(ShCr02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("ShCr02")
+
+ggplot(ShCr05,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("ShCr05")
+
+ggplot(ShCr06,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("ShCr06")
+
+ggplot(BfCr02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("BfCr02")
+
+ggplot(CmCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("CmCr")
+
+
+```
 
 
 
