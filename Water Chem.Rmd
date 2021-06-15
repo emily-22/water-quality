@@ -1413,7 +1413,141 @@ ggplot(CmCr,aes(x = Julian.Day ,y = Water.Temp)) +
 
 
 
+#grid graphs
 
+```{r}
+
+graph1 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr03")
+
+graph2 <-ggplot(WeCr07,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WeCr07")
+
+graph3 <-ggplot(WdCr,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("WdCr")
+
+graph4 <-ggplot(NoFr01,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("NoFr01")
+
+graph5 <-ggplot(ShCr02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("ShCr02")
+
+graph6 <-ggplot(BfCr02,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  ggtitle ("BfCr02")
+
+
+library(cowplot)
+
+plot_grid(graph1, graph2, graph3, graph4, graph5, graph6)
+
+
+
+
+graph7 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr03")
+
+graph8 <-ggplot(WeCr07,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WeCr07")
+
+graph9 <-ggplot(WdCr,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("WdCr")
+
+graph10 <-ggplot(NoFr01,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("NoFr01")
+
+graph11 <-ggplot(ShCr02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("ShCr02")
+
+graph12 <-ggplot(BfCr02,aes(x = Julian.Day ,y = Chloride)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+  xlim(450,1250) +
+  ggtitle ("BfCr02")
+
+
+plot_grid(graph7, graph8, graph9, graph10, graph11, graph12)
+
+
+
+
+graph13 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr03")
+
+graph14 <-ggplot(WeCr07,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WeCr07")
+
+graph15 <-ggplot(WdCr,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("WdCr")
+
+graph16 <-ggplot(NoFr01,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("NoFr01")
+
+graph17 <-ggplot(ShCr02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("ShCr02")
+
+graph18 <-ggplot(BfCr02,aes(x = Julian.Day ,y = Water.Temp)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Water Temperature C", x = "Julian Day") +
+  ggtitle ("BfCr02")
+
+plot_grid(graph13, graph14, graph15, graph16, graph17, graph18)
+
+```
 
 
 
