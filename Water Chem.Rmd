@@ -1687,5 +1687,44 @@ ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) 
 
 ```
 
+```{r}
+wqsummeravg <- read.csv("Water Chem Summer Avgs.csv")
+wqwinteravg <- read.csv("Water Chem Winter Avgs.csv")
+
+wqsummer2019 <-subset(wqsummeravg, Year=="2019")
+wqsummer2020 <-subset(wqsummeravg, Year=="2020")
+
+wqwinter2020 <-subset(wqwinteravg, Year=="2020")
+wqwinter2021 <-subset(wqwinteravg, Year=="2021")
+
+ggplot(wqsummer2019,aes(x = Site ,y = Chloride, colour = Site, group = Site)) + 
+  geom_bar(col = "black", stat = "summary", position = position_dodge()) +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day") +
+ggtitle("Summer 2019")
+
+ggplot(wqsummer2020,aes(x = Site ,y = Chloride, colour = Site, group = Site)) + 
+  geom_bar(col = "black", stat = "summary", position = position_dodge()) +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day")+
+  ggtitle("Summer 2020")
+
+
+ggplot(wqwinter2020,aes(x = Site ,y = Chloride, colour = Site, group = Site)) + 
+  geom_bar(col = "black", stat = "summary", position = position_dodge()) +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day")+
+  ggtitle("Winter 2020")
+
+ggplot(wqwinter2021,aes(x = Site ,y = Chloride, colour = Site, group = Site)) + 
+  geom_bar(col = "black", stat = "summary", position = position_dodge()) +
+  theme_classic() +
+  labs(y = "Chloride mg/L", x = "Julian Day")+
+  ggtitle("Winter 2021")
+
+
+
+
+```
 
 
