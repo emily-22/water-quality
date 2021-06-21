@@ -1723,8 +1723,986 @@ ggplot(wqwinter2021,aes(x = Site ,y = Chloride, colour = Site, group = Site)) +
   ggtitle("Winter 2021")
 
 
+```
 
 
+
+
+##Winter Stream Chloride
+```{r}
+
+BfCr022020 <-c(9.88, 11, 10.73, 6.69, 19.14, 19.12, 18.51, 19.43, 31.5) 
+
+BfCr022021 <-c(64.24, 42.7, 56.5, 49.51,72.75 ,96.95 ,39.28 ,53.61 ,48.3 ,65.55 ,66.71)
+
+
+ChCr012020 <-c(72.17,70.11,53.01,28.47,42.85,55.24,46.08,51.23,49.44,52.35,46.59,45.91)
+
+ChCr012021 <-c(180.78,138.41,156.83,110.98,150.78,158.58,133.42,190.51,128.66)
+
+
+CmCr2020 <-c(3.93,12.62,10.32,5.13,6.21,11.7,7.2,9.26,10.14)
+
+CmCr2021 <-c(29.56,26.56,28.74,33.25,35.18,18.28,29.03,33.86,45.51,21.18)
+
+
+CsCr2020 <-c(96.05,92.68,75.37,58.71,61.73,62.81,85.3,100.79,82.86,108.86,306.73,116.73)
+
+CsCr2021 <-c(304.08,194.52,182.04,256.86,257.4,384.08,272.82)
+
+
+FdCr2020 <-c(76.99,79.5,63.7,49.01,48.89,83.7,57.88,75,94.6,108.98,75.3,90.77)
+
+FdCr2021 <-c(101.48,91.18,139.98,100.02,113.56,162.7,113.76,147.37,156.65,163.9)
+
+
+LrCr2020 <-c(57.18,60.2,46.58,33.25,43.55,49.9,53.95,62.53,60.22,82.18,106.57,66.26)
+
+LrCr2021 <-c(99.56,81.95,173.09,93.69,109.66,221.24,100.63,122.89,144.19,173.68,249.57,121.61)
+
+
+NoFr012020 <-c(36.86,34.86,28.96,14.97,26.04,29.17,22.82,25.73,21.08)
+
+NoFr012021 <-c(93.23,70.65,153.38,101.12,92.99,178.4,75.12,95.87,112.3,123.08,89.09)
+
+
+NoFr022020 <-c(33.3,34.78,29.99,18.08,27.93,31.32,20.56,23.84,24.13)
+
+NoFr022021 <-c(81.56,64.24,162.56,96.76,81.65,158.3,68.52,93.81,115.72,129.76,144.05)
+
+
+NoFr032020 <-c(12.78,14.49,6.71,4.47,7.89,9.81,7.34,8.24,6.04)
+
+NoFr032021 <-c(20.13,21.98,25.85,28.61,26.49,38.89,22.72,35.91,45.91,59.88,30.3)
+
+
+NrCr2020 <-c(203.74,185.57,190.33,139.2,144.27,144.88,177.89,183.79,200.67,175.99,276.43,315.92)
+
+NrCr2021 <-c(1408.33,420.83,372,558.89,582.3,556.8)
+
+
+OhRv012020 <-c(26.26
+,19.06
+,42.7
+,11.63
+,11.26
+,18.13
+,29.31
+,21.37
+,27.58
+,49.48
+,22.83)
+
+OhRv012021 <-c(60.56
+,91.66
+,142.49
+,125.56)
+
+
+OhRv022020 <-c(21.52
+,18.97
+,16.52
+,19.87
+,12.82
+,17.28
+,39.82
+,35.35
+,44.37
+,59.68
+,24.52
+,27.12)
+
+OhRv022021 <-c(52.56
+,53.28
+,50.14
+,61.94
+,58.43
+,64.1
+,68.04
+,59.91
+,86.29
+,154.87
+,141.38)
+
+
+PrCr2020 <-c(37.38
+,31.83
+,30.39
+,16.78
+,18.99
+,21.79
+,18.18
+,31.27
+,34.16
+,50.4
+,30.17
+,35.1)
+
+PrCr2021 <-c(59.17
+,53.88
+,106.63
+,60.16
+,71.11
+,119.22
+,53.54
+,65.34
+,86.1
+,110.5
+,151.1
+,69.41)
+
+
+ShCr022020 <-c(59.29
+,61.66
+,110.44
+,61.37
+,52.19
+,110.65
+,43.02
+,45.88
+,40.03)
+
+ShCr022021 <-c(222.45
+,140.29
+,381.81
+,318.61
+,123.26
+,372.98
+,139.24
+,172.4
+,161.85
+,247.4
+,159.29)
+
+
+ShCr052020 <-c(15.39
+,27.81
+,14.35
+,23.16
+,26.17
+,33.14
+,20.48)
+
+ShCr052021 <-c(66.92
+,62.72
+,103.94)
+
+
+ShCr062020 <-c(33.56
+,75.47
+,111.56
+,71.29
+,65.45
+,72.55
+,36.73
+,52.61
+,35.98)
+
+ShCr062021 <-c(400
+,188.69
+,440.05
+,393.61
+,184.62
+,351.26
+,190.35
+,219.76
+,187.69
+,256.27
+,147.48)
+
+
+WdCr2020 <-c(75.44
+,73.37
+,59.65
+,43.66
+,51.82
+,49.04
+,52.15
+,62.53
+,65
+,85.3
+,238.62
+,70.58)
+
+WdCr2021 <-c(191.1
+,122
+,204.73
+,233.36)
+
+
+WeCr032020 <-c(38.61
+,43.15
+,46.87
+,36.48
+,9.63
+,19.1
+,30.12
+,27.54
+,29.01
+,31.35
+,27.42
+,100.09
+,38.78)
+
+WeCr032021 <-c(82.55
+,66.19
+,126.95
+,70.73
+,87.62
+,239.98
+,45.74
+,91.39
+,112.62
+,114.22
+,149.46
+,68.61)
+
+
+WeCr072020 <-c(34.16
+,39.25
+,26
+,15.55
+,20.76
+,27.09
+,30.35
+,29.81
+,35.73
+,48.51
+,50.75)
+
+WeCr072021 <-c(83.06
+,71.78
+,169.6
+,98.22
+,158.05
+,248.22
+,71.41
+,100.62
+,131.07
+,147.33
+,244.41)
+
+
+WeCr092020 <-c(25.83
+,26.61
+,37.6
+,23.18
+,6.37
+,9.69
+,18.33
+,13.14
+,12.31
+,19.67
+,17.8
+,16.96
+,20.43)
+
+WeCr092021 <-c(57.66
+,58.32
+,68.16
+,48.78
+,64.43
+,72.52
+,26.8
+,47.36
+,50.62
+,72.43
+,98
+,41.46)
+
+
+WrCr2020 <-c(4.23
+,2.21
+,2.53
+,4.87
+,6.49
+,4.11
+,4.59
+,2.95)
+
+WrCr2021 <-c(7.71
+,8.26
+,7.8
+,7.41
+,8.75
+,7.76
+,13.42
+,15.01
+,14.48
+,15.13
+,12.85)
+
+```
+
+###Chloride t-tests all are significant
+```{r}
+t.test(BfCr022020, BfCr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ChCr012020, ChCr012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CmCr2020, CmCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CsCr2020, CsCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(FdCr2020, FdCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(LrCr2020, LrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr012020, NoFr012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr022020, NoFr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr032020, NoFr032021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NrCr2020, NrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv012020, OhRv012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv022020, OhRv022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(PrCr2020, PrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr022020, ShCr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr052020, ShCr052021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr062020, ShCr062021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WdCr2020, WdCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr032020, WeCr032021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr072020, WeCr072021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr092020, WeCr092021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WrCr2020, WrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+```
+
+###Mann-Whitney U test 19 significant out of 21
+```{r}
+wilcox.test(BfCr022020, BfCr022021)
+
+wilcox.test(ChCr012020, ChCr012021)
+
+wilcox.test(CmCr2020, CmCr2021)
+
+wilcox.test(CsCr2020, CsCr2021)
+
+wilcox.test(FdCr2020, FdCr2021)
+
+wilcox.test(LrCr2020, LrCr2021)
+
+wilcox.test(NoFr012020, NoFr012021)
+
+wilcox.test(NoFr022020, NoFr022021)
+
+wilcox.test(NoFr032020, NoFr032021)
+
+wilcox.test(NrCr2020, NrCr2021)
+
+wilcox.test(OhRv012020, OhRv012021)
+
+wilcox.test(OhRv022020, OhRv022021)
+
+wilcox.test(PrCr2020, PrCr2021)
+
+wilcox.test(ShCr022020, ShCr022021)
+
+wilcox.test(ShCr052020, ShCr052021)
+
+wilcox.test(ShCr062020, ShCr062021)
+
+wilcox.test(WdCr2020, WdCr2021)
+
+wilcox.test(WeCr032020, WeCr032021)
+
+wilcox.test(WeCr072020, WeCr072021)
+
+wilcox.test(WeCr092020, WeCr092021)
+
+wilcox.test(WrCr2020, WrCr2021)
+```
+
+
+
+#Winter Conductivity 
+```{r}
+WCBfCr0220 <-c(315
+,474.6
+,528.8
+,343.7
+,405
+,455.5
+,423.1
+,402.5
+,395.6)
+
+WCBfCr0221 <-c(569.1
+,509.6
+,488.5
+,508.5
+,532.5
+,545.9
+,405.7
+,473.2
+,497.1
+,475.5
+,484.6)
+
+
+WCChCr0120 <-c(1285
+,1379
+,1116
+,871
+,853.1
+,1177
+,955
+,888
+,846
+,693.4
+,822
+,941)
+
+WCChCr0121 <-c(1712
+,2330
+,2996
+,1200
+,1518
+,1718
+,1701
+,1669
+,1043)
+
+
+WCCmCr20 <-c(295.1
+,473.7
+,528.8
+,349.1
+,391.9
+,441.2
+,343.6
+,412.1
+,405.6)
+
+WCCmCr21 <-c(546.9
+,504
+,487.8
+,485.1
+,493.5
+,397
+,465.7
+,477.8
+,456.6
+,400.1)
+
+
+WCCsCr20 <-c(937
+,947
+,841
+,736.7
+,750.7
+,900
+,808.1
+,784.3
+,741.2
+,661.8
+,1153
+,829)
+
+WCCsCr21 <-c(1224
+,929
+,972
+,1154
+,1075
+,1098
+,1074)
+
+
+WCFdCr20 <-c(667.5
+,685.5
+,595.1
+,591.7
+,609.7
+,688.9
+,686.7
+,628.6
+,628.4
+,568.8
+,643.8
+,636.8)
+
+WCFdCr21 <-c(686.8
+,621.8
+,673.8
+,678.8
+,702.8
+,651.4
+,670.2
+,702.1
+,738
+,665.1)
+
+
+WCLrCr20 <-c(638
+,662.1
+,607.3
+,588
+,609.6
+,677.5
+,641.5
+,619
+,620.4
+,562
+,747.6
+,614.2)
+
+WCLrCr21 <-c(710
+,617.4
+,721
+,656.6
+,708.3
+,739.5
+,668.4
+,688.2
+,743.1
+,711.2
+,677.5
+,713.2)
+
+
+WCNoFr0120 <-c(644.5
+,737.5
+,628.8
+,510
+,539.1
+,618.4
+,593
+,565.1
+,379.2)
+
+WCNoFr0121 <-c(1037
+,748.7
+,844
+,805.3
+,863.4
+,803.5
+,607.3
+,700.9
+,749.9
+,729.2
+,682.2)
+
+
+WCNoFr0220 <-c(338.1
+,621.6
+,327.9
+,440.8
+,461.6
+,521.6
+,504.8
+,458.5
+,489.9)
+
+WCNoFr0221 <-c(656.8
+,590.3
+,741.9
+,631.6
+,655.4
+,577.3
+,523.7
+,587.7
+,612.7
+,598.1
+,692.8)
+
+
+WCNoFr0320 <-c(439.1
+,499.4
+,419.7
+,338.6
+,359.7
+,424.4
+,386.1
+,376
+,417)
+
+WCNoFr0321 <-c(513.6
+,466.4
+,469.2
+,471.6
+,508
+,437.8
+,391.1
+,452.1
+,455.6
+,446.2
+,368.5)
+
+
+WCNrCr20 <-c(1823
+,1729
+,2297
+,1678
+,1435
+,1337
+,1724
+,1466
+,1445
+,1355
+,1213
+,1575)
+
+WCNrCr21 <-c(3193
+,2076
+,2374
+,2856
+,2895
+,1955)
+
+
+WCOhRv0120 <-c(278
+,245.5
+,341.2
+,326.9
+,224.2
+,252.9
+,279.6
+,250.4
+,269
+,292.1
+,284.8)
+
+WCOhRv0121 <-c(251.7
+,360.4
+,426.1
+,587.9)
+
+
+WCOhRv0220 <-c(276.3
+,244.2
+,342.3
+,331.1
+,225.6
+,243.9
+,274.4
+,196.1
+,224.9
+,294.1
+,244.5
+,271.5)
+
+WCOhRv0221 <-c(374.5
+,313.8
+,299.1
+,235.6
+,280
+,249.5
+,244.5
+,279.7
+,343
+,434.2
+,544.3)
+
+
+WCPrCr20 <-c(553.9
+,572.3
+,527.8
+,496.5
+,484
+,570.3
+,556.6
+,511
+,508
+,437.8
+,518.3
+,531.8)
+
+WCPrCr21 <-c(613.8
+,556.5
+,638.2
+,598.8
+,620.2
+,609.8
+,552
+,577.1
+,633.8
+,605.2
+,606.5
+,563.2)
+
+
+WCShCr0220 <-c(754
+,764.2
+,1065
+,703.7
+,686.4
+,995
+,699.1
+,662.1
+,640.9)
+
+WCShCr0221 <-c(1401
+,947
+,1512
+,1499
+,953
+,1412
+,746.6
+,910.4
+,994
+,1245
+,1025)
+
+
+WCShCr0520  <-c(515
+,568.6
+,408.4
+,420.6
+,493.6
+,487.3
+,450.2)
+
+WCShCr0521 <-c(599.2
+,482.8
+,534.1)
+
+
+WCShCr0620  <-c(734
+,829
+,1235
+,747.8
+,724.1
+,832.6
+,713.2
+,718.1
+,694.6)
+
+WCShCr0621 <-c(1914
+,1135
+,1685
+,1670
+,1218
+,1340
+,1088
+,1146
+,1121
+,1294
+,979)
+
+
+WCWdCr20 <-c(744
+,737
+,669.8
+,652.9
+,663.8
+,680.9
+,697.3
+,666.9
+,675.4
+,614.3
+,1002
+,689.5)
+
+WCWdCr21 <-c(800.8
+,716.7
+,819.8
+,744.9)
+
+
+WCWeCr0320 <-c(447.7
+,477.9
+,568.6
+,453.3
+,319.1
+,280.3
+,480.2
+,427.4
+,327.3
+,365.1
+,237
+,578.3
+,456.6)
+
+WCWeCr0321 <-c(618.7
+,540.5
+,592.2
+,549.1
+,590.8
+,615.7
+,394.1
+,521.2
+,578.9
+,602.1
+,485.8
+,439)
+
+
+WCWeCr0720 <-c(455.9
+,485.8
+,385.5
+,359.4
+,367.2
+,481.5
+,431.4
+,380.5
+,390.2
+,323.1
+,494.5)
+
+WCWeCr0721 <-c(534.2
+,546.9
+,647.5
+,627.7
+,743.7
+,732
+,461.2
+,548.5
+,623.5
+,587.1
+,647.2)
+
+
+WCWeCr0920 <-c(438.4
+,448
+,556
+,397.8
+,282.9
+,252.7
+,460.2
+,429.6
+,287
+,352.5
+,212.4
+,386.4
+,412.3)
+
+WCWeCr0921 <-c(540.9,
+505.4,
+519.9,
+488.6,
+483.3,
+487.6,
+385.9,
+457.9,
+471.2,
+432.3,
+399,
+386.5)
+
+
+WCWrCr20 <-c(422.5,
+420,
+335.5,
+346.8,
+425.9,
+396.7,
+357.1,
+415.9)
+
+WCWrCr21 <-c(462.6,
+419.6,
+362.3,
+417.7,
+449.2,
+350.3,
+362.7,
+421.1,
+417,
+396.4,
+300.7)
+
+```
+
+###Conductivity t-tests 13 are significant out of 21
+```{r}
+t.test(WCBfCr0220, WCBfCr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCChCr0120, WCChCr0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCCmCr20, WCCmCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCCsCr20, WCCsCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCFdCr20, WCFdCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCLrCr20, WCLrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0120, WCNoFr0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0220, WCNoFr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0320, WCNoFr0321, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNrCr20, WCNrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCOhRv0120, WCOhRv0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCOhRv0220, WCOhRv0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCPrCr20, WCPrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0220, WCShCr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0520, WCShCr0521, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0620, WCShCr0621, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWdCr20, WCWdCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0320, WCWeCr0321, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0720, WCWeCr0721, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0920, WCWeCr0921, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWrCr20, WCWrCr21, alternative = "two.sided", var.equal = TRUE)
+```
+
+###Mann-Whitney U test 12 significant out of 21
+```{r}
+wilcox.test(WCBfCr0220, WCBfCr0221)
+
+wilcox.test(WCChCr0120, WCChCr0121)
+
+wilcox.test(WCCmCr20, WCCmCr21)
+
+wilcox.test(WCCsCr20, WCCsCr21)
+
+wilcox.test(WCFdCr20, WCFdCr21)
+
+wilcox.test(WCLrCr20, WCLrCr21)
+
+wilcox.test(WCNoFr0120, WCNoFr0121)
+
+wilcox.test(WCNoFr0220, WCNoFr0221)
+
+wilcox.test(WCNoFr0320, WCNoFr0321)
+
+wilcox.test(WCNrCr20, WCNrCr21)
+
+wilcox.test(WCOhRv0120, WCOhRv0121)
+
+wilcox.test(WCOhRv0220, WCOhRv0221)
+
+wilcox.test(WCPrCr20, WCPrCr21)
+
+wilcox.test(WCShCr0220, WCShCr0221)
+
+wilcox.test(WCShCr0520, WCShCr0521)
+
+wilcox.test(WCShCr0620, WCShCr0621)
+
+wilcox.test(WCWdCr20, WCWdCr21)
+
+wilcox.test(WCWeCr0320, WCWeCr0321)
+
+wilcox.test(WCWeCr0720, WCWeCr0721)
+
+wilcox.test(WCWeCr0920, WCWeCr0921)
+
+wilcox.test(WCWrCr20, WCWrCr21)
 ```
 
 
