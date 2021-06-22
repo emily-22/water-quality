@@ -1607,6 +1607,7 @@ ggplot(AMDs,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
 
 ```
 
+
 ```{r}
 graph19 <- ggplot(WeCr,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) + 
   geom_line() +
@@ -1686,6 +1687,136 @@ ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) 
   labs(y = "Conductivity ms/cm", x = "Julian Day")
 
 ```
+
+Winter Oct 2018 to May 2019
+```{r}
+ggplot(WeCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(276,516) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(NfSh,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(276,516) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(BfCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(276,516) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(276,516) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
+
+
+Winter Nov 2018 to Feb 2019
+```{r}
+ggplot(WeCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(305,425) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(NfSh,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(305,425) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(BfCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(305,425) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(305,425) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
+
+Winter Nov 2019 to Feb 2020
+```{r}
+ggplot(WeCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(670,789) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(NfSh,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(670,789) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(BfCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(670,789) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(670,789) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
+
+Winter Nov 2020 to Feb 2021
+```{r}
+ggplot(WeCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(1050,1155) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(NfSh,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(1050,1155) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(BfCr,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(1050,1155) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+
+ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  xlim(1050,1155) +
+  labs(y = "Conductivity ms/cm", x = "Julian Day")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r}
 wqsummeravg <- read.csv("Water Chem Summer Avgs.csv")
@@ -2704,5 +2835,64 @@ wilcox.test(WCWeCr0920, WCWeCr0921)
 
 wilcox.test(WCWrCr20, WCWrCr21)
 ```
+
+
+###Summer 2018-2020
+```{r}
+
+ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(155, 248) +
+ylim(0,2000)
+  
+ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(518, 638)
+
+ggplot(waterchem2,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(885, 1004)
+
+
+
+graph21 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(155, 248) +
+  ggtitle ("WeCr03")
+  
+graph22 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(518, 638) +
+  ggtitle ("WeCr03")
+
+graph23 <-ggplot(WeCr03,aes(x = Julian.Day ,y = Conductivity)) + 
+  geom_line() +
+  theme_classic() +
+  labs(y = "Conductivity ms/cm", x = "Julian Day") +
+  xlim(885, 1004) +
+  ggtitle ("WeCr03")
+
+plot_grid(graph21, graph22, graph23)
+```
+
+
+
+
+
+
+
+
+
+
 
 
