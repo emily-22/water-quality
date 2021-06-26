@@ -1,0 +1,2494 @@
+---
+title: "Water Chem 2"
+author: "Emily Huff and James Wood"
+date: "6/26/2021"
+output: html_document
+---
+
+
+#loading stuff
+```{r}
+waterchem2 <- read.csv("Water Chem.csv")
+
+library(ggplot2)
+library(cowplot)
+
+WeCr <- subset(waterchem2, Site== "WeCr03"|Site=="WeCr07"|Site== "WeCr09"|Site== "WeCr11"|Site=="LrCr"|Site== "WdCr"|Site=="PrCr"|Site== "FdCr"|Site=="OhRv01"|Site== "OhRv02")
+
+NfSh <- subset(waterchem2, Site== "NoFr03"|Site=="NoFr02"|Site== "NoFr01"|Site=="WrCr"|Site=="ShCr02"|Site== "ShCr05"|Site=="ShCr06")
+
+BfCr <- subset(waterchem2, Site=="BfCr02"|Site== "CmCr")
+
+AMDs <- subset(waterchem2, Site== "ChCr01"|Site=="NrCr"|Site== "CsCr")
+
+WeCr03 <- subset(waterchem2, Site=="WeCr03")
+WeCr07 <- subset(waterchem2, Site=="WeCr07")
+WeCr09 <- subset(waterchem2, Site=="WeCr09")
+WeCr11 <- subset(waterchem2, Site=="WeCr11")
+LrCr <- subset(waterchem2, Site=="LrCr")
+WdCr <- subset(waterchem2, Site=="WdCr")
+FdCr <- subset(waterchem2, Site=="FdCr")
+PrCr <- subset(waterchem2, Site=="PrCr")
+WrCr <- subset(waterchem2, Site=="WrCr")
+NoFr03 <- subset(waterchem2, Site=="NoFr03")
+NoFr02 <- subset(waterchem2, Site=="NoFr02")
+NoFr01 <- subset(waterchem2, Site=="NoFr01")
+ShCr02 <- subset(waterchem2, Site=="ShCr02")
+ShCr05 <- subset(waterchem2, Site=="ShCr05")
+ShCr06 <- subset(waterchem2, Site=="ShCr06")
+BfCr02 <- subset(waterchem2, Site=="BfCr02")
+CmCr <- subset(waterchem2, Site=="CmCr")
+OhRv01 <- subset(waterchem2, Site=="OhRv01")
+OhRv02 <- subset(waterchem2, Site=="OhRv02")
+ChCr01 <- subset(waterchem2, Site=="ChCr01")
+NrCr <- subset(waterchem2, Site=="NrCr")
+CsCr <- subset(waterchem2, Site=="CsCr")
+```
+
+#Plots for slopes
+###Winter 2021
+```{r}
+winter2021 <- read.csv("Winter 2021.csv")
+
+WeCr03W21 <- subset(winter2021, Site=="WeCr03")
+WeCr07W21 <- subset(winter2021, Site=="WeCr07")
+WeCr09W21 <- subset(winter2021, Site=="WeCr09")
+LrCrW21 <- subset(winter2021, Site=="LrCr")
+WdCrW21 <- subset(winter2021, Site=="WdCr")
+FdCrW21 <- subset(winter2021, Site=="FdCr")
+PrCrW21 <- subset(winter2021, Site=="PrCr")
+WrCrW21 <- subset(winter2021, Site=="WrCr")
+NoFr03W21 <- subset(winter2021, Site=="NoFr03")
+NoFr02W21 <- subset(winter2021, Site=="NoFr02")
+NoFr01W21 <- subset(winter2021, Site=="NoFr01")
+ShCr02W21 <- subset(winter2021, Site=="ShCr02")
+ShCr05W21 <- subset(winter2021, Site=="ShCr05")
+ShCr06W21 <- subset(winter2021, Site=="ShCr06")
+BfCr02W21 <- subset(winter2021, Site=="BfCr02")
+CmCrW21 <- subset(winter2021, Site=="CmCr")
+OhRv01W21 <- subset(winter2021, Site=="OhRv01")
+OhRv02W21 <- subset(winter2021, Site=="OhRv02")
+ChCr01W21 <- subset(winter2021, Site=="ChCr01")
+NrCrW21 <- subset(winter2021, Site=="NrCr")
+CsCrW21 <- subset(winter2021, Site=="CsCr")
+
+plot(WeCr03W21$Conductivity~WeCr03W21$Chloride)
+abline(lm(WeCr03W21$Conductivity~WeCr03W21$Chloride))
+summary(lm(WeCr03W21$Conductivity~WeCr03W21$Chloride))
+
+plot(WeCr07W21$Conductivity~WeCr07W21$Chloride)
+abline(lm(WeCr07W21$Conductivity~WeCr07W21$Chloride))
+summary(lm(WeCr07W21$Conductivity~WeCr07W21$Chloride))
+
+plot(WeCr09W21$Conductivity~WeCr09W21$Chloride)
+abline(lm(WeCr09W21$Conductivity~WeCr09W21$Chloride))
+summary(lm(WeCr09W21$Conductivity~WeCr09W21$Chloride))
+
+plot(LrCrW21$Conductivity~LrCrW21$Chloride)
+abline(lm(LrCrW21$Conductivity~LrCrW21$Chloride))
+summary(lm(LrCrW21$Conductivity~LrCrW21$Chloride))
+
+plot(WdCrW21$Conductivity~WdCrW21$Chloride)
+abline(lm(WdCrW21$Conductivity~WdCrW21$Chloride))
+summary(lm(WdCrW21$Conductivity~WdCrW21$Chloride))
+
+plot(FdCrW21$Conductivity~FdCrW21$Chloride)
+abline(lm(FdCrW21$Conductivity~FdCrW21$Chloride))
+summary(lm(FdCrW21$Conductivity~FdCrW21$Chloride))
+
+plot(PrCrW21$Conductivity~PrCrW21$Chloride)
+abline(lm(PrCrW21$Conductivity~PrCrW21$Chloride))
+summary(lm(PrCrW21$Conductivity~PrCrW21$Chloride))
+
+plot(WrCrW21$Conductivity~WrCrW21$Chloride)
+abline(lm(WrCrW21$Conductivity~WrCrW21$Chloride))
+summary(lm(WrCrW21$Conductivity~WrCrW21$Chloride))
+
+plot(NoFr03W21$Conductivity~NoFr03W21$Chloride)
+abline(lm(NoFr03W21$Conductivity~NoFr03W21$Chloride))
+summary(lm(NoFr03W21$Conductivity~NoFr03W21$Chloride))
+
+plot(NoFr02W21$Conductivity~NoFr02W21$Chloride)
+abline(lm(NoFr02W21$Conductivity~NoFr02W21$Chloride))
+summary(lm(NoFr02W21$Conductivity~NoFr02W21$Chloride))
+
+plot(NoFr01W21$Conductivity~NoFr01W21$Chloride)
+abline(lm(NoFr01W21$Conductivity~NoFr01W21$Chloride))
+summary(lm(NoFr01W21$Conductivity~NoFr01W21$Chloride))
+
+plot(ShCr02W21$Conductivity~ShCr02W21$Chloride)
+abline(lm(ShCr02W21$Conductivity~ShCr02W21$Chloride))
+summary(lm(ShCr02W21$Conductivity~ShCr02W21$Chloride))
+
+plot(ShCr05W21$Conductivity~ShCr05W21$Chloride)
+abline(lm(ShCr05W21$Conductivity~ShCr05W21$Chloride))
+summary(lm(ShCr05W21$Conductivity~ShCr05W21$Chloride))
+
+plot(ShCr06W21$Conductivity~ShCr06W21$Chloride)
+abline(lm(ShCr06W21$Conductivity~ShCr06W21$Chloride))
+summary(lm(ShCr06W21$Conductivity~ShCr06W21$Chloride))
+
+plot(BfCr02W21$Conductivity~BfCr02W21$Chloride)
+abline(lm(BfCr02W21$Conductivity~BfCr02W21$Chloride))
+summary(lm(BfCr02W21$Conductivity~BfCr02W21$Chloride))
+
+plot(CmCrW21$Conductivity~CmCrW21$Chloride)
+abline(lm(CmCrW21$Conductivity~CmCrW21$Chloride))
+summary(lm(CmCrW21$Conductivity~CmCrW21$Chloride))
+
+plot(OhRv01W21$Conductivity~OhRv01W21$Chloride)
+abline(lm(OhRv01W21$Conductivity~OhRv01W21$Chloride))
+summary(lm(OhRv01W21$Conductivity~OhRv01W21$Chloride))
+
+plot(OhRv02W21$Conductivity~OhRv02W21$Chloride)
+abline(lm(OhRv02W21$Conductivity~OhRv02W21$Chloride))
+summary(lm(OhRv02W21$Conductivity~OhRv02W21$Chloride))
+
+plot(ChCr01W21$Conductivity~ChCr01W21$Chloride)
+abline(lm(ChCr01W21$Conductivity~ChCr01W21$Chloride))
+summary(lm(ChCr01W21$Conductivity~ChCr01W21$Chloride))
+
+plot(NrCrW21$Conductivity~NrCrW21$Chloride)
+abline(lm(NrCrW21$Conductivity~NrCrW21$Chloride))
+summary(lm(NrCrW21$Conductivity~NrCrW21$Chloride))
+
+plot(CsCrW21$Conductivity~CsCrW21$Chloride)
+abline(lm(CsCrW21$Conductivity~CsCrW21$Chloride))
+summary(lm(CsCrW21$Conductivity~CsCrW21$Chloride))
+```
+
+
+###Winter 2020
+```{r}
+winter2020 <- read.csv("Winter 2020.csv")
+
+WeCr03W20 <- subset(winter2020, Site=="WeCr03")
+WeCr07W20 <- subset(winter2020, Site=="WeCr07")
+WeCr09W20 <- subset(winter2020, Site=="WeCr09")
+LrCrW20 <- subset(winter2020, Site=="LrCr")
+WdCrW20 <- subset(winter2020, Site=="WdCr")
+FdCrW20 <- subset(winter2020, Site=="FdCr")
+PrCrW20 <- subset(winter2020, Site=="PrCr")
+WrCrW20 <- subset(winter2020, Site=="WrCr")
+NoFr03W20 <- subset(winter2020, Site=="NoFr03")
+NoFr02W20 <- subset(winter2020, Site=="NoFr02")
+NoFr01W20 <- subset(winter2020, Site=="NoFr01")
+ShCr02W20 <- subset(winter2020, Site=="ShCr02")
+ShCr05W20 <- subset(winter2020, Site=="ShCr05")
+ShCr06W20 <- subset(winter2020, Site=="ShCr06")
+BfCr02W20 <- subset(winter2020, Site=="BfCr02")
+CmCrW20 <- subset(winter2020, Site=="CmCr")
+OhRv01W20 <- subset(winter2020, Site=="OhRv01")
+OhRv02W20 <- subset(winter2020, Site=="OhRv02")
+ChCr01W20 <- subset(winter2020, Site=="ChCr01")
+NrCrW20 <- subset(winter2020, Site=="NrCr")
+CsCrW20 <- subset(winter2020, Site=="CsCr")
+
+plot(WeCr03W20$Conductivity~WeCr03W20$Chloride)
+abline(lm(WeCr03W20$Conductivity~WeCr03W20$Chloride))
+summary(lm(WeCr03W20$Conductivity~WeCr03W20$Chloride))
+
+plot(WeCr07W20$Conductivity~WeCr07W20$Chloride)
+abline(lm(WeCr07W20$Conductivity~WeCr07W20$Chloride))
+summary(lm(WeCr07W20$Conductivity~WeCr07W20$Chloride))
+
+plot(WeCr09W20$Conductivity~WeCr09W20$Chloride)
+abline(lm(WeCr09W20$Conductivity~WeCr09W20$Chloride))
+summary(lm(WeCr09W20$Conductivity~WeCr09W20$Chloride))
+
+plot(LrCrW20$Conductivity~LrCrW20$Chloride)
+abline(lm(LrCrW20$Conductivity~LrCrW20$Chloride))
+summary(lm(LrCrW20$Conductivity~LrCrW20$Chloride))
+
+plot(WdCrW20$Conductivity~WdCrW20$Chloride)
+abline(lm(WdCrW20$Conductivity~WdCrW20$Chloride))
+summary(lm(WdCrW20$Conductivity~WdCrW20$Chloride))
+
+plot(FdCrW20$Conductivity~FdCrW20$Chloride)
+abline(lm(FdCrW20$Conductivity~FdCrW20$Chloride))
+summary(lm(FdCrW20$Conductivity~FdCrW20$Chloride))
+
+plot(PrCrW20$Conductivity~PrCrW20$Chloride)
+abline(lm(PrCrW20$Conductivity~PrCrW20$Chloride))
+summary(lm(PrCrW20$Conductivity~PrCrW20$Chloride))
+
+plot(WrCrW20$Conductivity~WrCrW20$Chloride)
+abline(lm(WrCrW20$Conductivity~WrCrW20$Chloride))
+summary(lm(WrCrW20$Conductivity~WrCrW20$Chloride))
+
+plot(NoFr03W20$Conductivity~NoFr03W20$Chloride)
+abline(lm(NoFr03W20$Conductivity~NoFr03W20$Chloride))
+summary(lm(NoFr03W20$Conductivity~NoFr03W20$Chloride))
+
+plot(NoFr02W20$Conductivity~NoFr02W20$Chloride)
+abline(lm(NoFr02W20$Conductivity~NoFr02W20$Chloride))
+summary(lm(NoFr02W20$Conductivity~NoFr02W20$Chloride))
+
+plot(NoFr01W20$Conductivity~NoFr01W20$Chloride)
+abline(lm(NoFr01W20$Conductivity~NoFr01W20$Chloride))
+summary(lm(NoFr01W20$Conductivity~NoFr01W20$Chloride))
+
+plot(ShCr02W20$Conductivity~ShCr02W20$Chloride)
+abline(lm(ShCr02W20$Conductivity~ShCr02W20$Chloride))
+summary(lm(ShCr02W20$Conductivity~ShCr02W20$Chloride))
+
+plot(ShCr05W20$Conductivity~ShCr05W20$Chloride)
+abline(lm(ShCr05W20$Conductivity~ShCr05W20$Chloride))
+summary(lm(ShCr05W20$Conductivity~ShCr05W20$Chloride))
+
+plot(ShCr06W20$Conductivity~ShCr06W20$Chloride)
+abline(lm(ShCr06W20$Conductivity~ShCr06W20$Chloride))
+summary(lm(ShCr06W20$Conductivity~ShCr06W20$Chloride))
+
+plot(BfCr02W20$Conductivity~BfCr02W20$Chloride)
+abline(lm(BfCr02W20$Conductivity~BfCr02W20$Chloride))
+summary(lm(BfCr02W20$Conductivity~BfCr02W20$Chloride))
+
+plot(CmCrW20$Conductivity~CmCrW20$Chloride)
+abline(lm(CmCrW20$Conductivity~CmCrW20$Chloride))
+summary(lm(CmCrW20$Conductivity~CmCrW20$Chloride))
+
+plot(OhRv01W20$Conductivity~OhRv01W20$Chloride)
+abline(lm(OhRv01W20$Conductivity~OhRv01W20$Chloride))
+summary(lm(OhRv01W20$Conductivity~OhRv01W20$Chloride))
+
+plot(OhRv02W20$Conductivity~OhRv02W20$Chloride)
+abline(lm(OhRv02W20$Conductivity~OhRv02W20$Chloride))
+summary(lm(OhRv02W20$Conductivity~OhRv02W20$Chloride))
+
+plot(ChCr01W20$Conductivity~ChCr01W20$Chloride)
+abline(lm(ChCr01W20$Conductivity~ChCr01W20$Chloride))
+summary(lm(ChCr01W20$Conductivity~ChCr01W20$Chloride))
+
+plot(NrCrW20$Conductivity~NrCrW20$Chloride)
+abline(lm(NrCrW20$Conductivity~NrCrW20$Chloride))
+summary(lm(NrCrW20$Conductivity~NrCrW20$Chloride))
+
+plot(CsCrW20$Conductivity~CsCrW20$Chloride)
+abline(lm(CsCrW20$Conductivity~CsCrW20$Chloride))
+summary(lm(CsCrW20$Conductivity~CsCrW20$Chloride))
+```
+
+###Summer 2020
+```{r}
+summer2020 <- read.csv("Summer 2020.csv")
+
+WeCr03S20 <- subset(summer2020, Site=="WeCr03")
+WeCr07S20 <- subset(summer2020, Site=="WeCr07")
+WeCr09S20 <- subset(summer2020, Site=="WeCr09")
+LrCrS20 <- subset(summer2020, Site=="LrCr")
+WdCrS20 <- subset(summer2020, Site=="WdCr")
+FdCrS20 <- subset(summer2020, Site=="FdCr")
+PrCrS20 <- subset(summer2020, Site=="PrCr")
+WrCrS20 <- subset(summer2020, Site=="WrCr")
+NoFr03S20 <- subset(summer2020, Site=="NoFr03")
+NoFr02S20 <- subset(summer2020, Site=="NoFr02")
+NoFr01S20 <- subset(summer2020, Site=="NoFr01")
+ShCr02S20 <- subset(summer2020, Site=="ShCr02")
+ShCr05S20 <- subset(summer2020, Site=="ShCr05")
+ShCr06S20 <- subset(summer2020, Site=="ShCr06")
+BfCr02S20 <- subset(summer2020, Site=="BfCr02")
+CmCrS20 <- subset(summer2020, Site=="CmCr")
+OhRv01S20 <- subset(summer2020, Site=="OhRv01")
+OhRv02S20 <- subset(summer2020, Site=="OhRv02")
+ChCr01S20 <- subset(summer2020, Site=="ChCr01")
+NrCrS20 <- subset(summer2020, Site=="NrCr")
+CsCrS20 <- subset(summer2020, Site=="CsCr")
+
+plot(WeCr03S20$Conductivity~WeCr03S20$Chloride)
+abline(lm(WeCr03S20$Conductivity~WeCr03S20$Chloride))
+summary(lm(WeCr03S20$Conductivity~WeCr03S20$Chloride))
+
+plot(WeCr07S20$Conductivity~WeCr07S20$Chloride)
+abline(lm(WeCr07S20$Conductivity~WeCr07S20$Chloride))
+summary(lm(WeCr07S20$Conductivity~WeCr07S20$Chloride))
+
+plot(WeCr09S20$Conductivity~WeCr09S20$Chloride)
+abline(lm(WeCr09S20$Conductivity~WeCr09S20$Chloride))
+summary(lm(WeCr09S20$Conductivity~WeCr09S20$Chloride))
+
+plot(LrCrS20$Conductivity~LrCrS20$Chloride)
+abline(lm(LrCrS20$Conductivity~LrCrS20$Chloride))
+summary(lm(LrCrS20$Conductivity~LrCrS20$Chloride))
+
+plot(WdCrS20$Conductivity~WdCrS20$Chloride)
+abline(lm(WdCrS20$Conductivity~WdCrS20$Chloride))
+summary(lm(WdCrS20$Conductivity~WdCrS20$Chloride))
+
+plot(FdCrS20$Conductivity~FdCrS20$Chloride)
+abline(lm(FdCrS20$Conductivity~FdCrS20$Chloride))
+summary(lm(FdCrS20$Conductivity~FdCrS20$Chloride))
+
+plot(PrCrS20$Conductivity~PrCrS20$Chloride)
+abline(lm(PrCrS20$Conductivity~PrCrS20$Chloride))
+summary(lm(PrCrS20$Conductivity~PrCrS20$Chloride))
+
+plot(WrCrS20$Conductivity~WrCrS20$Chloride)
+abline(lm(WrCrS20$Conductivity~WrCrS20$Chloride))
+summary(lm(WrCrS20$Conductivity~WrCrS20$Chloride))
+
+plot(NoFr03S20$Conductivity~NoFr03S20$Chloride)
+abline(lm(NoFr03S20$Conductivity~NoFr03S20$Chloride))
+summary(lm(NoFr03S20$Conductivity~NoFr03S20$Chloride))
+
+plot(NoFr02S20$Conductivity~NoFr02S20$Chloride)
+abline(lm(NoFr02S20$Conductivity~NoFr02S20$Chloride))
+summary(lm(NoFr02S20$Conductivity~NoFr02S20$Chloride))
+
+plot(NoFr01S20$Conductivity~NoFr01S20$Chloride)
+abline(lm(NoFr01S20$Conductivity~NoFr01S20$Chloride))
+summary(lm(NoFr01S20$Conductivity~NoFr01S20$Chloride))
+
+plot(ShCr02S20$Conductivity~ShCr02S20$Chloride)
+abline(lm(ShCr02S20$Conductivity~ShCr02S20$Chloride))
+summary(lm(ShCr02S20$Conductivity~ShCr02S20$Chloride))
+
+plot(ShCr05S20$Conductivity~ShCr05S20$Chloride)
+abline(lm(ShCr05S20$Conductivity~ShCr05S20$Chloride))
+summary(lm(ShCr05S20$Conductivity~ShCr05S20$Chloride))
+
+plot(ShCr06S20$Conductivity~ShCr06S20$Chloride)
+abline(lm(ShCr06S20$Conductivity~ShCr06S20$Chloride))
+summary(lm(ShCr06S20$Conductivity~ShCr06S20$Chloride))
+
+plot(BfCr02S20$Conductivity~BfCr02S20$Chloride)
+abline(lm(BfCr02S20$Conductivity~BfCr02S20$Chloride))
+summary(lm(BfCr02S20$Conductivity~BfCr02S20$Chloride))
+
+plot(CmCrS20$Conductivity~CmCrS20$Chloride)
+abline(lm(CmCrS20$Conductivity~CmCrS20$Chloride))
+summary(lm(CmCrS20$Conductivity~CmCrS20$Chloride))
+
+plot(OhRv01S20$Conductivity~OhRv01S20$Chloride)
+abline(lm(OhRv01S20$Conductivity~OhRv01S20$Chloride))
+summary(lm(OhRv01S20$Conductivity~OhRv01S20$Chloride))
+
+plot(OhRv02S20$Conductivity~OhRv02S20$Chloride)
+abline(lm(OhRv02S20$Conductivity~OhRv02S20$Chloride))
+summary(lm(OhRv02S20$Conductivity~OhRv02S20$Chloride))
+
+plot(ChCr01S20$Conductivity~ChCr01S20$Chloride)
+abline(lm(ChCr01S20$Conductivity~ChCr01S20$Chloride))
+summary(lm(ChCr01S20$Conductivity~ChCr01S20$Chloride))
+
+plot(NrCrS20$Conductivity~NrCrS20$Chloride)
+abline(lm(NrCrS20$Conductivity~NrCrS20$Chloride))
+summary(lm(NrCrS20$Conductivity~NrCrS20$Chloride))
+
+plot(CsCrS20$Conductivity~CsCrS20$Chloride)
+abline(lm(CsCrS20$Conductivity~CsCrS20$Chloride))
+summary(lm(CsCrS20$Conductivity~CsCrS20$Chloride))
+```
+
+###Summer 2019
+```{r}
+summer2019 <- read.csv("Summer 2019.csv")
+
+WeCr03S19 <- subset(summer2019, Site=="WeCr03")
+WeCr07S19 <- subset(summer2019, Site=="WeCr07")
+WeCr09S19 <- subset(summer2019, Site=="WeCr09")
+LrCrS19 <- subset(summer2019, Site=="LrCr")
+WdCrS19 <- subset(summer2019, Site=="WdCr")
+FdCrS19 <- subset(summer2019, Site=="FdCr")
+PrCrS19 <- subset(summer2019, Site=="PrCr")
+WrCrS19 <- subset(summer2019, Site=="WrCr")
+NoFr03S19 <- subset(summer2019, Site=="NoFr03")
+NoFr02S19 <- subset(summer2019, Site=="NoFr02")
+NoFr01S19 <- subset(summer2019, Site=="NoFr01")
+ShCr02S19 <- subset(summer2019, Site=="ShCr02")
+ShCr05S19 <- subset(summer2019, Site=="ShCr05")
+ShCr06S19 <- subset(summer2019, Site=="ShCr06")
+BfCr02S19 <- subset(summer2019, Site=="BfCr02")
+CmCrS19 <- subset(summer2019, Site=="CmCr")
+OhRv01S19 <- subset(summer2019, Site=="OhRv01")
+OhRv02S19 <- subset(summer2019, Site=="OhRv02")
+ChCr01S19 <- subset(summer2019, Site=="ChCr01")
+NrCrS19 <- subset(summer2019, Site=="NrCr")
+CsCrS19 <- subset(summer2019, Site=="CsCr")
+
+plot(WeCr03S19$Conductivity~WeCr03S19$Chloride)
+abline(lm(WeCr03S19$Conductivity~WeCr03S19$Chloride))
+summary(lm(WeCr03S19$Conductivity~WeCr03S19$Chloride))
+
+plot(WeCr07S19$Conductivity~WeCr07S19$Chloride)
+abline(lm(WeCr07S19$Conductivity~WeCr07S19$Chloride))
+summary(lm(WeCr07S19$Conductivity~WeCr07S19$Chloride))
+
+plot(WeCr09S19$Conductivity~WeCr09S19$Chloride)
+abline(lm(WeCr09S19$Conductivity~WeCr09S19$Chloride))
+summary(lm(WeCr09S19$Conductivity~WeCr09S19$Chloride))
+
+plot(LrCrS19$Conductivity~LrCrS19$Chloride)
+abline(lm(LrCrS19$Conductivity~LrCrS19$Chloride))
+summary(lm(LrCrS19$Conductivity~LrCrS19$Chloride))
+
+plot(WdCrS19$Conductivity~WdCrS19$Chloride)
+abline(lm(WdCrS19$Conductivity~WdCrS19$Chloride))
+summary(lm(WdCrS19$Conductivity~WdCrS19$Chloride))
+
+plot(FdCrS19$Conductivity~FdCrS19$Chloride)
+abline(lm(FdCrS19$Conductivity~FdCrS19$Chloride))
+summary(lm(FdCrS19$Conductivity~FdCrS19$Chloride))
+
+plot(PrCrS19$Conductivity~PrCrS19$Chloride)
+abline(lm(PrCrS19$Conductivity~PrCrS19$Chloride))
+summary(lm(PrCrS19$Conductivity~PrCrS19$Chloride))
+
+plot(WrCrS19$Conductivity~WrCrS19$Chloride)
+abline(lm(WrCrS19$Conductivity~WrCrS19$Chloride))
+summary(lm(WrCrS19$Conductivity~WrCrS19$Chloride))
+
+plot(NoFr03S19$Conductivity~NoFr03S19$Chloride)
+abline(lm(NoFr03S19$Conductivity~NoFr03S19$Chloride))
+summary(lm(NoFr03S19$Conductivity~NoFr03S19$Chloride))
+
+plot(NoFr02S19$Conductivity~NoFr02S19$Chloride)
+abline(lm(NoFr02S19$Conductivity~NoFr02S19$Chloride))
+summary(lm(NoFr02S19$Conductivity~NoFr02S19$Chloride))
+
+plot(NoFr01S19$Conductivity~NoFr01S19$Chloride)
+abline(lm(NoFr01S19$Conductivity~NoFr01S19$Chloride))
+summary(lm(NoFr01S19$Conductivity~NoFr01S19$Chloride))
+
+plot(ShCr02S19$Conductivity~ShCr02S19$Chloride)
+abline(lm(ShCr02S19$Conductivity~ShCr02S19$Chloride))
+summary(lm(ShCr02S19$Conductivity~ShCr02S19$Chloride))
+
+plot(ShCr05S19$Conductivity~ShCr05S19$Chloride)
+abline(lm(ShCr05S19$Conductivity~ShCr05S19$Chloride))
+summary(lm(ShCr05S19$Conductivity~ShCr05S19$Chloride))
+
+plot(ShCr06S19$Conductivity~ShCr06S19$Chloride)
+abline(lm(ShCr06S19$Conductivity~ShCr06S19$Chloride))
+summary(lm(ShCr06S19$Conductivity~ShCr06S19$Chloride))
+
+plot(BfCr02S19$Conductivity~BfCr02S19$Chloride)
+abline(lm(BfCr02S19$Conductivity~BfCr02S19$Chloride))
+summary(lm(BfCr02S19$Conductivity~BfCr02S19$Chloride))
+
+plot(CmCrS19$Conductivity~CmCrS19$Chloride)
+abline(lm(CmCrS19$Conductivity~CmCrS19$Chloride))
+summary(lm(CmCrS19$Conductivity~CmCrS19$Chloride))
+
+plot(OhRv01S19$Conductivity~OhRv01S19$Chloride)
+abline(lm(OhRv01S19$Conductivity~OhRv01S19$Chloride))
+summary(lm(OhRv01S19$Conductivity~OhRv01S19$Chloride))
+
+plot(OhRv02S19$Conductivity~OhRv02S19$Chloride)
+abline(lm(OhRv02S19$Conductivity~OhRv02S19$Chloride))
+summary(lm(OhRv02S19$Conductivity~OhRv02S19$Chloride))
+
+plot(ChCr01S19$Conductivity~ChCr01S19$Chloride)
+abline(lm(ChCr01S19$Conductivity~ChCr01S19$Chloride))
+summary(lm(ChCr01S19$Conductivity~ChCr01S19$Chloride))
+
+plot(NrCrS19$Conductivity~NrCrS19$Chloride)
+abline(lm(NrCrS19$Conductivity~NrCrS19$Chloride))
+summary(lm(NrCrS19$Conductivity~NrCrS19$Chloride))
+
+plot(CsCrS19$Conductivity~CsCrS19$Chloride)
+abline(lm(CsCrS19$Conductivity~CsCrS19$Chloride))
+summary(lm(CsCrS19$Conductivity~CsCrS19$Chloride))
+```
+
+
+
+#Winter Stream Chloride
+```{r}
+
+BfCr022020 <-c(9.88, 11, 10.73, 6.69, 19.14, 19.12, 18.51, 19.43, 31.5) 
+
+BfCr022021 <-c(64.24, 42.7, 56.5, 49.51,72.75 ,96.95 ,39.28 ,53.61 ,48.3 ,65.55 ,66.71)
+
+
+ChCr012020 <-c(72.17,70.11,53.01,28.47,42.85,55.24,46.08,51.23,49.44,52.35,46.59,45.91)
+
+ChCr012021 <-c(180.78,138.41,156.83,110.98,150.78,158.58,133.42,190.51,128.66)
+
+
+CmCr2020 <-c(3.93,12.62,10.32,5.13,6.21,11.7,7.2,9.26,10.14)
+
+CmCr2021 <-c(29.56,26.56,28.74,33.25,35.18,18.28,29.03,33.86,45.51,21.18)
+
+
+CsCr2020 <-c(96.05,92.68,75.37,58.71,61.73,62.81,85.3,100.79,82.86,108.86,306.73,116.73)
+
+CsCr2021 <-c(304.08,194.52,182.04,256.86,257.4,384.08,272.82)
+
+
+FdCr2020 <-c(76.99,79.5,63.7,49.01,48.89,83.7,57.88,75,94.6,108.98,75.3,90.77)
+
+FdCr2021 <-c(101.48,91.18,139.98,100.02,113.56,162.7,113.76,147.37,156.65,163.9)
+
+
+LrCr2020 <-c(57.18,60.2,46.58,33.25,43.55,49.9,53.95,62.53,60.22,82.18,106.57,66.26)
+
+LrCr2021 <-c(99.56,81.95,173.09,93.69,109.66,221.24,100.63,122.89,144.19,173.68,249.57,121.61)
+
+
+NoFr012020 <-c(36.86,34.86,28.96,14.97,26.04,29.17,22.82,25.73,21.08)
+
+NoFr012021 <-c(93.23,70.65,153.38,101.12,92.99,178.4,75.12,95.87,112.3,123.08,89.09)
+
+
+NoFr022020 <-c(33.3,34.78,29.99,18.08,27.93,31.32,20.56,23.84,24.13)
+
+NoFr022021 <-c(81.56,64.24,162.56,96.76,81.65,158.3,68.52,93.81,115.72,129.76,144.05)
+
+
+NoFr032020 <-c(12.78,14.49,6.71,4.47,7.89,9.81,7.34,8.24,6.04)
+
+NoFr032021 <-c(20.13,21.98,25.85,28.61,26.49,38.89,22.72,35.91,45.91,59.88,30.3)
+
+
+NrCr2020 <-c(203.74,185.57,190.33,139.2,144.27,144.88,177.89,183.79,200.67,175.99,276.43,315.92)
+
+NrCr2021 <-c(1408.33,420.83,372,558.89,582.3,556.8)
+
+
+OhRv012020 <-c(26.26
+,19.06
+,42.7
+,11.63
+,11.26
+,18.13
+,29.31
+,21.37
+,27.58
+,49.48
+,22.83)
+
+OhRv012021 <-c(60.56
+,91.66
+,142.49
+,125.56)
+
+
+OhRv022020 <-c(21.52
+,18.97
+,16.52
+,19.87
+,12.82
+,17.28
+,39.82
+,35.35
+,44.37
+,59.68
+,24.52
+,27.12)
+
+OhRv022021 <-c(52.56
+,53.28
+,50.14
+,61.94
+,58.43
+,64.1
+,68.04
+,59.91
+,86.29
+,154.87
+,141.38)
+
+
+PrCr2020 <-c(37.38
+,31.83
+,30.39
+,16.78
+,18.99
+,21.79
+,18.18
+,31.27
+,34.16
+,50.4
+,30.17
+,35.1)
+
+PrCr2021 <-c(59.17
+,53.88
+,106.63
+,60.16
+,71.11
+,119.22
+,53.54
+,65.34
+,86.1
+,110.5
+,151.1
+,69.41)
+
+
+ShCr022020 <-c(59.29
+,61.66
+,110.44
+,61.37
+,52.19
+,110.65
+,43.02
+,45.88
+,40.03)
+
+ShCr022021 <-c(222.45
+,140.29
+,381.81
+,318.61
+,123.26
+,372.98
+,139.24
+,172.4
+,161.85
+,247.4
+,159.29)
+
+
+ShCr052020 <-c(15.39
+,27.81
+,14.35
+,23.16
+,26.17
+,33.14
+,20.48)
+
+ShCr052021 <-c(66.92
+,62.72
+,103.94)
+
+
+ShCr062020 <-c(33.56
+,75.47
+,111.56
+,71.29
+,65.45
+,72.55
+,36.73
+,52.61
+,35.98)
+
+ShCr062021 <-c(400
+,188.69
+,440.05
+,393.61
+,184.62
+,351.26
+,190.35
+,219.76
+,187.69
+,256.27
+,147.48)
+
+
+WdCr2020 <-c(75.44
+,73.37
+,59.65
+,43.66
+,51.82
+,49.04
+,52.15
+,62.53
+,65
+,85.3
+,238.62
+,70.58)
+
+WdCr2021 <-c(191.1
+,122
+,204.73
+,233.36)
+
+
+WeCr032020 <-c(38.61
+,43.15
+,46.87
+,36.48
+,9.63
+,19.1
+,30.12
+,27.54
+,29.01
+,31.35
+,27.42
+,100.09
+,38.78)
+
+WeCr032021 <-c(82.55
+,66.19
+,126.95
+,70.73
+,87.62
+,239.98
+,45.74
+,91.39
+,112.62
+,114.22
+,149.46
+,68.61)
+
+
+WeCr072020 <-c(34.16
+,39.25
+,26
+,15.55
+,20.76
+,27.09
+,30.35
+,29.81
+,35.73
+,48.51
+,50.75)
+
+WeCr072021 <-c(83.06
+,71.78
+,169.6
+,98.22
+,158.05
+,248.22
+,71.41
+,100.62
+,131.07
+,147.33
+,244.41)
+
+
+WeCr092020 <-c(25.83
+,26.61
+,37.6
+,23.18
+,6.37
+,9.69
+,18.33
+,13.14
+,12.31
+,19.67
+,17.8
+,16.96
+,20.43)
+
+WeCr092021 <-c(57.66
+,58.32
+,68.16
+,48.78
+,64.43
+,72.52
+,26.8
+,47.36
+,50.62
+,72.43
+,98
+,41.46)
+
+
+WrCr2020 <-c(4.23
+,2.21
+,2.53
+,4.87
+,6.49
+,4.11
+,4.59
+,2.95)
+
+WrCr2021 <-c(7.71
+,8.26
+,7.8
+,7.41
+,8.75
+,7.76
+,13.42
+,15.01
+,14.48
+,15.13
+,12.85)
+
+```
+
+###Chloride t-tests all are significant
+```{r}
+t.test(BfCr022020, BfCr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ChCr012020, ChCr012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CmCr2020, CmCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CsCr2020, CsCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(FdCr2020, FdCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(LrCr2020, LrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr012020, NoFr012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr022020, NoFr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr032020, NoFr032021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NrCr2020, NrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv012020, OhRv012021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv022020, OhRv022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(PrCr2020, PrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr022020, ShCr022021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr052020, ShCr052021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr062020, ShCr062021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WdCr2020, WdCr2021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr032020, WeCr032021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr072020, WeCr072021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr092020, WeCr092021, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WrCr2020, WrCr2021, alternative = "two.sided", var.equal = TRUE)
+
+```
+
+###Mann-Whitney U test 19 significant out of 21
+```{r}
+wilcox.test(BfCr022020, BfCr022021)
+
+wilcox.test(ChCr012020, ChCr012021)
+
+wilcox.test(CmCr2020, CmCr2021)
+
+wilcox.test(CsCr2020, CsCr2021)
+
+wilcox.test(FdCr2020, FdCr2021)
+
+wilcox.test(LrCr2020, LrCr2021)
+
+wilcox.test(NoFr012020, NoFr012021)
+
+wilcox.test(NoFr022020, NoFr022021)
+
+wilcox.test(NoFr032020, NoFr032021)
+
+wilcox.test(NrCr2020, NrCr2021)
+
+wilcox.test(OhRv012020, OhRv012021)
+
+wilcox.test(OhRv022020, OhRv022021)
+
+wilcox.test(PrCr2020, PrCr2021)
+
+wilcox.test(ShCr022020, ShCr022021)
+
+wilcox.test(ShCr052020, ShCr052021)
+
+wilcox.test(ShCr062020, ShCr062021)
+
+wilcox.test(WdCr2020, WdCr2021)
+
+wilcox.test(WeCr032020, WeCr032021)
+
+wilcox.test(WeCr072020, WeCr072021)
+
+wilcox.test(WeCr092020, WeCr092021)
+
+wilcox.test(WrCr2020, WrCr2021)
+```
+
+
+
+#Winter Conductivity 
+```{r}
+WCBfCr0220 <-c(315
+,474.6
+,528.8
+,343.7
+,405
+,455.5
+,423.1
+,402.5
+,395.6)
+
+WCBfCr0221 <-c(569.1
+,509.6
+,488.5
+,508.5
+,532.5
+,545.9
+,405.7
+,473.2
+,497.1
+,475.5
+,484.6)
+
+
+WCChCr0120 <-c(1285
+,1379
+,1116
+,871
+,853.1
+,1177
+,955
+,888
+,846
+,693.4
+,822
+,941)
+
+WCChCr0121 <-c(1712
+,2330
+,2996
+,1200
+,1518
+,1718
+,1701
+,1669
+,1043)
+
+
+WCCmCr20 <-c(295.1
+,473.7
+,528.8
+,349.1
+,391.9
+,441.2
+,343.6
+,412.1
+,405.6)
+
+WCCmCr21 <-c(546.9
+,504
+,487.8
+,485.1
+,493.5
+,397
+,465.7
+,477.8
+,456.6
+,400.1)
+
+
+WCCsCr20 <-c(937
+,947
+,841
+,736.7
+,750.7
+,900
+,808.1
+,784.3
+,741.2
+,661.8
+,1153
+,829)
+
+WCCsCr21 <-c(1224
+,929
+,972
+,1154
+,1075
+,1098
+,1074)
+
+
+WCFdCr20 <-c(667.5
+,685.5
+,595.1
+,591.7
+,609.7
+,688.9
+,686.7
+,628.6
+,628.4
+,568.8
+,643.8
+,636.8)
+
+WCFdCr21 <-c(686.8
+,621.8
+,673.8
+,678.8
+,702.8
+,651.4
+,670.2
+,702.1
+,738
+,665.1)
+
+
+WCLrCr20 <-c(638
+,662.1
+,607.3
+,588
+,609.6
+,677.5
+,641.5
+,619
+,620.4
+,562
+,747.6
+,614.2)
+
+WCLrCr21 <-c(710
+,617.4
+,721
+,656.6
+,708.3
+,739.5
+,668.4
+,688.2
+,743.1
+,711.2
+,677.5
+,713.2)
+
+
+WCNoFr0120 <-c(644.5
+,737.5
+,628.8
+,510
+,539.1
+,618.4
+,593
+,565.1
+,379.2)
+
+WCNoFr0121 <-c(1037
+,748.7
+,844
+,805.3
+,863.4
+,803.5
+,607.3
+,700.9
+,749.9
+,729.2
+,682.2)
+
+
+WCNoFr0220 <-c(338.1
+,621.6
+,327.9
+,440.8
+,461.6
+,521.6
+,504.8
+,458.5
+,489.9)
+
+WCNoFr0221 <-c(656.8
+,590.3
+,741.9
+,631.6
+,655.4
+,577.3
+,523.7
+,587.7
+,612.7
+,598.1
+,692.8)
+
+
+WCNoFr0320 <-c(439.1
+,499.4
+,419.7
+,338.6
+,359.7
+,424.4
+,386.1
+,376
+,417)
+
+WCNoFr0321 <-c(513.6
+,466.4
+,469.2
+,471.6
+,508
+,437.8
+,391.1
+,452.1
+,455.6
+,446.2
+,368.5)
+
+
+WCNrCr20 <-c(1823
+,1729
+,2297
+,1678
+,1435
+,1337
+,1724
+,1466
+,1445
+,1355
+,1213
+,1575)
+
+WCNrCr21 <-c(3193
+,2076
+,2374
+,2856
+,2895
+,1955)
+
+
+WCOhRv0120 <-c(278
+,245.5
+,341.2
+,326.9
+,224.2
+,252.9
+,279.6
+,250.4
+,269
+,292.1
+,284.8)
+
+WCOhRv0121 <-c(251.7
+,360.4
+,426.1
+,587.9)
+
+
+WCOhRv0220 <-c(276.3
+,244.2
+,342.3
+,331.1
+,225.6
+,243.9
+,274.4
+,196.1
+,224.9
+,294.1
+,244.5
+,271.5)
+
+WCOhRv0221 <-c(374.5
+,313.8
+,299.1
+,235.6
+,280
+,249.5
+,244.5
+,279.7
+,343
+,434.2
+,544.3)
+
+
+WCPrCr20 <-c(553.9
+,572.3
+,527.8
+,496.5
+,484
+,570.3
+,556.6
+,511
+,508
+,437.8
+,518.3
+,531.8)
+
+WCPrCr21 <-c(613.8
+,556.5
+,638.2
+,598.8
+,620.2
+,609.8
+,552
+,577.1
+,633.8
+,605.2
+,606.5
+,563.2)
+
+
+WCShCr0220 <-c(754
+,764.2
+,1065
+,703.7
+,686.4
+,995
+,699.1
+,662.1
+,640.9)
+
+WCShCr0221 <-c(1401
+,947
+,1512
+,1499
+,953
+,1412
+,746.6
+,910.4
+,994
+,1245
+,1025)
+
+
+WCShCr0520  <-c(515
+,568.6
+,408.4
+,420.6
+,493.6
+,487.3
+,450.2)
+
+WCShCr0521 <-c(599.2
+,482.8
+,534.1)
+
+
+WCShCr0620  <-c(734
+,829
+,1235
+,747.8
+,724.1
+,832.6
+,713.2
+,718.1
+,694.6)
+
+WCShCr0621 <-c(1914
+,1135
+,1685
+,1670
+,1218
+,1340
+,1088
+,1146
+,1121
+,1294
+,979)
+
+
+WCWdCr20 <-c(744
+,737
+,669.8
+,652.9
+,663.8
+,680.9
+,697.3
+,666.9
+,675.4
+,614.3
+,1002
+,689.5)
+
+WCWdCr21 <-c(800.8
+,716.7
+,819.8
+,744.9)
+
+
+WCWeCr0320 <-c(447.7
+,477.9
+,568.6
+,453.3
+,319.1
+,280.3
+,480.2
+,427.4
+,327.3
+,365.1
+,237
+,578.3
+,456.6)
+
+WCWeCr0321 <-c(618.7
+,540.5
+,592.2
+,549.1
+,590.8
+,615.7
+,394.1
+,521.2
+,578.9
+,602.1
+,485.8
+,439)
+
+
+WCWeCr0720 <-c(455.9
+,485.8
+,385.5
+,359.4
+,367.2
+,481.5
+,431.4
+,380.5
+,390.2
+,323.1
+,494.5)
+
+WCWeCr0721 <-c(534.2
+,546.9
+,647.5
+,627.7
+,743.7
+,732
+,461.2
+,548.5
+,623.5
+,587.1
+,647.2)
+
+
+WCWeCr0920 <-c(438.4
+,448
+,556
+,397.8
+,282.9
+,252.7
+,460.2
+,429.6
+,287
+,352.5
+,212.4
+,386.4
+,412.3)
+
+WCWeCr0921 <-c(540.9,
+505.4,
+519.9,
+488.6,
+483.3,
+487.6,
+385.9,
+457.9,
+471.2,
+432.3,
+399,
+386.5)
+
+
+WCWrCr20 <-c(422.5,
+420,
+335.5,
+346.8,
+425.9,
+396.7,
+357.1,
+415.9)
+
+WCWrCr21 <-c(462.6,
+419.6,
+362.3,
+417.7,
+449.2,
+350.3,
+362.7,
+421.1,
+417,
+396.4,
+300.7)
+
+```
+
+###Conductivity t-tests 13 are significant out of 21
+```{r}
+t.test(WCBfCr0220, WCBfCr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCChCr0120, WCChCr0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCCmCr20, WCCmCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCCsCr20, WCCsCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCFdCr20, WCFdCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCLrCr20, WCLrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0120, WCNoFr0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0220, WCNoFr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNoFr0320, WCNoFr0321, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCNrCr20, WCNrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCOhRv0120, WCOhRv0121, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCOhRv0220, WCOhRv0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCPrCr20, WCPrCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0220, WCShCr0221, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0520, WCShCr0521, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCShCr0620, WCShCr0621, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWdCr20, WCWdCr21, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0320, WCWeCr0321, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0720, WCWeCr0721, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWeCr0920, WCWeCr0921, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WCWrCr20, WCWrCr21, alternative = "two.sided", var.equal = TRUE)
+```
+
+###Mann-Whitney U test 12 significant out of 21
+```{r}
+wilcox.test(WCBfCr0220, WCBfCr0221)
+
+wilcox.test(WCChCr0120, WCChCr0121)
+
+wilcox.test(WCCmCr20, WCCmCr21)
+
+wilcox.test(WCCsCr20, WCCsCr21)
+
+wilcox.test(WCFdCr20, WCFdCr21)
+
+wilcox.test(WCLrCr20, WCLrCr21)
+
+wilcox.test(WCNoFr0120, WCNoFr0121)
+
+wilcox.test(WCNoFr0220, WCNoFr0221)
+
+wilcox.test(WCNoFr0320, WCNoFr0321)
+
+wilcox.test(WCNrCr20, WCNrCr21)
+
+wilcox.test(WCOhRv0120, WCOhRv0121)
+
+wilcox.test(WCOhRv0220, WCOhRv0221)
+
+wilcox.test(WCPrCr20, WCPrCr21)
+
+wilcox.test(WCShCr0220, WCShCr0221)
+
+wilcox.test(WCShCr0520, WCShCr0521)
+
+wilcox.test(WCShCr0620, WCShCr0621)
+
+wilcox.test(WCWdCr20, WCWdCr21)
+
+wilcox.test(WCWeCr0320, WCWeCr0321)
+
+wilcox.test(WCWeCr0720, WCWeCr0721)
+
+wilcox.test(WCWeCr0920, WCWeCr0921)
+
+wilcox.test(WCWrCr20, WCWrCr21)
+```
+
+
+
+#Summer Chloride
+```{r}
+BfCr01cl19 <-c(18.21,
+14.4,
+20.4,
+20.23,
+18.41,
+16.53,
+14.58,
+11.81,
+20.98)
+
+BfCr01cl20 <-c(20.47,
+13.74,
+9.45,
+30.06,
+35.93,
+33.8,
+33.38,
+40.22,
+24.29,
+23.44,
+30.39)
+
+
+BfCr02cl19 <-c(19.72,
+14.99,
+19.93,
+18.34,
+18.8,
+18.57,
+15.74,
+12.88,
+25.1)
+
+BfCr01cl20 <-c(12.54,
+14.16,
+32.51,
+35.71,
+47.86,
+30.86,
+61.55,
+32.34,
+42.46,
+36.75)
+
+
+ChCr01cl19 <-c(34.53,
+60.8,
+77.81,
+70.49,
+69.32,
+73.97,
+89.99,
+144.52)
+
+ChCr01cl20 <-c(70.74,
+68.9,
+83.42,
+108.41,
+133.43,
+141.34,
+156.99,
+199.23,
+95.77,
+135.32,
+139.95,
+158.2,
+120.38)
+
+
+CmCrcl19 <-c(4.98,
+16.78,
+16.19,
+13.1,
+8.01)
+
+CmCrcl20 <-c(30.84,
+9.29,
+25.06,
+29.7,
+25.37,
+39.91,
+19.04,
+24.45,
+36.72,
+27.45)
+
+
+CsCrcl19 <-c(98.55,
+131.22,
+139,
+93.6,
+106.31,
+57.56,
+88.5,
+96.04)
+
+CsCrcl20 <-c(60.61,
+72.93,
+75.7,
+133.07,
+160.94,
+73.53,
+174,
+174.4,
+115.63,
+132.86,
+123.06,
+130.33)
+
+
+FdCrcl19 <-c(55.49,
+132.01,
+108.81,
+74.45,
+58.4,
+56.69,
+94.78)
+
+FdCrcl20 <-c(57.34,
+53.16,
+65.37,
+74.5,
+114.43,
+147.67,
+175.72,
+155.96,
+73.55,
+85.47,
+87.73,
+125.8,
+70.75)
+
+LrCrcl19 <-c(47.77,
+46.17,
+53.99,
+40.18,
+31.19,
+33.4,
+34.86,
+50.96,
+62.98,
+28.47,
+43.83,
+47.02,
+46.22,
+42.84,
+40.71)
+
+LrCrcl20 <-c(49.43,
+38.59,
+49.02,
+65.21,
+86.92,
+54.56,
+94.6,
+108.77,
+53.19,
+63.46,
+95.98,
+86.76,
+68.07)
+
+
+NoFr01cl19 <-c(36.56,
+35.26,
+42.25,
+34.21,
+29.65,
+26.84,
+26.29,
+24.64,
+26.73,
+32.6)
+
+NoFr01cl20 <-c(48.22,
+23.74,
+27.74,
+57.51,
+70.79,
+69.19,
+70.98,
+87.41,
+45.38,
+61.52,
+63.95,
+16.13,
+60.67)
+
+
+NoFr02cl19 <-c(45.1,
+37.69,
+42.83,
+33.09,
+45.05,
+27.06,
+30.89,
+28.81)
+
+NoFr02cl20 <-c(62.9,
+29.4,
+29.63,
+63.19,
+78.47,
+89.91,
+82.01,
+93.31,
+53.77,
+64.46,
+71.99,
+81.31,
+80.89)
+
+
+NoFr03cl19 <-c(12.17,
+15.22,
+13.01,
+8.97,
+8.79,
+4.56,
+8.3,
+5.38,
+10.17)
+
+NoFr03cl20 <-c(20.51,
+7.85,
+9.75,
+15.41,
+21.35,
+15.16,
+14.38,
+21.34,
+14.49,
+15.61,
+15.16,
+70.25,
+15.6)
+
+
+NrCrcl19 <-c(216.63,
+255.74,
+228.85,
+246.81,
+194.02,
+165.27,
+201.12,
+154.45)
+
+NrCrcl20 <-c(276.53,
+129.11,
+110.28,
+161.83,
+195.25,
+124.12,
+218.38,
+209.82,
+200.2,
+205.47)
+
+
+OhRv01cl19 <-c(12,
+7.97,
+15.31,
+14.25,
+9.87,
+23.83,
+15.54,
+28.44,
+25.06,
+21.08,
+16.28,
+15.89,
+22.78,
+25.28)
+
+OhRv01cl20 <-c(45.18,
+25.76,
+25.41,
+39.65,
+49.13,
+48.88,
+48.94,
+67.64,
+57.45,
+34.48)
+
+
+OhRv02cl19 <-c(10.48,
+5.34,
+8.63,
+7.23,
+6.27,
+25.69,
+8.29,
+25.25,
+23.79,
+14.14,
+19.28,
+22.92,
+19.99,
+27.13)
+
+OhRv02cl20 <-c(41.08,
+26.44,
+26.77,
+38.45,
+49.76,
+49.36,
+49.59,
+69.76,
+60.45,
+41.47,
+42.97,
+42.47,
+35.88)
+
+
+PrCrcl19 <-c(29.99,
+30.96,
+42.89,
+31.05,
+27.7,
+33.62,
+21.38,
+25.22,
+22.05,
+23.75,
+23.73)
+
+PrCrcl20 <-c(43.3,
+19.75,
+21.7,
+37.91,
+46.1,
+52.61,
+57.67,
+60.21,
+34.55,
+34.53,
+42.25,
+53.14,
+43.88)
+
+
+ShCr02cl19 <-c(235.39,
+154.97,
+143.47,
+88.38,
+48.25,
+41.43,
+83.27,
+29.85,
+156.3,
+270.15)
+
+ShCr02cl20 <-c(88.96,
+151.46,
+51.4,
+421.41,
+195.4,
+108.75,
+554.77,
+356.83,
+165.38,
+228.04,
+117.05,
+113.13,
+159.54)
+
+
+ShCr03cl19<-c(42.63,
+38.61,
+40.64,
+30.01,
+39.9,
+27.75,
+28.6,
+26.61)
+
+ShCr03cl20 <-c(49.55,
+30.84,
+27.8,
+48.99,
+69.58,
+69.92,
+72.3)
+
+
+ShCr05cl19 <-c(27.07,
+28.45,
+21.73,
+20.7,
+21.81)
+
+ShCr05cl20 <-c(59.77,
+22.7,
+23.9,
+40.4,
+57.31,
+64.96,
+54.65,
+65.74,
+29.12,
+36.98,
+42.4,
+51.28,
+40.77)
+
+
+ShCr06cl19 <-c(53.8,
+162.79,
+175.45,
+213.89,
+78.14,
+267.44,
+148.06)
+
+ShCr06cl20 <-c(91.17,
+157.92,
+66.1,
+312.81,
+161.31,
+215.3,
+183.43,
+585.27,
+124.21,
+155.34,
+337.84,
+244.26,
+406.73)
+
+WdCrcl19 <-c(62.89,
+68.1,
+70.7,
+61.5,
+41.56,
+66.02,
+40.14,
+51.61,
+62.39,
+35.85,
+51.89,
+47.94,
+51.24,
+50.37,
+57.55)
+
+WdCrcl20 <-c(78.9,
+53.13,
+59.74,
+97.08,
+86.69)
+
+
+WeCr03cl19 <-c(21.51,
+27.39,
+34.27,
+34.69,
+24.87,
+38.17,
+15.56,
+24.89,
+26.98,
+15.79,
+32.07,
+35.19,
+26.68,
+31.75,
+43.08)
+
+WeCr03cl20 <-c(50.82,
+19.46,
+35.19,
+57.63,
+63.09,
+76.65,
+75.42,
+89.26,
+50.98,
+45.78,
+60.44,
+72.59,
+65.38)
+
+
+WeCr07cl19 <-c(42.4,
+40.13,
+47.48,
+46.95,
+40.16,
+43,
+30.7,
+34.3,
+42.06,
+23.35,
+44.22,
+55.2)
+
+WeCr07cl20 <-c(58.14,
+28.47,
+35.96,
+60.64,
+78.31,
+81.74,
+88.57,
+47.91,
+62.3,
+62.59,
+80.85,
+66.65)
+
+
+WeCr09cl19 <-c(25.47,
+25.75,
+35.24,
+34.4,
+25.34,
+30.17,
+21.65,
+23.71,
+17.43,
+23.72,
+23.67)
+
+WeCr09cl20 <-c(39.7,
+13.85,
+22.68,
+39.54,
+53.25,
+63.55,
+46.32,
+69.97,
+50.09,
+31.1,
+38.15,
+47.46,
+54.48)
+
+
+WeCr11cl19 <-c(26.51,
+66.72,
+55.54,
+33.26,
+30.42,
+37.01,
+36.48,
+51.97)
+
+WeCr11cl20 <-c(62.46,
+26.99,
+34.8,
+52.12,
+65.01,
+73.03,
+72.41,
+48.12,
+58.33,
+72.69,
+62.33)
+
+
+WrCrcl19 <-c(2,
+5.44,
+6.07,
+3.61,
+5.06,
+2.3)
+
+WrCrcl20 <-c(9.36,
+2.82,
+3.07,
+8.89,
+7.76,
+11.6,
+10.31,
+5.44,
+4.99,
+7.94,
+7.11,
+5.63)
+
+```
+
+###t-tests summer chloride 16 significant out of 24
+```{r}
+t.test(BfCr01cl19, BfCr01cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(BfCr02cl19, BfCr01cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CmCrcl19, CmCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ChCr01cl19, ChCr01cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CsCrcl19, CsCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr01cl19, NoFr01cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr02cl19, NoFr02cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr03cl19, NoFr03cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr02cl19, ShCr02cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr03cl19, ShCr03cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr05cl19, ShCr05cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr06cl19, ShCr06cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WrCrcl19, WrCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WdCrcl19, WdCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(FdCrcl19, FdCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(PrCrcl19, PrCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(LrCrcl19, LrCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NrCrcl19, NrCrcl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr03cl19, WeCr03cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr07cl19, WeCr07cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr09cl19, WeCr09cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr11cl19, WeCr11cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv01cl19, OhRv01cl20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv02cl19, OhRv02cl20, alternative = "two.sided", var.equal = TRUE)
+```
+
+###Wilcox 12 were wignificant
+```{r}
+wilcox.test(BfCr01cl19, BfCr01cl20)
+
+wilcox.test(BfCr02cl19, BfCr01cl20)
+
+wilcox.test(CmCrcl19, CmCrcl20)
+
+wilcox.test(ChCr01cl19, ChCr01cl20)
+
+wilcox.test(CsCrcl19, CsCrcl20)
+
+wilcox.test(NoFr01cl19, NoFr01cl20)
+
+wilcox.test(NoFr02cl19, NoFr02cl20)
+
+wilcox.test(NoFr03cl19, NoFr03cl20)
+
+wilcox.test(ShCr02cl19, ShCr02cl20)
+
+wilcox.test(ShCr03cl19, ShCr03cl20)
+
+wilcox.test(ShCr05cl19, ShCr05cl20)
+
+wilcox.test(ShCr06cl19, ShCr06cl20)
+
+wilcox.test(WrCrcl19, WrCrcl20)
+
+wilcox.test(WdCrcl19, WdCrcl20)
+
+wilcox.test(FdCrcl19, FdCrcl20)
+
+wilcox.test(PrCrcl19, PrCrcl20)
+
+wilcox.test(LrCrcl19, LrCrcl20)
+
+wilcox.test(NrCrcl19, NrCrcl20)
+
+wilcox.test(WeCr03cl19, WeCr03cl20)
+
+wilcox.test(WeCr07cl19, WeCr07cl20)
+
+wilcox.test(WeCr09cl19, WeCr09cl20)
+
+wilcox.test(WeCr11cl19, WeCr11cl20)
+
+wilcox.test(OhRv01cl19, OhRv01cl20)
+
+wilcox.test(OhRv02cl19, OhRv02cl20)
+```
+
+
+
+
+
+
+
+#Summer Conductivity
+```{r}
+
+BfCr0119 <-c(427.7,414.7,381.3,371.8,380.7,359.1,423,398.3,416,430.5,394)
+
+BfCr0120 <-c(424.1,438.3,429.2,426.6,303,379.6,443.7,482.8,474.8,466.7,394.9,410.3,449.4)
+
+BfCr0118 <-c(365.5,
+451.8,
+412.4,
+416.2,
+431.3,
+448.7)
+
+
+BfCr0219 <-c(445.5,428.6,414,398.1,398,378,449.5,441.5,431.9,457.5,395)
+
+BfCr0220 <-c(465.6,476.2,485.5,466.8,500,462.2,539,623,480.8,430.9,518.6,543.2,588)
+
+BfCr0218 <-c(406.9,
+499.6,
+450.8,
+453.4,
+484.5,
+493)
+
+
+ChCr0119 <-c(631,788,988,894,1089,1324,1555,1757,2244,2457,1216)
+
+ChCr0120 <-c(1126,1295,1502,1743,1471,1754,2534,3186,4460,5120,4916,1734,3231,4030,4436,3234)
+
+
+CmCr19 <-c(291.5,416.3,414.7,296.4,423.9,429.9)
+
+CmCr20 <-c(426.6,457.7,473.7,461,474.7,507.4,496.2,507.9,463.2,399.6,516.4,499.1)
+
+
+CsCr19 <-c(665,835,875,892,896,884,1057,1138,1261,1211,833)
+
+CsCr20 <-c(767,909,983,1037,996,1161,1242,1370,848,1783,1357,807,1078,1054,1325,1272)
+
+
+FdCr19 <-c(481.8,680,635,565,567,678,712,735)
+
+FdCr20 <-c(621,671,685,704,655,706,544,730,784,924,750,551,687,708,781,464.8)
+
+
+LrCr19 <-c(632,563.8,601,522.7,556.9,552.8,545,562,577,552,667,623,616,657,587,704,664,481.6,751)
+
+LrCr20 <-c(576,642,566,675,627,674,518.7,676,528.1,777,634,501.5,636,700,710,658)
+
+LrCr18 <-c(326.3,
+632,
+655,
+680,
+634,
+609,
+704,
+685,
+703)
+
+
+NoFr0119 <-c(648,634,545.4,542,572,496.9,622,644,629,643,697,680,814)
+
+NoFr0120 <-c(585,648,684,681,640,648,609,775,823,826,835,567,747,855,484.5,828)
+
+NoFr0118 <-c(534.4,
+622,
+626,
+623,
+717,
+725)
+
+
+NoFr0219 <-c(529.4,517.2,483.4,477.6,498.2,541.9,546.6,481.1,575,663)
+
+NoFr0220 <-c(479.6,522.2,550.7,555.6,507.8,493.1,483.8,593,520.8,617,571,495.4,608,647,650,651)
+
+
+NoFr0319 <-c(413.2,378.9,388.6,387.8,360.8,420.2,441,444.7,447.1,458.4,445.4,495.2)
+
+NoFr0320 <-c(418.6,430.8,445.9,441.8,401.5,384.4,384.2,454,474.2,469.5,463.8,409.6,461.8,476.2,847,465.7)
+
+NoFr0318 <-c(397.7,
+461.9,
+439.9,
+439.2,
+451.4,
+445.8)
+
+
+NrCr19 <-c(2049,2112,2478,2263,2521,2247,2932,3096,3835,3750,2485)
+
+NrCr20 <-c(2742,3345,3638,3951,2878,3710,3392,4140,922,4434,3025,3637,3823)
+
+
+OhRv0119 <-c(231.6,221.1,220.4,190.2,215.2,228.3,245.5,254.1,256.4,296.9,266.4,273.5,308.1,313.6,384,398.6,409.9,368.8)
+
+OhRv0120 <-c(341.4,325,371,405.7,434.8,330,402.2,407.2,443,411.3,399.2,388.6)
+
+OhRv0118 <-c(360.9,
+338,
+341.7,
+332.2,
+371.3,
+124,
+378.6,
+361.6)
+
+
+OhRv0219 <-c(233.4,219.1,221.4,194,214.1,245.2,241.6,251.5,296.5,281.4,275.1,283.8,308.3,337.3,396,389.9,403.8,404.4,371.6)
+
+OhRv0220 <-c(341,324.4,346,367.7,355,433.7,326.8,402.1,416.2,443.2,409.4,374.8,400.9,407.9,370.7,389.8)
+
+
+PrCr19 <-c(546.8,513.3,513.2,477,483.5,477.9,467.2,454,479.3,525,561,580,448.8)
+
+PrCr20 <-c(506.9,556,577.2,558,548.7,574,464.6,567,559,575,579,466.3,604,640,658,615)
+
+
+ShCr0219 <-c(1445,1134,894,730,653,685,921,687,1200,1543,1162,1438,2180)
+
+ShCr0220 <-c(834,717,842,1291,1472,880,2464,1451,1020,3369,1933,1047,1553,1219,1143,1366)
+
+ShCr0218 <-c(759,
+1223,
+1144,
+1084,
+1181,
+1205)
+
+
+ShCr0319 <-c(624.5,607,534.6,521.9,563,604,612,509.2,674,804)
+
+ShCr0320 <-c(557.5,615,657,662,584,643,592,742,817,840)
+
+
+ShCr0519 <-c(448.8,451.9,499.1,513.6,450,538,630)
+
+ShCr0520 <-c(480.1,507,537.6,493,542,457.6,569,645,645,592,406.4,573,599,627.5,581.1)
+
+
+ShCr0619 <-c(583,942,1119,1219,932,1628,1140,1448,1727)
+
+ShCr0620 <-c(820,846,1083,1527,1508,1014,1845,1205,1508,1492,2749,886,1267,2204,1584,2399)
+
+
+WdCr19 <-c(700,669,703,614,612,614,595,618,592,654,710,664,656,710,708,760,745,639)
+
+WdCr20 <-c(680,741,786,808,725,778,650,635)
+
+WdCr18 <-c(725,
+733,
+772,
+725,
+770,
+863,
+822)
+
+
+WeCr0319 <-c(446.1,462.5,434,396.8,418.1,440.2,327.8,373.3,393.1,449.5,483.7,491.3,499.7,538,544,557,566,438.5,529)
+
+WeCr0320 <-c(458.7,524,464.5,552,439.1,545,487.5,558,615,637,545,480.2,530,582,640,646)
+
+WeCr0318 <-c(504,
+408,
+489,
+492,
+478.3,
+509,
+527,
+478.6,
+517)
+
+
+WeCr0719 <-c(493.6,468.3,461.7,441.6,477.6,465.5,378.1,427,478.1,396.2,525.7,573,619,434.2,594)
+
+WeCr0720 <-c(434.2,508.8,454.4,561,496.7,587,552,571,560,598,474.8,607,656,705,665)
+
+WeCr0718 <-c(475,
+518,
+533,
+496,
+544,
+568,
+547,
+600)
+
+
+WeCr0919 <-c(383.9,432.3,389.7,373.1,401.1,380,314.7,406,380.4,431,431.2,476.4,250.7)
+
+WeCr0920 <-c(417.5,462.9,496.2,509,397.1,500,429.7,558,505,358.1,519,510,326,498.8,529.4,540.2)
+
+
+WeCr1119 <-c(304.3,485.1,479.4,388.1,357.6,484.2,509.4,563,622,443.7)
+
+WeCr1120 <-c(436,510,539,557,507.5,587,509.7,553,648,701,477.5,641,696,655)
+
+
+WrCr19 <-c(277.6,384,397.1,326.4,447.5,407.3,447.1,486.8)
+
+WrCr20 <-c(414.4,433.1,444.7,438.4,433.7,420.7,470.1,484.8,476.7,475.7,390.7,453.1,481.2,465.5,445.3)
+
+
+```
+
+###ANOVA for all three years of the sites that were sampled in all years
+```{r}
+BfCr01sum <- aov (BfCr0120 ~ BfCr0119 + BfCr0118)
+summary(BfCr01sum)
+
+#im not sure how to set up an anova this is we used in biostats but im not sure if its right or what i should be using its also not running haha so 
+
+```
+
+
+###t-tests between 2019 and 2020 14 were significant
+```{r}
+t.test(BfCr0119, BfCr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(BfCr0219, BfCr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CmCr19, CmCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ChCr0119, ChCr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(CsCr19, CsCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0119, NoFr0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0219, NoFr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NoFr0319, NoFr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0219, ShCr0220, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0319, ShCr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0519, ShCr0520, alternative = "two.sided", var.equal = TRUE)
+
+t.test(ShCr0619, ShCr0620, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WrCr19, WrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WdCr19, WdCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(FdCr19, FdCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(PrCr19, PrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(LrCr19, LrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(NrCr19, NrCr20, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0319, WeCr0320, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0719, WeCr0720, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr0919, WeCr0920, alternative = "two.sided", var.equal = TRUE)
+
+t.test(WeCr1119, WeCr1120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv0119, OhRv0120, alternative = "two.sided", var.equal = TRUE)
+
+t.test(OhRv0219, OhRv0220, alternative = "two.sided", var.equal = TRUE)
+```
+
+
+###Mann-Whitney U 14 significant 2019&2020
+```{r}
+wilcox.test(BfCr0119, BfCr0120)
+
+wilcox.test(BfCr0219, BfCr0220)
+
+wilcox.test(CmCr19, CmCr20)
+
+wilcox.test(ChCr0119, ChCr0120)
+
+wilcox.test(CsCr19, CsCr20)
+
+wilcox.test(NoFr0119, NoFr0120)
+
+wilcox.test(NoFr0219, NoFr0220)
+
+wilcox.test(NoFr0319, NoFr0320)
+
+wilcox.test(ShCr0219, ShCr0220)
+
+wilcox.test(ShCr0319, ShCr0320)
+
+wilcox.test(ShCr0519, ShCr0520)
+
+wilcox.test(ShCr0619, ShCr0620)
+
+wilcox.test(WrCr19, WrCr20)
+
+wilcox.test(WdCr19, WdCr20)
+
+wilcox.test(FdCr19, FdCr20)
+
+wilcox.test(PrCr19, PrCr20)
+
+wilcox.test(LrCr19, LrCr20)
+
+wilcox.test(NrCr19, NrCr20)
+
+wilcox.test(WeCr0319, WeCr0320)
+
+wilcox.test(WeCr0719, WeCr0720)
+
+wilcox.test(WeCr0919, WeCr0920)
+
+wilcox.test(WeCr1119, WeCr1120)
+
+wilcox.test(OhRv0119, OhRv0120)
+
+wilcox.test(OhRv0219, OhRv0220)
+```
+
+
+
+
+
+
+
+
+
+
