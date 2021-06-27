@@ -45,7 +45,100 @@ NrCr <- subset(waterchem2, Site=="NrCr")
 CsCr <- subset(waterchem2, Site=="CsCr")
 ```
 
-#Plots for slopes
+#Plots for slopes by site 
+## All site data Chloride vs Conductivity slope and R2 values
+
+```{r}
+
+summary(lm.WeCr03<-lm(WeCr03$Conductivity~WeCr03$Chloride))
+plot(WeCr03$Conductivity~WeCr03$Chloride)
+abline(lm.WeCr03)
+
+summary(lm.WeCr07<-lm(WeCr07$Conductivity~WeCr07$Chloride))
+plot(WeCr07$Conductivity~WeCr07$Chloride)
+abline(lm.WeCr07)     
+     
+summary(lm.WeCr11<-lm(WeCr11$Conductivity~WeCr11$Chloride))
+plot(WeCr11$Conductivity~WeCr11$Chloride)
+abline(lm.WeCr11)  
+
+summary(lm.LrCr<-lm(LrCr$Conductivity~LrCr$Chloride))
+plot(LrCr$Conductivity~LrCr$Chloride)
+abline(lm.LrCr)  
+
+summary(lm.WdCr<-lm(WdCr$Conductivity~WdCr$Chloride))
+plot(WdCr$Conductivity~WdCr$Chloride)
+abline(lm.WdCr)
+
+summary(lm.FdCr<-lm(FdCr$Conductivity~FdCr$Chloride))
+plot(FdCr$Conductivity~FdCr$Chloride)
+abline(lm.FdCr)
+
+summary(lm.PrCr<-lm(PrCr$Conductivity~PrCr$Chloride))
+plot(PrCr$Conductivity~PrCr$Chloride)
+abline(lm.PrCr)
+
+summary(lm.WrCr<-lm(WrCr$Conductivity~WrCr$Chloride))
+plot(WrCr$Conductivity~WrCr$Chloride)
+abline(lm.WrCr)
+
+summary(lm.NoFr03<-lm(NoFr03$Conductivity~NoFr03$Chloride))
+plot(NoFr03$Conductivity~NoFr03$Chloride)
+abline(lm.NoFr03) 
+
+summary(lm.NoFr02<-lm(NoFr02$Conductivity~NoFr02$Chloride))
+plot(NoFr02$Conductivity~NoFr02$Chloride)
+abline(lm.NoFr02) 
+
+summary(lm.NoFr01<-lm(NoFr01$Conductivity~NoFr01$Chloride))
+plot(NoFr01$Conductivity~NoFr01$Chloride)
+abline(lm.NoFr01)
+
+summary(lm.ShCr02<-lm(ShCr02$Conductivity~ShCr02$Chloride))
+plot(ShCr02$Conductivity~ShCr02$Chloride)
+abline(lm.ShCr02)
+
+summary(lm.ShCr05<-lm(ShCr05$Conductivity~ShCr05$Chloride))
+plot(ShCr05$Conductivity~ShCr05$Chloride)
+abline(lm.ShCr05)
+
+summary(lm.ShCr06<-lm(ShCr06$Conductivity~ShCr06$Chloride))
+plot(ShCr06$Conductivity~ShCr06$Chloride)
+abline(lm.ShCr06)
+
+summary(lm.BfCr02 <-lm(BfCr02 $Conductivity~BfCr02 $Chloride))
+plot(BfCr02 $Conductivity~BfCr02 $Chloride)
+abline(lm.BfCr02 )
+
+summary(lm.OhRv02<-lm(OhRv02$Conductivity~OhRv02$Chloride))
+plot(OhRv02$Conductivity~OhRv02$Chloride)
+abline(lm.OhRv02)
+
+
+summary(lm.ChCr01<-lm(ChCr01$Conductivity~ChCr01$Chloride))
+plot(ChCr01$Conductivity~ChCr01$Chloride)
+abline(lm.ChCr01)
+
+summary(lm.NrCr <-lm(NrCr $Conductivity~NrCr $Chloride))
+plot(NrCr $Conductivity~NrCr $Chloride)
+abline(lm.NrCr )
+
+summary(lm.CsCr <-lm(CsCr $Conductivity~CsCr $Chloride))
+plot(CsCr $Conductivity~CsCr $Chloride)
+abline(lm.CsCr )
+
+
+```
+
+
+
+
+
+
+
+
+
+
 ###Winter 2021
 ```{r}
 winter2021 <- read.csv("Winter 2021.csv")
