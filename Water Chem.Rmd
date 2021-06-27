@@ -19,6 +19,15 @@ BfCr <- subset(waterchem2, Site=="BfCr02"|Site== "CmCr")
 AMDs <- subset(waterchem2, Site== "ChCr01"|Site=="NrCr"|Site== "CsCr")
 ```
 
+#Subseting by Stream
+```{r}
+
+WeCr03<-subset(waterchem2, Site== "WeCr03")
+WeCr07<-subset(waterchem2, Site== "WeCr07")
+WdCr<-subset(waterchem2, Site== "WdCr")
+```
+
+
 ## time series using date
 ```{r}
 levels(waterchem2$Date)
@@ -89,7 +98,22 @@ ggplot(WeCr,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
   xlim(450,1250) +
   labs(y = "Chloride mg/L", x = "Julian Day")
 ```
+#W#eCr Chloride vs Conductivity
+```{r}
 
+summary(lm(WeCr$Chloride~ WeCr$Conductivity))
+plot(WeCr$Chloride~ WeCr$Conductivity)
+abline(lm(WeCr$Chloride~ WeCr$Conductivity))
+```
+
+#WdCr Chloride vs Conductivity
+```{r}
+
+
+summary(lm(WdCr$Chloride~ WdCr$Conductivity))
+plot(WdCr$Chloride~ WdCr$Conductivity)
+abline(lm(WdCr$Chloride~ WdCr$Conductivity))
+```
 
 ## North Fork and Short Creek
 ```{r}
@@ -110,6 +134,13 @@ ggplot(NfSh,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
   labs(y = "Chloride mg/L", x = "Julian Day")
 ```
 
+##North Fork Chloride vs Conductivity
+```{r}
+
+summary(lm(NfSh$Chloride~ NfSh$Conductivity))
+plot(NfSh$Chloride~ NfSh$Conductivity)
+abline(lm(NfSh$Chloride~ NfSh$Conductivity))
+```
 
 ## Buffalo Creek
 ```{r}
@@ -131,6 +162,13 @@ ggplot(BfCr,aes(x = Julian.Day ,y = Chloride, colour = Site, group = Site)) +
 ```
 
 
+##Buffalo Creek Chloride vs Conductivity
+```{r}
+
+summary(lm(BfCr$Chloride~ BfCr$Conductivity))
+plot(BfCr$Chloride~ BfCr$Conductivity)
+abline(lm(BfCr$Chloride~ BfCr$Conductivity))
+```
 ## Acid Mine sites
 ```{r}
 ggplot(AMDs,aes(x = Julian.Day ,y = Conductivity, colour = Site, group = Site)) + 
