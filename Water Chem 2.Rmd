@@ -47,98 +47,79 @@ CsCr <- subset(waterchem2, Site=="CsCr")
 
 #Plots for slopes by site 
 ## All site data Chloride vs Conductivity slope and R2 values
-
 ```{r}
-
 summary(lm.WeCr03<-lm(WeCr03$Conductivity~WeCr03$Chloride))
 plot(WeCr03$Conductivity~WeCr03$Chloride)
 abline(lm.WeCr03)
-
 summary(lm.WeCr07<-lm(WeCr07$Conductivity~WeCr07$Chloride))
 plot(WeCr07$Conductivity~WeCr07$Chloride)
-abline(lm.WeCr07)     
-     
+abline(lm.WeCr07)    
+summary(lm.WeCr09<-lm(WeCr09$Conductivity~WeCr09$Chloride))
+plot(WeCr09$Conductivity~WeCr09$Chloride)
+abline(lm.WeCr09) 
 summary(lm.WeCr11<-lm(WeCr11$Conductivity~WeCr11$Chloride))
 plot(WeCr11$Conductivity~WeCr11$Chloride)
 abline(lm.WeCr11)  
-
 summary(lm.LrCr<-lm(LrCr$Conductivity~LrCr$Chloride))
 plot(LrCr$Conductivity~LrCr$Chloride)
 abline(lm.LrCr)  
-
 summary(lm.WdCr<-lm(WdCr$Conductivity~WdCr$Chloride))
 plot(WdCr$Conductivity~WdCr$Chloride)
 abline(lm.WdCr)
-
 summary(lm.FdCr<-lm(FdCr$Conductivity~FdCr$Chloride))
 plot(FdCr$Conductivity~FdCr$Chloride)
 abline(lm.FdCr)
-
 summary(lm.PrCr<-lm(PrCr$Conductivity~PrCr$Chloride))
 plot(PrCr$Conductivity~PrCr$Chloride)
 abline(lm.PrCr)
-
 summary(lm.WrCr<-lm(WrCr$Conductivity~WrCr$Chloride))
 plot(WrCr$Conductivity~WrCr$Chloride)
 abline(lm.WrCr)
-
 summary(lm.NoFr03<-lm(NoFr03$Conductivity~NoFr03$Chloride))
 plot(NoFr03$Conductivity~NoFr03$Chloride)
 abline(lm.NoFr03) 
-
 summary(lm.NoFr02<-lm(NoFr02$Conductivity~NoFr02$Chloride))
 plot(NoFr02$Conductivity~NoFr02$Chloride)
 abline(lm.NoFr02) 
-
 summary(lm.NoFr01<-lm(NoFr01$Conductivity~NoFr01$Chloride))
 plot(NoFr01$Conductivity~NoFr01$Chloride)
 abline(lm.NoFr01)
-
 summary(lm.ShCr02<-lm(ShCr02$Conductivity~ShCr02$Chloride))
 plot(ShCr02$Conductivity~ShCr02$Chloride)
 abline(lm.ShCr02)
-
 summary(lm.ShCr05<-lm(ShCr05$Conductivity~ShCr05$Chloride))
 plot(ShCr05$Conductivity~ShCr05$Chloride)
 abline(lm.ShCr05)
-
 summary(lm.ShCr06<-lm(ShCr06$Conductivity~ShCr06$Chloride))
 plot(ShCr06$Conductivity~ShCr06$Chloride)
 abline(lm.ShCr06)
-
 summary(lm.BfCr02 <-lm(BfCr02 $Conductivity~BfCr02 $Chloride))
 plot(BfCr02 $Conductivity~BfCr02 $Chloride)
 abline(lm.BfCr02 )
-
 summary(lm.OhRv02<-lm(OhRv02$Conductivity~OhRv02$Chloride))
 plot(OhRv02$Conductivity~OhRv02$Chloride)
 abline(lm.OhRv02)
-
-
 summary(lm.ChCr01<-lm(ChCr01$Conductivity~ChCr01$Chloride))
 plot(ChCr01$Conductivity~ChCr01$Chloride)
 abline(lm.ChCr01)
-
 summary(lm.NrCr <-lm(NrCr $Conductivity~NrCr $Chloride))
 plot(NrCr $Conductivity~NrCr $Chloride)
 abline(lm.NrCr )
-
 summary(lm.CsCr <-lm(CsCr $Conductivity~CsCr $Chloride))
 plot(CsCr $Conductivity~CsCr $Chloride)
 abline(lm.CsCr )
-
-
+summary(lm.OhRv01 <-lm(OhRv01 $Conductivity~OhRv01 $Chloride))
+plot(OhRv01 $Conductivity~OhRv01 $Chloride)
+abline(lm.OhRv01 )
+summary(lm.CmCr <-lm(CmCr $Conductivity~CmCr $Chloride))
+plot(CmCr $Conductivity~CmCr $Chloride)
+abline(lm.CmCr )
 ```
 
 
 
 
-
-
-
-
-
-
+#Plots for slopes
 ###Winter 2021
 ```{r}
 winter2021 <- read.csv("Winter 2021.csv")
@@ -1129,6 +1110,19 @@ WCLrCr21 <-c(710
 ,677.5
 ,713.2)
 
+WCLrCr19 <-c(312,
+317,
+324,
+333,
+339,
+344,
+351,
+361,
+381,
+390,
+415,
+423)
+
 
 WCNoFr0120 <-c(644.5
 ,737.5
@@ -1151,6 +1145,11 @@ WCNoFr0121 <-c(1037
 ,749.9
 ,729.2
 ,682.2)
+
+WCNoFr0119 <-c(309,
+347,
+351,
+411)
 
 
 WCNoFr0220 <-c(338.1
@@ -1175,6 +1174,12 @@ WCNoFr0221 <-c(656.8
 ,598.1
 ,692.8)
 
+WCNoFr0219 <-c(309,
+347,
+351,
+368,
+411)
+
 
 WCNoFr0320 <-c(439.1
 ,499.4
@@ -1197,6 +1202,11 @@ WCNoFr0321 <-c(513.6
 ,455.6
 ,446.2
 ,368.5)
+
+WCNoFr0319 <-c(309,
+351,
+368,
+411)
 
 
 WCNrCr20 <-c(1823
@@ -1237,6 +1247,17 @@ WCOhRv0121 <-c(251.7
 ,426.1
 ,587.9)
 
+WCOhRv0119 <-c(311,
+318,
+324,
+333,
+339,
+344,
+351,
+361,
+390,
+415)
+
 
 WCOhRv0220 <-c(276.3
 ,244.2
@@ -1262,6 +1283,17 @@ WCOhRv0221 <-c(374.5
 ,343
 ,434.2
 ,544.3)
+
+WCOhRv0219 <-c(311,
+318,
+324,
+333,
+339,
+344,
+351,
+361,
+390,
+415)
 
 
 WCPrCr20 <-c(553.9
@@ -1290,6 +1322,19 @@ WCPrCr21 <-c(613.8
 ,606.5
 ,563.2)
 
+WCPrCr19 <-c(312,
+317,
+324,
+333,
+339,
+344,
+351,
+361,
+381,
+390,
+415,
+423)
+
 
 WCShCr0220 <-c(754
 ,764.2
@@ -1312,6 +1357,12 @@ WCShCr0221 <-c(1401
 ,994
 ,1245
 ,1025)
+
+WCShCr0219 <-c(309,
+347,
+351,
+368,
+411)
 
 
 WCShCr0520  <-c(515
@@ -1368,6 +1419,19 @@ WCWdCr21 <-c(800.8
 ,819.8
 ,744.9)
 
+WcWdCr19 <-c(311,
+317,
+324,
+333,
+339,
+344,
+351,
+361,
+381,
+390,
+415,
+423)
+
 
 WCWeCr0320 <-c(447.7
 ,477.9
@@ -1396,6 +1460,19 @@ WCWeCr0321 <-c(618.7
 ,485.8
 ,439)
 
+WCWeCr0319 <-c(312,
+317,
+324,
+333,
+339,
+344,
+351,
+361,
+381,
+390,
+415,
+423)
+
 
 WCWeCr0720 <-c(455.9
 ,485.8
@@ -1420,6 +1497,18 @@ WCWeCr0721 <-c(534.2
 ,623.5
 ,587.1
 ,647.2)
+
+WCWeCr0719 <-c(312,
+317,
+324,
+333,
+339,
+344,
+351,
+361,
+390,
+415,
+423)
 
 
 WCWeCr0920 <-c(438.4
@@ -1472,6 +1561,147 @@ WCWrCr21 <-c(462.6,
 300.7)
 
 ```
+
+
+### ANOVA for winter sites for 3 years
+```{r}
+wlrcraov <- read.csv("winter lrcr.csv")
+wnofr01aov <- read.csv("winter nofr01.csv")
+wnofr02aov <- read.csv("winter nofr02.csv")
+wnofr03aov <- read.csv("winter nofr03.csv")
+wohrv01aov <- read.csv("winter ohrv01.csv")
+wohrv02aov <- read.csv("winter ohrv02.csv")
+wshcr02aov <- read.csv("winter shcr02.csv")
+wwdcraov <- read.csv("winter wdcr.csv")
+wprcraov <- read.csv("winter prcr.csv")
+wwecr03aov <- read.csv("winter wecr03.csv")
+wwecr07aov <- read.csv("winter wecr07.csv")
+
+winterLrCrsum <- aov(Conductivity ~ Site, data=wlrcraov)
+summary(winterLrCrsum)
+TukeyHSD(winterLrCrsum)
+
+winterNoFr01sum <- aov(Conductivity ~ Site, data=wnofr01aov)
+summary(winterNoFr01sum)
+TukeyHSD(winterNoFr01sum)
+
+winterNoFr02sum <- aov(Conductivity ~ Site, data=wnofr02aov)
+summary(winterNoFr02sum)
+TukeyHSD(winterNoFr02sum)
+
+winterNoFr03sum <- aov(Conductivity ~ Site, data=wnofr03aov)
+summary(winterNoFr03sum)
+TukeyHSD(winterNoFr03sum)
+
+winterOhRv01sum <- aov(Conductivity ~ Site, data=wohrv01aov)
+summary(winterOhRv01sum)
+TukeyHSD(winterOhRv01sum)
+
+winterOhRv02sum <- aov(Conductivity ~ Site, data=wohrv02aov)
+summary(winterOhRv02sum)
+TukeyHSD(winterOhRv02sum)
+
+winterShCr02sum <- aov(Conductivity ~ Site, data=wshcr02aov)
+summary(winterShCr02sum)
+TukeyHSD(winterShCr02sum)
+
+winterWdCrsum <- aov(Conductivity ~ Site, data=wwdcraov)
+summary(winterWdCrsum)
+TukeyHSD(winterWdCrsum)
+
+winterPrCrsum <- aov(Conductivity ~ Site, data=wprcraov)
+summary(winterPrCrsum)
+TukeyHSD(winterPrCrsum)
+
+winterWeCr03sum <- aov(Conductivity ~ Site, data=wwecr03aov)
+summary(winterWeCr03sum)
+TukeyHSD(winterWeCr03sum)
+
+winterWeCr07sum <- aov(Conductivity ~ Site, data=wwecr07aov)
+summary(winterWeCr07sum)
+TukeyHSD(winterWeCr07sum)
+
+```
+19 = Dec 2018 to Feb 2019, 20 = Dec 2019 to Feb 2020 and 21 = Dec 2019 to Feb 2021
+
+### Dunn Tests
+```{r}
+library(FSA)
+
+dunnTest(Conductivity ~ Site, data=wlrcraov)
+
+dunnTest(Conductivity ~ Site, data=wnofr01aov)
+
+dunnTest(Conductivity ~ Site, data=wnofr02aov)
+
+dunnTest(Conductivity ~ Site, data=wnofr03aov)
+
+dunnTest(Conductivity ~ Site, data=wohrv01aov)
+
+dunnTest(Conductivity ~ Site, data=wohrv02aov)
+
+dunnTest(Conductivity ~ Site, data=wshcr02aov)
+
+dunnTest(Conductivity ~ Site, data=wprcraov)
+
+dunnTest(Conductivity ~ Site, data=wwdcraov)
+
+dunnTest(Conductivity ~ Site, data=wwecr03aov)
+
+dunnTest(Conductivity ~ Site, data=wwecr07aov)
+```
+
+### Kruskal test
+```{r}
+kruskal.test(Conductivity ~ Site, data=wlrcraov)
+
+kruskal.test(Conductivity ~ Site, data=wnofr01aov)
+
+kruskal.test(Conductivity ~ Site, data=wnofr02aov)
+
+kruskal.test(Conductivity ~ Site, data=wnofr03aov)
+
+kruskal.test(Conductivity ~ Site, data=wohrv01aov)
+
+kruskal.test(Conductivity ~ Site, data=wohrv02aov)
+
+kruskal.test(Conductivity ~ Site, data=wshcr02aov)
+
+kruskal.test(Conductivity ~ Site, data=wprcraov)
+
+kruskal.test(Conductivity ~ Site, data=wwdcraov)
+
+kruskal.test(Conductivity ~ Site, data=wwecr03aov)
+
+kruskal.test(Conductivity ~ Site, data=wwecr07aov)
+```
+
+### Boxplot
+```{r}
+boxplot(Conductivity ~ Site, data=wlrcraov)
+
+boxplot(Conductivity ~ Site, data=wnofr01aov)
+
+boxplot(Conductivity ~ Site, data=wnofr02aov)
+
+boxplot(Conductivity ~ Site, data=wnofr03aov)
+
+boxplot(Conductivity ~ Site, data=wohrv01aov)
+
+boxplot(Conductivity ~ Site, data=wohrv02aov)
+
+boxplot(Conductivity ~ Site, data=wshcr02aov)
+
+boxplot(Conductivity ~ Site, data=wprcraov)
+
+boxplot(Conductivity ~ Site, data=wwdcraov)
+
+boxplot(Conductivity ~ Site, data=wwecr03aov)
+
+boxplot(Conductivity ~ Site, data=wwecr07aov)
+```
+
+
 
 ###Conductivity t-tests 13 are significant out of 21
 ```{r}
@@ -2463,14 +2693,140 @@ WrCr20 <-c(414.4,433.1,444.7,438.4,433.7,420.7,470.1,484.8,476.7,475.7,390.7,453
 
 ```
 
-###ANOVA for all three years of the sites that were sampled in all years
+### ANOVA for all three years of the sites that were sampled in all years
 ```{r}
-BfCr01sum <- aov (BfCr0120 ~ BfCr0119 + BfCr0118)
+condaov <- read.csv("Cond aov.csv")
+
+allsites <- aov(Conductivity ~ Site, data=condaov)
+summary(allsites)
+TukeyHSD(allsites)
+hist(condaov$Conductivity)
+
+bfcr01aov <- read.csv("bfcr01 aov.csv")
+bfcr02aov <- read.csv("bfcr02 aov.csv")
+lrcraov <- read.csv("lrcr aov.csv")
+nofr01aov <- read.csv("nofr01 aov.csv")
+nofr03aov <- read.csv("nofr03 aov.csv")
+ohrv01aov <- read.csv("ohrv01 aov.csv")
+shcr02aov <- read.csv("shcr02 aov.csv")
+wdcraov <- read.csv("wdcr aov.csv")
+wecr03aov <- read.csv("wecr03 aov.csv")
+wecr07aov <- read.csv("wecr07 aov.csv")
+
+BfCr01sum <- aov(Conductivity ~ Site, data=bfcr01aov)
 summary(BfCr01sum)
+TukeyHSD(BfCr01sum)
 
-#im not sure how to set up an anova this is we used in biostats but im not sure if its right or what i should be using its also not running haha so 
+BfCr02sum <- aov(Conductivity ~ Site, data=bfcr02aov)
+summary(BfCr02sum)
+TukeyHSD(BfCr02sum)
 
+LrCrsum <- aov(Conductivity ~ Site, data=lrcraov)
+summary(LrCrsum)
+TukeyHSD(LrCrsum)
+
+NoFr01sum <- aov(Conductivity ~ Site, data=nofr01aov)
+summary(NoFr01sum)
+TukeyHSD(NoFr01sum)
+
+NoFr03sum <- aov(Conductivity ~ Site, data=nofr03aov)
+summary(NoFr03sum)
+TukeyHSD(NoFr03sum)
+
+OhRv01sum <- aov(Conductivity ~ Site, data=ohrv01aov)
+summary(OhRv01sum)
+TukeyHSD(OhRv01sum)
+
+ShCr02sum <- aov(Conductivity ~ Site, data=shcr02aov)
+summary(ShCr02sum)
+TukeyHSD(ShCr02sum)
+
+WdCrsum <- aov(Conductivity ~ Site, data=wdcraov)
+summary(WdCrsum)
+TukeyHSD(WdCrsum)
+
+WeCr03sum <- aov(Conductivity ~ Site, data=wecr03aov)
+summary(WeCr03sum)
+TukeyHSD(WeCr03sum)
+
+WeCr07sum <- aov(Conductivity ~ Site, data=wecr07aov)
+summary(WeCr07sum)
+TukeyHSD(WeCr07sum)
 ```
+
+### Dunn Tests
+```{r}
+library(FSA)
+
+dunnTest(Conductivity ~ Site, data=bfcr01aov)
+
+dunnTest(Conductivity ~ Site, data=bfcr02aov)
+
+dunnTest(Conductivity ~ Site, data=lrcraov)
+
+dunnTest(Conductivity ~ Site, data=nofr01aov)
+
+dunnTest(Conductivity ~ Site, data=nofr03aov)
+
+dunnTest(Conductivity ~ Site, data=ohrv01aov)
+
+dunnTest(Conductivity ~ Site, data=shcr02aov)
+
+dunnTest(Conductivity ~ Site, data=wdcraov)
+
+dunnTest(Conductivity ~ Site, data=wecr03aov)
+
+dunnTest(Conductivity ~ Site, data=wecr07aov)
+```
+
+### Kruskal test
+```{r}
+kruskal.test(Conductivity ~ Site, data=bfcr01aov)
+
+kruskal.test(Conductivity ~ Site, data=bfcr02aov)
+
+kruskal.test(Conductivity ~ Site, data=lrcraov)
+
+kruskal.test(Conductivity ~ Site, data=nofr01aov)
+
+kruskal.test(Conductivity ~ Site, data=nofr03aov)
+
+kruskal.test(Conductivity ~ Site, data=ohrv01aov)
+
+kruskal.test(Conductivity ~ Site, data=shcr02aov)
+
+kruskal.test(Conductivity ~ Site, data=wdcraov)
+
+kruskal.test(Conductivity ~ Site, data=wecr03aov)
+
+kruskal.test(Conductivity ~ Site, data=wecr07aov)
+```
+
+### Box plot
+```{r}
+boxplot(Conductivity ~ Site, data=bfcr01aov)
+
+boxplot(Conductivity ~ Site, data=bfcr02aov)
+
+boxplot(Conductivity ~ Site, data=lrcraov)
+
+boxplot(Conductivity ~ Site, data=nofr01aov)
+
+boxplot(Conductivity ~ Site, data=nofr03aov)
+
+boxplot(Conductivity ~ Site, data=ohrv01aov)
+
+boxplot(Conductivity ~ Site, data=shcr02aov)
+
+boxplot(Conductivity ~ Site, data=wdcraov)
+
+boxplot(Conductivity ~ Site, data=wecr03aov)
+
+boxplot(Conductivity ~ Site, data=wecr07aov)
+```
+
+
+
 
 
 ###t-tests between 2019 and 2020 14 were significant
@@ -2525,7 +2881,7 @@ t.test(OhRv0219, OhRv0220, alternative = "two.sided", var.equal = TRUE)
 ```
 
 
-###Mann-Whitney U 14 significant 2019&2020
+###Mann-Whitney U 14 significant 2019 & 2020
 ```{r}
 wilcox.test(BfCr0119, BfCr0120)
 
