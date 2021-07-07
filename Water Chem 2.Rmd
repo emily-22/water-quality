@@ -12,6 +12,7 @@ waterchem2 <- read.csv("Water Chem.csv")
 
 library(ggplot2)
 library(cowplot)
+library(sciplot)
 
 WeCr <- subset(waterchem2, Site== "WeCr03"|Site=="WeCr07"|Site== "WeCr09"|Site== "WeCr11"|Site=="LrCr"|Site== "WdCr"|Site=="PrCr"|Site== "FdCr"|Site=="OhRv01"|Site== "OhRv02")
 
@@ -1624,7 +1625,7 @@ TukeyHSD(winterWeCr07sum)
 ```
 19 = Dec 2018 to Feb 2019, 20 = Dec 2019 to Feb 2020 and 21 = Dec 2019 to Feb 2021
 
-### Dunn Tests
+Le### Dunn Tests
 ```{r}
 library(FSA)
 
@@ -2936,6 +2937,52 @@ wilcox.test(OhRv0219, OhRv0220)
 
 
 
+# Bar graphs
+### all sites
+```{r}
+library(sciplot)
+
+bargraph.CI(waterchem2$Site, waterchem2$Conductivity, xlab = "Site", ylab="SPC", las=2, cex=1, cex.names=0.7, err.width=0.05)
+
+
+```
+
+### Winter bar graphs
+```{r}
+
+winter18 <- read.csv("Winter 2018.csv")
+winter19 <- read.csv("Winter 2019.csv")
+winter20 <- read.csv("Winter 20.csv")
+
+bargraph.CI(winter18$Site, winter18$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2018")
+
+bargraph.CI(winter19$Site, winter19$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2019")
+
+bargraph.CI(winter20$Site, winter20$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2020")
+
+
+```
+
+### Summer bar graphs
+```{r}
+summer18 <- read.csv("Summer 18.csv")
+summer19 <- read.csv("Summer 19.csv")
+summer20 <- read.csv("Summer 20.csv")
+
+
+bargraph.CI(summer18$Site, summer18$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2018")
+
+bargraph.CI(summer19$Site, summer19$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2019")
+
+bargraph.CI(summer20$Site, summer20$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2020")
+
+```
 
 
 
