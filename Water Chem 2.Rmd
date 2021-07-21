@@ -2954,6 +2954,9 @@ winter18 <- read.csv("Winter 2018.csv")
 winter19 <- read.csv("Winter 2019.csv")
 winter20 <- read.csv("Winter 20.csv")
 
+winterdata <-read.csv("Winter Data.csv")
+winterdata3 <- subset(winterdata, Year==3)
+
 bargraph.CI(winter18$Site, winter18$Conductivity, xlab = "Site", ylab="Conductivity", 
             las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2018")
 
@@ -2964,6 +2967,30 @@ bargraph.CI(winter20$Site, winter20$Conductivity, xlab = "Site", ylab="Conductiv
             las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2020")
 
 
+
+
+bargraph.CI(winter19$Site, winter19$Chloride, xlab = "Site", ylab="Chloride", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2019")
+
+bargraph.CI(winter20$Site, winter20$Chloride, xlab = "Site", ylab="Chloride", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter 2020")
+
+
+
+bargraph.CI(winterdata$Site, winterdata$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter")
+
+bargraph.CI(winterdata3$Site, winterdata3$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Winter")
+
+
+boxplot(Conductivity ~ Site, data=winter18, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Conductivity ~ Site, data=winter19, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Conductivity ~ Site, data=winter20, las=2, cex=1, cex.names=0.8, xlab = "")
+
+boxplot(Chloride ~ Site, data=winter19, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Chloride ~ Site, data=winter20, las=2, cex=1, cex.names=0.8, xlab = "")
+
 ```
 
 ### Summer bar graphs
@@ -2972,6 +2999,8 @@ summer18 <- read.csv("Summer 18.csv")
 summer19 <- read.csv("Summer 19.csv")
 summer20 <- read.csv("Summer 20.csv")
 
+summerdata <- read.csv("Summer Data.csv")
+summerdata3 <- subset(summerdata, Year==3)
 
 bargraph.CI(summer18$Site, summer18$Conductivity, xlab = "Site", ylab="Conductivity", 
             las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2018")
@@ -2982,6 +3011,30 @@ bargraph.CI(summer19$Site, summer19$Conductivity, xlab = "Site", ylab="Conductiv
 bargraph.CI(summer20$Site, summer20$Conductivity, xlab = "Site", ylab="Conductivity", 
             las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2020")
 
+
+
+
+bargraph.CI(summer19$Site, summer19$Chloride, xlab = "Site", ylab="Chloride", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2019")
+
+bargraph.CI(summer20$Site, summer20$Chloride, xlab = "Site", ylab="Chloride", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer 2020")
+
+
+
+bargraph.CI(summerdata$Site, summerdata$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer")
+
+bargraph.CI(summerdata3$Site, summerdata3$Conductivity, xlab = "Site", ylab="Conductivity", 
+            las=2, cex=1, cex.names=0.8, err.width=0.05, main = "Summer")
+
+
+boxplot(Conductivity ~ Site, data=summer18, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Conductivity ~ Site, data=summer19, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Conductivity ~ Site, data=summer20, las=2, cex=1, cex.names=0.8, xlab = "")
+
+boxplot(Chloride ~ Site, data=summer19, las=2, cex=1, cex.names=0.8, xlab = "")
+boxplot(Chloride ~ Site, data=summer20, las=2, cex=1, cex.names=0.8, xlab = "")
 ```
 
 
