@@ -1,0 +1,1801 @@
+---
+title: "Water Chem 3"
+author: "Emily Huff and James Wood"
+date: "10/4/2021"
+output: html_document
+---
+
+# loading stuff
+```{r}
+waterchem2 <- read.csv("Water Chem.csv")
+
+library(ggplot2)
+library(cowplot)
+library(sciplot)
+```
+
+# Summer Conductivity
+```{r}
+
+BfCr0119 <-c(427.7,414.7,381.3,371.8,380.7,359.1,423,398.3,416,430.5,394)
+
+BfCr0120 <-c(424.1,438.3,429.2,426.6,303,379.6,443.7,482.8,474.8,466.7,394.9,410.3,449.4)
+
+BfCr0118 <-c(365.5,
+451.8,
+412.4,
+416.2,
+431.3,
+448.7)
+
+
+
+BfCr0219 <-c(445.5,428.6,414,398.1,398,378,449.5,441.5,431.9,457.5,395)
+
+BfCr0220 <-c(465.6,476.2,485.5,466.8,500,462.2,539,623,480.8,430.9,518.6,543.2,588)
+
+BfCr0218 <-c(406.9,
+499.6,
+450.8,
+453.4,
+484.5,
+493)
+
+BfCr0221 <- c(468.3,
+498.7,
+456.6,
+418.6,
+606,
+487.7,
+359.3,
+432.5,
+326,
+435.3,
+403.7,
+510.1)
+
+
+ChCr0119 <-c(631,788,988,894,1089,1324,1555,1757,2244,2457,1216)
+
+ChCr0120 <-c(1126,1295,1502,1743,1471,1754,2534,3186,4460,5120,4916,1734,3231,4030,4436,3234)
+
+ChCr0121 <- c(2049,
+789,
+1093,
+1392)
+
+
+CmCr19 <-c(291.5,416.3,414.7,296.4,423.9,429.9)
+
+CmCr20 <-c(426.6,457.7,473.7,461,474.7,507.4,496.2,507.9,463.2,399.6,516.4,499.1)
+
+CmCr21 <- c(491.5,
+481.3,
+501.4,
+509.8,
+515.2,
+433.9,
+401.6,
+415.8,
+449)
+
+
+CsCr19 <-c(665,835,875,892,896,884,1057,1138,1261,1211,833)
+
+CsCr20 <-c(767,909,983,1037,996,1161,1242,1370,848,1783,1357,807,1078,1054,1325,1272)
+
+CsCr21 <-c(734,
+1083,
+1051,
+723,
+1137,
+720,
+921,
+1084,
+182,
+1033)
+
+
+FdCr19 <-c(481.8,680,635,565,567,678,712,735)
+
+FdCr20 <-c(621,671,685,704,655,706,544,730,784,924,750,551,687,708,781,464.8)
+
+FdCr21 <-c(710,
+682,
+716,
+734,
+629,
+718,
+687,
+720,
+693,
+670,
+557.8,
+651,
+659,
+681,
+632)
+
+
+LrCr19 <-c(632,563.8,601,522.7,556.9,552.8,545,562,577,552,667,623,616,657,587,704,664,481.6,751)
+
+LrCr20 <-c(576,642,566,675,627,674,518.7,676,528.1,777,634,501.5,636,700,710,658)
+
+LrCr18 <-c(326.3,
+632,
+655,
+680,
+634,
+609,
+704,
+685,
+703)
+
+LrCr21 <-c(606,
+682,
+721,
+662,
+498.4,
+653,
+673,
+681,
+554.7,
+627,
+630,
+703,
+480.6)
+
+
+NoFr0119 <-c(648,634,545.4,542,572,496.9,622,644,629,643,697,680,814)
+
+NoFr0120 <-c(585,648,684,681,640,648,609,775,823,826,835,567,747,855,484.5,828)
+
+NoFr0118 <-c(534.4,
+622,
+626,
+623,
+717,
+725)
+
+NoFr0121 <-c(649,
+695,
+706,
+710,
+739,
+652,
+488,
+627,
+682,
+403.1,
+484.8,
+572,
+598,
+655)
+
+
+NoFr0219 <-c(529.4,517.2,483.4,477.6,498.2,541.9,546.6,481.1,575,663)
+
+NoFr0220 <-c(479.6,522.2,550.7,555.6,507.8,493.1,483.8,593,520.8,617,571,495.4,608,647,650,651)
+
+NoFr0221 <-c(553.3,
+552,
+516.9,
+622,
+655,
+559,
+426,
+538,
+581,
+320.5,
+435.1,
+519.8,
+519.6,
+566)
+
+
+NoFr0319 <-c(413.2,378.9,388.6,387.8,360.8,420.2,441,444.7,447.1,458.4,445.4,495.2)
+
+NoFr0320 <-c(418.6,430.8,445.9,441.8,401.5,384.4,384.2,454,474.2,469.5,463.8,409.6,461.8,476.2,847,465.7)
+
+NoFr0318 <-c(397.7,
+461.9,
+439.9,
+439.2,
+451.4,
+445.8)
+
+NoFr0321 <-c(452.8,
+459.6,
+466.7,
+483,
+492.4,
+437.3,
+351.6,
+426.5,
+446.7,
+292.6,
+339.4,
+408.4,
+428.8,
+478.7)
+
+
+NrCr19 <-c(2049,2112,2478,2263,2521,2247,2932,3096,3835,3750,2485)
+
+NrCr20 <-c(2742,3345,3638,3951,2878,3710,3392,4140,922,4434,3025,3637,3823)
+
+NrCr21 <-c(2586,
+2510,
+2851,
+2500,
+2750,
+2415,
+746,
+2697,
+2812,
+1978,
+2293,
+2801,
+2267)
+
+
+OhRv0119 <-c(231.6,221.1,220.4,190.2,215.2,228.3,245.5,254.1,256.4,296.9,266.4,273.5,308.1,313.6,384,398.6,409.9,368.8)
+
+OhRv0120 <-c(341.4,325,371,405.7,434.8,330,402.2,407.2,443,411.3,399.2,388.6)
+
+OhRv0118 <-c(360.9,
+338,
+341.7,
+332.2,
+371.3,
+124,
+378.6,
+361.6)
+
+OhRv0121 <-c(367.5,
+349.4,
+351.6,
+365.9,
+328.9,
+365.8,
+365,
+214.4,
+214.9,
+374.9,
+340.6,
+295.5,
+363,
+379.1)
+
+
+OhRv0219 <-c(233.4,219.1,221.4,194,214.1,245.2,241.6,251.5,296.5,281.4,275.1,283.8,308.3,337.3,396,389.9,403.8,404.4,371.6)
+
+OhRv0220 <-c(341,324.4,346,367.7,355,433.7,326.8,402.1,416.2,443.2,409.4,374.8,400.9,407.9,370.7,389.8)
+
+OhRv0221 <-c(366.7,
+351,
+346.4,
+359.8,
+324.6,
+311,
+366.3,
+240.7,
+299.1,
+371.7,
+281.2,
+326.1,
+255.8,
+332.6,
+380)
+
+
+PrCr19 <-c(546.8,513.3,513.2,477,483.5,477.9,467.2,454,479.3,525,561,580,448.8)
+
+PrCr20 <-c(506.9,556,577.2,558,548.7,574,464.6,567,559,575,579,466.3,604,640,658,615)
+
+PrCr21 <-c(533,
+531,
+603,
+617,
+505.9,
+523,
+547,
+565,
+577,
+581,
+487.5,
+538.3,
+556.3,
+611)
+
+
+ShCr0219 <-c(1445,1134,894,730,653,685,921,687,1200,1543,1162,1438,2180)
+
+ShCr0220 <-c(834,717,842,1291,1472,880,2464,1451,1020,3369,1933,1047,1553,1219,1143,1366)
+
+ShCr0218 <-c(759,
+1223,
+1144,
+1084,
+1181,
+1205)
+
+ShCr0221 <-c(829,
+539.6,
+945,
+1454,
+1719,
+1664,
+730,
+1689,
+2224,
+635,
+1021,
+1195,
+1300)
+
+
+ShCr0319 <-c(624.5,607,534.6,521.9,563,604,612,509.2,674,804)
+
+ShCr0320 <-c(557.5,615,657,662,584,643,592,742,817,840)
+
+ShCr0321 <-c(495.9,
+578,
+659)
+
+
+ShCr0519 <-c(448.8,451.9,499.1,513.6,450,538,630)
+
+ShCr0520 <-c(480.1,507,537.6,493,542,457.6,569,645,645,592,406.4,573,599,627.5,581.1)
+
+ShCr0521 <-c(524.2,
+534.2,
+562.8,
+598,
+626,
+526.9,
+422.7,
+526.6,
+544.3,
+380.4,
+434.5,
+504.6,
+516.1,
+588)
+
+
+ShCr0619 <-c(583,942,1119,1219,932,1628,1140,1448,1727)
+
+ShCr0620 <-c(820,846,1083,1527,1508,1014,1845,1205,1508,1492,2749,886,1267,2204,1584,2399)
+
+ShCr0621 <-c(936,
+997,
+1205,
+1494,
+1484,
+1317,
+712,
+1571,
+655,
+958,
+1180,
+1126,
+1817)
+
+
+WdCr19 <-c(700,669,703,614,612,614,595,618,592,654,710,664,656,710,708,760,745,639)
+
+WdCr20 <-c(680,741,786,808,725,778,650,635)
+
+WdCr18 <-c(725,
+733,
+772,
+725,
+770,
+863,
+822)
+
+WdCr21 <-c(747,
+623,
+647,
+623)
+
+
+WeCr0319 <-c(446.1,462.5,434,396.8,418.1,440.2,327.8,373.3,393.1,449.5,483.7,491.3,499.7,538,544,557,566,438.5,529)
+
+WeCr0320 <-c(458.7,524,464.5,552,439.1,545,487.5,558,615,637,545,480.2,530,582,640,646)
+
+WeCr0318 <-c(504,
+408,
+489,
+492,
+478.3,
+509,
+527,
+478.6,
+517)
+
+WeCr0321 <-c(559,
+486.3,
+486.6,
+220,
+515,
+402.2,
+523.8,
+546,
+465,
+291.6,
+471.3,
+486,
+558.3,
+525.1)
+
+
+WeCr0719 <-c(493.6,468.3,461.7,441.6,477.6,465.5,378.1,427,478.1,396.2,525.7,573,619,434.2,594)
+
+WeCr0720 <-c(434.2,508.8,454.4,561,496.7,587,552,571,560,598,474.8,607,656,705,665)
+
+WeCr0718 <-c(475,
+518,
+533,
+496,
+544,
+568,
+547,
+600)
+
+
+WeCr0919 <-c(383.9,432.3,389.7,373.1,401.1,380,314.7,406,380.4,431,431.2,476.4,250.7)
+
+WeCr0920 <-c(417.5,462.9,496.2,509,397.1,500,429.7,558,505,358.1,519,510,326,498.8,529.4,540.2)
+
+WeCr0921 <-c(548,
+456.5,
+419.2,
+426.9,
+402.3,
+544,
+513,
+482.3,
+455.9,
+417.2,
+286.2,
+434.1,
+440.3,
+532.7,
+526)
+
+
+WeCr1119 <-c(304.3,485.1,479.4,388.1,357.6,484.2,509.4,563,622,443.7)
+
+WeCr1120 <-c(436,510,539,557,507.5,587,509.7,553,648,701,477.5,641,696,655)
+
+WeCr1121 <-c(659,
+542,
+602,
+638,
+475,
+594,
+497.7,
+547,
+594,
+542,
+375.8,
+505.3,
+515.6,
+577.9,
+529.3)
+
+
+WrCr19 <-c(277.6,384,397.1,326.4,447.5,407.3,447.1,486.8)
+
+WrCr20 <-c(414.4,433.1,444.7,438.4,433.7,420.7,470.1,484.8,476.7,475.7,390.7,453.1,481.2,465.5,445.3)
+
+WrCr21 <-c(454.3,
+454.8,
+452.7,
+470.5,
+450.2,
+320.5,
+457.9,
+449.5,
+220.1,
+322.6,
+410.3,
+436.1,
+483.9)
+
+
+```
+
+## ANOVA
+```{r}
+bfcr01aov <- read.csv("bfcr01 aov.csv")
+bfcr02aov <- read.csv("bfcr02 aov.csv")
+chcr01aov <- read.csv("chcr01 aov.csv")
+cmcraov <- read.csv("cmcr aov.csv")
+cscraov <- read.csv("cscr aov.csv")
+fdcraov <- read.csv("fdcr aov.csv")
+lrcraov <- read.csv("lrcr aov.csv")
+nofr01aov <- read.csv("nofr01 aov.csv")
+nofr02aov <- read.csv("nofr02 aov.csv")
+nofr03aov <- read.csv("nofr03 aov.csv")
+nrcraov <- read.csv("nrcr aov.csv")
+ohrv01aov <- read.csv("ohrv01 aov.csv")
+ohrv02aov <- read.csv("ohrv02 aov.csv")
+prcraov <- read.csv("prcr aov.csv")
+shcr02aov <- read.csv("shcr02 aov.csv")
+shcr03aov <- read.csv("shcr03 aov.csv")
+shcr05aov <- read.csv("shcr05 aov.csv")
+shcr06aov <- read.csv("shcr06 aov.csv")
+wdcraov <- read.csv("wdcr aov.csv")
+wecr03aov <- read.csv("wecr03 aov.csv")
+wecr07aov <- read.csv("wecr07 aov.csv")
+wecr09aov <- read.csv("wecr09 aov.csv")
+wecr11aov <- read.csv("wecr11 aov.csv")
+wrcraov <- read.csv("wrcr aov.csv")
+
+BfCr01sum <- aov(Conductivity ~ Site, data=bfcr01aov)
+summary(BfCr01sum)
+TukeyHSD(BfCr01sum)
+
+BfCr02sum <- aov(Conductivity ~ Site, data=bfcr02aov)
+summary(BfCr02sum)
+TukeyHSD(BfCr02sum)
+
+ChCr01sum <- aov(Conductivity ~ Site, data=chcr01aov)
+summary(ChCr01sum)
+TukeyHSD(ChCr01sum)
+
+CmCrsum <- aov(Conductivity ~ Site, data=cmcraov)
+summary(CmCrsum)
+TukeyHSD(CmCrsum)
+
+CsCrsum <- aov(Conductivity ~ Site, data=cscraov)
+summary(CsCrsum)
+TukeyHSD(CsCrsum)
+
+FdCrsum <- aov(Conductivity ~ Site, data=fdcraov)
+summary(FdCrsum)
+TukeyHSD(FdCrsum)
+
+LrCrsum <- aov(Conductivity ~ Site, data=lrcraov)
+summary(LrCrsum)
+TukeyHSD(LrCrsum)
+
+NoFr01sum <- aov(Conductivity ~ Site, data=nofr01aov)
+summary(NoFr01sum)
+TukeyHSD(NoFr01sum)
+
+NoFr02sum <- aov(Conductivity ~ Site, data=nofr02aov)
+summary(NoFr02sum)
+TukeyHSD(NoFr02sum)
+
+NoFr03sum <- aov(Conductivity ~ Site, data=nofr03aov)
+summary(NoFr03sum)
+TukeyHSD(NoFr03sum)
+
+NrCrsum <- aov(Conductivity ~ Site, data=nrcraov)
+summary(NrCrsum)
+TukeyHSD(NrCrsum)
+
+OhRv01sum <- aov(Conductivity ~ Site, data=ohrv01aov)
+summary(OhRv01sum)
+TukeyHSD(OhRv01sum)
+
+OhRv02sum <- aov(Conductivity ~ Site, data=ohrv02aov)
+summary(OhRv02sum)
+TukeyHSD(OhRv02sum)
+
+PrCrsum <- aov(Conductivity ~ Site, data=prcraov)
+summary(PrCrsum)
+TukeyHSD(PrCrsum)
+
+ShCr02sum <- aov(Conductivity ~ Site, data=shcr02aov)
+summary(ShCr02sum)
+TukeyHSD(ShCr02sum)
+
+ShCr03sum <- aov(Conductivity ~ Site, data=shcr03aov)
+summary(ShCr03sum)
+TukeyHSD(ShCr03sum)
+
+ShCr05sum <- aov(Conductivity ~ Site, data=shcr05aov)
+summary(ShCr05sum)
+TukeyHSD(ShCr05sum)
+
+ShCr06sum <- aov(Conductivity ~ Site, data=shcr06aov)
+summary(ShCr06sum)
+TukeyHSD(ShCr06sum)
+
+WdCrsum <- aov(Conductivity ~ Site, data=wdcraov)
+summary(WdCrsum)
+TukeyHSD(WdCrsum)
+
+WeCr03sum <- aov(Conductivity ~ Site, data=wecr03aov)
+summary(WeCr03sum)
+TukeyHSD(WeCr03sum)
+
+WeCr07sum <- aov(Conductivity ~ Site, data=wecr07aov)
+summary(WeCr07sum)
+TukeyHSD(WeCr07sum)
+
+WeCr09sum <- aov(Conductivity ~ Site, data=wecr09aov)
+summary(WeCr09sum)
+TukeyHSD(WeCr09sum)
+
+WeCr11sum <- aov(Conductivity ~ Site, data=wecr11aov)
+summary(WeCr11sum)
+TukeyHSD(WeCr11sum)
+
+WrCrsum <- aov(Conductivity ~ Site, data=wrcraov)
+summary(WrCrsum)
+TukeyHSD(WrCrsum)
+```
+
+## Dunn Tests
+```{r}
+library(FSA)
+
+dunnTest(Conductivity ~ Site, data=bfcr01aov)
+
+dunnTest(Conductivity ~ Site, data=bfcr02aov)
+
+dunnTest(Conductivity ~ Site, data=chcr01aov)
+
+dunnTest(Conductivity ~ Site, data=cmcraov)
+
+dunnTest(Conductivity ~ Site, data=cscraov)
+
+dunnTest(Conductivity ~ Site, data=fdcraov)
+
+dunnTest(Conductivity ~ Site, data=lrcraov)
+
+dunnTest(Conductivity ~ Site, data=nofr01aov)
+
+dunnTest(Conductivity ~ Site, data=nofr02aov)
+
+dunnTest(Conductivity ~ Site, data=nofr03aov)
+
+dunnTest(Conductivity ~ Site, data=nrcraov)
+
+dunnTest(Conductivity ~ Site, data=ohrv01aov)
+
+dunnTest(Conductivity ~ Site, data=ohrv02aov)
+
+dunnTest(Conductivity ~ Site, data=prcraov)
+
+dunnTest(Conductivity ~ Site, data=shcr02aov)
+
+dunnTest(Conductivity ~ Site, data=shcr03aov)
+
+dunnTest(Conductivity ~ Site, data=shcr05aov)
+
+dunnTest(Conductivity ~ Site, data=shcr06aov)
+
+dunnTest(Conductivity ~ Site, data=wdcraov)
+
+dunnTest(Conductivity ~ Site, data=wecr03aov)
+
+dunnTest(Conductivity ~ Site, data=wecr07aov)
+
+dunnTest(Conductivity ~ Site, data=wecr09aov)
+
+dunnTest(Conductivity ~ Site, data=wecr11aov)
+
+dunnTest(Conductivity ~ Site, data=wrcraov)
+```
+
+
+## Box plot
+```{r}
+boxplot(Conductivity ~ Site, data=bfcr01aov)
+
+boxplot(Conductivity ~ Site, data=bfcr02aov)
+
+boxplot(Conductivity ~ Site, data=chcr01aov)
+
+boxplot(Conductivity ~ Site, data=cmcraov)
+
+boxplot(Conductivity ~ Site, data=cscraov)
+
+boxplot(Conductivity ~ Site, data=fdcraov)
+
+boxplot(Conductivity ~ Site, data=lrcraov)
+
+boxplot(Conductivity ~ Site, data=nofr01aov)
+
+boxplot(Conductivity ~ Site, data=nofr02aov)
+
+boxplot(Conductivity ~ Site, data=nofr03aov)
+
+boxplot(Conductivity ~ Site, data=nrcraov)
+
+boxplot(Conductivity ~ Site, data=ohrv01aov)
+
+boxplot(Conductivity ~ Site, data=ohrv02aov)
+
+boxplot(Conductivity ~ Site, data=prcraov)
+
+boxplot(Conductivity ~ Site, data=shcr02aov)
+
+boxplot(Conductivity ~ Site, data=shcr03aov)
+
+boxplot(Conductivity ~ Site, data=shcr05aov)
+
+boxplot(Conductivity ~ Site, data=shcr06aov)
+
+boxplot(Conductivity ~ Site, data=wdcraov)
+
+boxplot(Conductivity ~ Site, data=wecr03aov)
+
+boxplot(Conductivity ~ Site, data=wecr07aov)
+
+boxplot(Conductivity ~ Site, data=wecr09aov)
+
+boxplot(Conductivity ~ Site, data=wecr11aov)
+
+boxplot(Conductivity ~ Site, data=wrcraov)
+```
+
+
+
+# Summer Chloride
+```{r}
+BfCr01cl19 <-c(18.21,
+14.4,
+20.4,
+20.23,
+18.41,
+16.53,
+14.58,
+11.81,
+20.98)
+
+BfCr01cl20 <-c(20.47,
+13.74,
+9.45,
+30.06,
+35.93,
+33.8,
+33.38,
+40.22,
+24.29,
+23.44,
+30.39)
+
+
+BfCr02cl19 <-c(19.72,
+14.99,
+19.93,
+18.34,
+18.8,
+18.57,
+15.74,
+12.88,
+25.1)
+
+BfCr02cl20 <-c(12.54,
+14.16,
+32.51,
+35.71,
+47.86,
+30.86,
+61.55,
+32.34,
+42.46,
+36.75)
+
+BfCr02cl21 <-c(22.97,
+32.56,
+59.29,
+23.16,
+25.08,
+20.38,
+15.11,
+17.14,
+8.79,
+16.2,
+15.83,
+20.58)
+
+
+ChCr01cl19 <-c(34.53,
+60.8,
+77.81,
+70.49,
+69.32,
+73.97,
+89.99,
+144.52)
+
+ChCr01cl20 <-c(70.74,
+68.9,
+83.42,
+108.41,
+133.43,
+141.34,
+156.99,
+199.23,
+95.77,
+135.32,
+139.95,
+158.2,
+120.38)
+
+ChCr01cl21 <-c(120.45,
+51.88,
+71.8,
+55.84)
+
+
+CmCrcl19 <-c(4.98,
+16.78,
+16.19,
+13.1,
+8.01)
+
+CmCrcl20 <-c(30.84,
+9.29,
+25.06,
+29.7,
+25.37,
+39.91,
+19.04,
+24.45,
+36.72,
+27.45)
+
+CmCrcl21 <-c(18.96,
+18.59,
+37.9,
+15.37,
+14.82,
+10.02,
+9.69,
+11.01,
+10.38)
+
+
+CsCrcl19 <-c(98.55,
+131.22,
+139,
+93.6,
+106.31,
+57.56,
+88.5,
+96.04)
+
+CsCrcl20 <-c(60.61,
+72.93,
+75.7,
+133.07,
+160.94,
+73.53,
+174,
+174.4,
+115.63,
+132.86,
+123.06,
+130.33)
+
+CsCrcl21 <-c(102.67,
+152.28,
+151,
+82.8,
+131.23,
+85.32,
+117.4,
+128.65,
+121.23,
+121.17)
+
+
+FdCrcl19 <-c(55.49,
+132.01,
+108.81,
+74.45,
+58.4,
+56.69,
+94.78)
+
+FdCrcl20 <-c(57.34,
+53.16,
+65.37,
+74.5,
+114.43,
+147.67,
+175.72,
+155.96,
+73.55,
+85.47,
+87.73,
+125.8,
+70.75)
+
+FdCrcl21 <-c(119.31,
+120.39,
+94.02,
+90,
+71.02,
+82.35,
+83.83,
+96.01,
+82.87,
+76.03,
+57.53,
+79.84,
+85.96,
+95.06,
+87.04)
+
+
+LrCrcl19 <-c(47.77,
+46.17,
+53.99,
+40.18,
+31.19,
+33.4,
+34.86,
+50.96,
+62.98,
+28.47,
+43.83,
+47.02,
+46.22,
+42.84,
+40.71)
+
+LrCrcl20 <-c(49.43,
+38.59,
+49.02,
+65.21,
+86.92,
+54.56,
+94.6,
+108.77,
+53.19,
+63.46,
+95.98,
+86.76,
+68.07)
+
+LrCrcl21 <-c(96.34,
+77.8,
+83.68,
+68.93,
+39.6,
+73.17,
+70.55,
+57.37,
+48.86,
+59.16,
+58.62,
+77.33,
+36.75)
+
+
+NoFr01cl19 <-c(36.56,
+35.26,
+42.25,
+34.21,
+29.65,
+26.84,
+26.29,
+24.64,
+26.73,
+32.6)
+
+NoFr01cl20 <-c(48.22,
+23.74,
+27.74,
+57.51,
+70.79,
+69.19,
+70.98,
+87.41,
+45.38,
+61.52,
+63.95,
+16.13,
+60.67)
+
+NoFr01cl21 <-c(61.19,
+65.47,
+108.36,
+61.99,
+46.35,
+37.81,
+23.64,
+43.68,
+42.23,
+17.6,
+28.45,
+43.26,
+34.67,
+40.17)
+
+
+NoFr02cl19 <-c(45.1,
+37.69,
+42.83,
+33.09,
+45.05,
+27.06,
+30.89,
+28.81)
+
+NoFr02cl20 <-c(62.9,
+29.4,
+29.63,
+63.19,
+78.47,
+89.91,
+82.01,
+93.31,
+53.77,
+64.46,
+71.99,
+81.31,
+80.89)
+
+NoFr02cl21 <-c(69.67,
+76.56,
+126.24,
+63.46,
+63.49,
+40.89,
+24.81,
+49.14,
+51.17,
+21.27,
+33.33,
+42.44,
+39.88,
+45.18)
+
+
+NoFr03cl19 <-c(12.17,
+15.22,
+13.01,
+8.97,
+8.79,
+4.56,
+8.3,
+5.38,
+10.17)
+
+NoFr03cl20 <-c(20.51,
+7.85,
+9.75,
+15.41,
+21.35,
+15.16,
+14.38,
+21.34,
+14.49,
+15.61,
+15.16,
+70.25,
+15.6)
+
+NoFr03cl21 <-c(24,
+27.82,
+48.75,
+19.17,
+15.91,
+12.43,
+9.18,
+14.1,
+12.48,
+7.53,
+10.99,
+24.86,
+12.42,
+15.64)
+
+
+NrCrcl19 <-c(216.63,
+255.74,
+228.85,
+246.81,
+194.02,
+165.27,
+201.12,
+154.45)
+
+NrCrcl20 <-c(276.53,
+129.11,
+110.28,
+161.83,
+195.25,
+124.12,
+218.38,
+209.82,
+200.2,
+205.47)
+
+NrCrcl21 <-c(315.5,
+323.46,
+233.55,
+306.9,
+277.2,
+190.75,
+185.27,
+318.25,
+148.7,
+212.79,
+225.26,
+229.03,
+136.32)
+
+
+OhRv01cl19 <-c(12,
+7.97,
+15.31,
+14.25,
+9.87,
+23.83,
+15.54,
+28.44,
+25.06,
+21.08,
+16.28,
+15.89,
+22.78,
+25.28)
+
+OhRv01cl20 <-c(45.18,
+25.76,
+25.41,
+39.65,
+49.13,
+48.88,
+48.94,
+67.64,
+57.45,
+34.48)
+
+OhRv01cl21 <-c(65.45,
+62.91,
+30.89,
+36.01,
+25.69,
+38.1,
+35.41,
+25.25,
+20.25,
+38.43,
+30.2,
+27.33,
+38.83,
+30.89)
+
+
+OhRv02cl19 <-c(10.48,
+5.34,
+8.63,
+7.23,
+6.27,
+25.69,
+8.29,
+25.25,
+23.79,
+14.14,
+19.28,
+22.92,
+19.99,
+27.13)
+
+OhRv02cl20 <-c(41.08,
+26.44,
+26.77,
+38.45,
+49.76,
+49.36,
+49.59,
+69.76,
+60.45,
+41.47,
+42.97,
+42.47,
+35.88)
+
+OhRv02c;21 <-c(56.17,
+68.83,
+27.96,
+34.09,
+24.08,
+37.2,
+38.21,
+25.59,
+23.87,
+35.87,
+30.99,
+32.62,
+28.39,
+39.37,
+32.25)
+
+
+PrCrcl19 <-c(29.99,
+30.96,
+42.89,
+31.05,
+27.7,
+33.62,
+21.38,
+25.22,
+22.05,
+23.75,
+23.73)
+
+PrCrcl20 <-c(43.3,
+19.75,
+21.7,
+37.91,
+46.1,
+52.61,
+57.67,
+60.21,
+34.55,
+34.53,
+42.25,
+53.14,
+43.88)
+
+PrCrcl21 <-c(56.31,
+56.55,
+42.45,
+42.52,
+33.58,
+30.25,
+28.82,
+36.03,
+31.57,
+30.23,
+27.63,
+40.71,
+34.22,
+44.51)
+
+
+ShCr02cl19 <-c(235.39,
+154.97,
+143.47,
+88.38,
+48.25,
+41.43,
+83.27,
+29.85,
+156.3,
+270.15)
+
+ShCr02cl20 <-c(88.96,
+151.46,
+51.4,
+421.41,
+195.4,
+108.75,
+554.77,
+356.83,
+165.38,
+228.04,
+117.05,
+113.13,
+159.54)
+
+ShCr02cl21 <-c(95.94,
+90.43,
+153.77,
+173.51,
+194.36,
+249.36,
+60.5,
+226.79,
+342.75,
+51.96,
+108.21,
+120.6,
+154.49)
+
+
+ShCr03cl19<-c(42.63,
+38.61,
+40.64,
+30.01,
+39.9,
+27.75,
+28.6,
+26.61)
+
+ShCr03cl20 <-c(49.55,
+30.84,
+27.8,
+48.99,
+69.58,
+69.92,
+72.3)
+
+ShCr03cl21 <-c(28.9,
+37.37,
+44.93)
+
+
+ShCr05cl19 <-c(27.07,
+28.45,
+21.73,
+20.7,
+21.81)
+
+ShCr05cl20 <-c(59.77,
+22.7,
+23.9,
+40.4,
+57.31,
+64.96,
+54.65,
+65.74,
+29.12,
+36.98,
+42.4,
+51.28,
+40.77)
+
+ShCr05cl21 <-c(45.24,
+53.07,
+92.43,
+53.46,
+53.63,
+45.33,
+23.28,
+42.76,
+37.45,
+26.05,
+29.18,
+35.2,
+37.4,
+49.17)
+
+
+ShCr06cl19 <-c(53.8,
+162.79,
+175.45,
+213.89,
+78.14,
+267.44,
+148.06)
+
+ShCr06cl20 <-c(91.17,
+157.92,
+66.1,
+312.81,
+161.31,
+215.3,
+183.43,
+585.27,
+124.21,
+155.34,
+337.84,
+244.26,
+406.73)
+
+ShCr06cl21 <-c(107,
+121.98,
+218.38,
+185.06,
+167.4,
+179.91,
+60.79,
+218.75,
+54.71,
+96.49,
+121.6,
+126.47,
+229.91)
+
+
+WdCrcl19 <-c(62.89,
+68.1,
+70.7,
+61.5,
+41.56,
+66.02,
+40.14,
+51.61,
+62.39,
+35.85,
+51.89,
+47.94,
+51.24,
+50.37,
+57.55)
+
+WdCrcl20 <-c(78.9,
+53.13,
+59.74,
+97.08,
+86.69)
+
+WdCrcl21 <-c(116.88,
+57.18,
+64.98,
+50.79)
+
+
+WeCr03cl19 <-c(21.51,
+27.39,
+34.27,
+34.69,
+24.87,
+38.17,
+15.56,
+24.89,
+26.98,
+15.79,
+32.07,
+35.19,
+26.68,
+31.75,
+43.08)
+
+WeCr03cl20 <-c(50.82,
+19.46,
+35.19,
+57.63,
+63.09,
+76.65,
+75.42,
+89.26,
+50.98,
+45.78,
+60.44,
+72.59,
+65.38)
+
+WeCr03cl21 <-c(50.16,
+45.56,
+31.52,
+10.67,
+31.79,
+37.08,
+41.25,
+41.04,
+26.29,
+11.76,
+30.74,
+31.57,
+39.32,
+31.69)
+
+
+WeCr07cl19 <-c(42.4,
+40.13,
+47.48,
+46.95,
+40.16,
+43,
+30.7,
+34.3,
+42.06,
+23.35,
+44.22,
+55.2)
+
+WeCr07cl20 <-c(58.14,
+28.47,
+35.96,
+60.64,
+78.31,
+81.74,
+88.57,
+47.91,
+62.3,
+62.59,
+80.85,
+66.65)
+
+
+WeCr09cl19 <-c(25.47,
+25.75,
+35.24,
+34.4,
+25.34,
+30.17,
+21.65,
+23.71,
+17.43,
+23.72,
+23.67)
+
+WeCr09cl20 <-c(39.7,
+13.85,
+22.68,
+39.54,
+53.25,
+63.55,
+46.32,
+69.97,
+50.09,
+31.1,
+38.15,
+47.46,
+54.48)
+
+WeCr09cl21 <-c(29.15,
+37.61,
+23.27,
+19.34,
+213,
+26.37,
+26.38,
+26.28,
+24.44,
+19.04,
+12.54,
+20.65,
+21.07,
+32.14,
+25.24)
+
+
+WeCr11cl19 <-c(26.51,
+66.72,
+55.54,
+33.26,
+30.42,
+37.01,
+36.48,
+51.97)
+
+WeCr11cl20 <-c(62.46,
+26.99,
+34.8,
+52.12,
+65.01,
+73.03,
+72.41,
+48.12,
+58.33,
+72.69,
+62.33)
+
+WeCr11cl21 <-c(79.14,
+73.29,
+65.37,
+74.73,
+36.34,
+50.05,
+37.45,
+44.71,
+50.31,
+35.38,
+28.41,
+43.88,
+50.6,
+60.46,
+38.32)
+
+
+WrCrcl19 <-c(2,
+5.44,
+6.07,
+3.61,
+5.06,
+2.3)
+
+WrCrcl20 <-c(9.36,
+2.82,
+3.07,
+8.89,
+7.76,
+11.6,
+10.31,
+5.44,
+4.99,
+7.94,
+7.11,
+5.63)
+
+WrCrcl21 <-c(10.55,
+22.66,
+6.61,
+8.61,
+4.06,
+2.25,
+4.85,
+5.43,
+1.88,
+5.36,
+6.7,
+6.02,
+7.45)
+
+```
+
+## ANOVA
+```{r}
+BfCr02sumcl <- aov(Chloride ~ Site, data=bfcr02aov)
+summary(BfCr02sumcl)
+TukeyHSD(BfCr02sumcl)
+
+ChCr01sumcl <- aov(Chloride ~ Site, data=chcr01aov)
+summary(ChCr01sumcl)
+TukeyHSD(ChCr01sumcl)
+
+CmCrsumcl <- aov(Chloride ~ Site, data=cmcraov)
+summary(CmCrsumcl)
+TukeyHSD(CmCrsumcl)
+
+CsCrsumcl <- aov(Chloride ~ Site, data=cscraov)
+summary(CsCrsumcl)
+TukeyHSD(CsCrsumcl)
+
+FdCrsumcl <- aov(Chloride ~ Site, data=fdcraov)
+summary(FdCrsumcl)
+TukeyHSD(FdCrsumcl)
+
+LrCrsumcl <- aov(Chloride ~ Site, data=lrcraov)
+summary(LrCrsumcl)
+TukeyHSD(LrCrsumcl)
+
+NoFr01sumcl <- aov(Chloride ~ Site, data=nofr01aov)
+summary(NoFr01sumcl)
+TukeyHSD(NoFr01sumcl)
+
+NoFr02sumcl <- aov(Chloride ~ Site, data=nofr02aov)
+summary(NoFr02sumcl)
+TukeyHSD(NoFr02sumcl)
+
+NoFr03sumcl <- aov(Chloride ~ Site, data=nofr03aov)
+summary(NoFr03sumcl)
+TukeyHSD(NoFr03sumcl)
+
+NrCrsumcl <- aov(Chloride ~ Site, data=nrcraov)
+summary(NrCrsumcl)
+TukeyHSD(NrCrsumcl)
+
+OhRv01sumcl <- aov(Chloride ~ Site, data=ohrv01aov)
+summary(OhRv01sumcl)
+TukeyHSD(OhRv01sumcl)
+
+OhRv02sumcl <- aov(Chloride ~ Site, data=ohrv02aov)
+summary(OhRv02sumcl)
+TukeyHSD(OhRv02sumcl)
+
+PrCrsumcl <- aov(Chloride ~ Site, data=prcraov)
+summary(PrCrsumcl)
+TukeyHSD(PrCrsumcl)
+
+ShCr02sumcl <- aov(Chloride ~ Site, data=shcr02aov)
+summary(ShCr02sumcl)
+TukeyHSD(ShCr02sumcl)
+
+ShCr03sumcl <- aov(Chloride ~ Site, data=shcr03aov)
+summary(ShCr03sumcl)
+TukeyHSD(ShCr03sumcl)
+
+ShCr05sumcl <- aov(Chloride ~ Site, data=shcr05aov)
+summary(ShCr05sumcl)
+TukeyHSD(ShCr05sumcl)
+
+ShCr06sumcl <- aov(Chloride ~ Site, data=shcr06aov)
+summary(ShCr06sumcl)
+TukeyHSD(ShCr06sumcl)
+
+WdCrsumcl <- aov(Chloride ~ Site, data=wdcraov)
+summary(WdCrsumcl)
+TukeyHSD(WdCrsumcl)
+
+WeCr03sumcl <- aov(Chloride ~ Site, data=wecr03aov)
+summary(WeCr03sumcl)
+TukeyHSD(WeCr03sumcl)
+
+WeCr09sumcl <- aov(Chloride ~ Site, data=wecr09aov)
+summary(WeCr09sumcl)
+TukeyHSD(WeCr09sumcl)
+
+WeCr11sumcl <- aov(Chloride ~ Site, data=wecr11aov)
+summary(WeCr11sumcl)
+TukeyHSD(WeCr11sumcl)
+
+WrCrsumcl <- aov(Chloride ~ Site, data=wrcraov)
+summary(WrCrsumcl)
+TukeyHSD(WrCrsumcl)
+```
+
+## Dunn Test
+```{r}
+library(FSA)
+
+dunnTest(Chloride ~ Site, data=bfcr02aov)
+
+dunnTest(Chloride ~ Site, data=chcr01aov)
+
+dunnTest(Chloride ~ Site, data=cmcraov)
+
+dunnTest(Chloride ~ Site, data=cscraov)
+
+dunnTest(Chloride ~ Site, data=fdcraov)
+
+dunnTest(Chloride ~ Site, data=lrcraov)
+
+dunnTest(Chloride ~ Site, data=nofr01aov)
+
+dunnTest(Chloride ~ Site, data=nofr02aov)
+
+dunnTest(Chloride ~ Site, data=nofr03aov)
+
+dunnTest(Chloride ~ Site, data=nrcraov)
+
+dunnTest(Chloride ~ Site, data=ohrv01aov)
+
+dunnTest(Chloride ~ Site, data=ohrv02aov)
+
+dunnTest(Chloride ~ Site, data=prcraov)
+
+dunnTest(Chloride ~ Site, data=shcr02aov)
+
+dunnTest(Chloride ~ Site, data=shcr03aov)
+
+dunnTest(Chloride ~ Site, data=shcr05aov)
+
+dunnTest(Chloride ~ Site, data=shcr06aov)
+
+dunnTest(Chloride ~ Site, data=wdcraov)
+
+dunnTest(Chloride ~ Site, data=wecr03aov)
+
+dunnTest(Chloride ~ Site, data=wecr09aov)
+
+dunnTest(Chloride ~ Site, data=wecr11aov)
+
+dunnTest(Chloride ~ Site, data=wrcraov)
+```
+
+## Boxplot
+```{r}
+boxplot(Chloride ~ Site, data=bfcr02aov)
+
+boxplot(Chloride ~ Site, data=chcr01aov)
+
+boxplot(Chloride ~ Site, data=cmcraov)
+
+boxplot(Chloride ~ Site, data=cscraov)
+
+boxplot(Chloride ~ Site, data=fdcraov)
+
+boxplot(Chloride ~ Site, data=lrcraov)
+
+boxplot(Chloride ~ Site, data=nofr01aov)
+
+boxplot(Chloride ~ Site, data=nofr02aov)
+
+boxplot(Chloride ~ Site, data=nofr03aov)
+
+boxplot(Chloride ~ Site, data=nrcraov)
+
+boxplot(Chloride ~ Site, data=ohrv01aov)
+
+boxplot(Chloride ~ Site, data=ohrv02aov)
+
+boxplot(Chloride ~ Site, data=prcraov)
+
+boxplot(Chloride ~ Site, data=shcr02aov)
+
+boxplot(Chloride ~ Site, data=shcr03aov)
+
+boxplot(Chloride ~ Site, data=shcr05aov)
+
+boxplot(Chloride ~ Site, data=shcr06aov)
+
+boxplot(Chloride ~ Site, data=wdcraov)
+
+boxplot(Chloride ~ Site, data=wecr03aov)
+
+boxplot(Chloride ~ Site, data=wecr09aov)
+
+boxplot(Chloride ~ Site, data=wecr11aov)
+
+boxplot(Chloride ~ Site, data=wrcraov)
+```
+
